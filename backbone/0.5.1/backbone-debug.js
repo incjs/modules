@@ -1,5 +1,5 @@
 
-define(["underscore","jquery"], function(require, exports) {
+define(["underscore","jquery"], function(require, exports, module) {
 
   var previousUnderscore = this._;
   var previousJQuery = this.jQuery;
@@ -1155,6 +1155,7 @@ define(["underscore","jquery"], function(require, exports) {
   };
 
 }).call(this);
+
 
   this._ = previousUnderscore;
   this.jQuery = previousJQuery;
