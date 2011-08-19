@@ -1,5 +1,5 @@
 
-define('mustache', [], function(require, exports, module) {
+define([], function(require, exports, module) {
 
 /*
   mustache.js — Logic-less templates in JavaScript

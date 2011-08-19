@@ -1,5 +1,5 @@
 
-define('underscore', [], function(require, exports, module) {
+define([], function(require, exports, module) {
 
 // Underscore.js 1.1.7
 // (c) 2011 Jeremy Ashkenas, DocumentCloud Inc.
