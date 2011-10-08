@@ -1,5 +1,5 @@
 
-define(["underscore","jquery"], function(require, exports) {
+define("backbone", ["underscore","jquery"], function(require, exports) {
 
   var previousUnderscore = this._;
   var previousJQuery = this.jQuery;
