@@ -8,7 +8,7 @@
 (function(factory) {
 
   if (typeof define === 'function') {
-    define(factory);
+    define('backbone', ['underscore', 'jquery'], factory);
   } else {
     factory();
   }
