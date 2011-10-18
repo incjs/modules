@@ -1,1 +1,107 @@
-It works!
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>modules</title>
+<style>
+  body {
+    padding: 1em 6em 2em;
+    font: 14px/16px 'Verdana', 'Tahoma';
+  }
+
+  #content {
+    width: 40em;
+    padding-left: 2em;
+  }
+
+  dl {
+    margin-top: 3em;
+  }
+
+  dt {
+    font-size: 18px;
+  }
+
+  .size {
+    font-style: italic;
+    color: #666;
+  }
+
+  .size a {
+    font-style: normal;
+  }
+
+  #footer {
+    margin-top: 5em;
+    padding-left: 2em;
+  }
+</style>
+</head>
+<body>
+
+<h1>modules in the sea</h1>
+
+<div id="content"></div>
+
+<div id="footer">
+  <p>
+    For more information, please visit
+    <a href="https://github.com/seajs/modules/">https://github.com/seajs/modules/</a>
+  </p>
+</div>
+
+<script id="module-tmpl" type="text/template">
+  <dl>
+    <dt>{{name}} v{{version}}</dt>
+    <dd>
+      <p>{{description}}</p>
+      <p class="size">
+        <a href="{{minpath}}">{{minfile}}</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        ({{gzipped}}, Minified and Gzipped)<br/>
+        <a href="{{srcpath}}">{{srcfile}}</a>
+        &nbsp;&nbsp;&nbsp;({{raw}}, Uncompressed Code)
+      </p>
+  </dl>
+</script>
+
+<script src="seajs/1.0.2/sea.js"></script>
+<script>
+
+  seajs.config({
+    alias: {
+      'es5-safe': 'es5-safe/0.9.1/es5-safe',
+      'mustache': 'mustache/0.4.0/mustache'
+    },
+    preload: [
+      Function.prototype.bind ? '' : 'es5-safe'
+    ]
+  });
+
+
+  seajs.use(['./registry', 'mustache'], function(registry, mustache) {
+    var BASE = location.href.replace(/(.*)\/.*/, '$1');
+    var tmpl = document.getElementById('module-tmpl').text;
+    var html = '';
+
+    for (var p in registry) {
+      if (registry.hasOwnProperty(p)) {
+        var meta = registry[p];
+        var filename = (meta.filename || meta.name).toLowerCase();
+        var path = BASE + '/' + meta.name + '/' + meta.version + '/';
+
+        meta.minfile = filename + '.js';
+        meta.srcfile = filename + '-debug.js';
+        meta.minpath = path + meta.minfile;
+        meta.srcpath = path + meta.srcfile;
+
+        html += mustache.to_html(tmpl, meta);
+      }
+    }
+
+    document.getElementById('content').innerHTML = html;
+  });
+
+</script>
+</body>
+</html>
