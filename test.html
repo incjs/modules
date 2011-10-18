@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>Modules Test</title>
+</head>
+<body>
+
+<h1>Modules</h1>
+
+<div id="out"></div>
+
+<script src="seajs/1.0.2/sea-debug.js"></script>
+<script>
+
+  seajs.config({
+    alias: {
+      '~': location.href.replace(/(.*)\/.*/, '$1'),
+      'es5-safe': 'es5-safe/0.9.1/es5-safe',
+      'json': 'json/1.0.0/json'
+    },
+    preload: [
+      Function.prototype.bind ? '' : 'es5-safe',
+      this.JSON ? '' : 'json'
+    ]
+  });
+
+
+  define('~/tests', function(require, exports) {
+
+    var test = require('../../seajs/test/test');
+    var registry = require('./registry');
+    var global = this;
+
+    var testCases = {
+      'backbone': checkVersion,
+      'cookie': checkVersion,
+
+      'jquery': function(meta, $) {
+        test.assert($.fn.jquery === meta.version, $.fn.jquery);
+      },
+
+      'mustache': function(meta, Mustache) {
+        test.assert(Mustache.version.indexOf(meta.version) === 0, Mustache.version);
+      },
+
+      'querystring': checkVersion,
+      'underscore': checkVersion
+    };
+
+
+    exports.run = function() {
+
+      // test preload modules
+      test.assert([].map, 'preload es5-safe');
+      test.assert(global['JSON'].parse, 'preload json');
+
+
+      // test modules
+      var items = getTestItems();
+      var n = items.length;
+
+      items.forEach(function(name) {
+        var meta = registry[name];
+
+        require.async(name, function(O) {
+          test.print('<br />');
+          test.print('test ' + name + ' v' + meta.version + ' {{{ ');
+
+          test.assert(this[meta.name] === undefined, 'dont pollute global');
+          testCases[name](meta, O);
+
+          test.print('}}}');
+          if (--n === 0) {
+            test.print('<br />');
+            test.done();
+          }
+
+        });
+      });
+    };
+
+
+    exports.registry = registry;
+
+
+    exports.getTestItems = getTestItems;
+
+
+    function checkVersion(meta, O) {
+      var version = O.version || O.VERSION;
+      test.assert(version === meta.version, version);
+    }
+
+    function getTestItems() {
+      return Object.keys(registry).filter(function(item) {
+        return ['seajs', 'es5-safe', 'json'].indexOf(item) === -1;
+      });
+    }
+  });
+
+
+  seajs.use('~/tests', function(tests) {
+    var alias = {};
+    tests.getTestItems().forEach(function(name) {
+      alias[name] = name + '/' + tests.registry[name].version + '/' + name;
+    });
+
+    seajs.config({ alias: alias });
+    tests.run();
+  });
+
+
+  function printResults(txt, style) {
+    var d = document.createElement('div');
+    d.innerHTML = txt;
+    d.className = style;
+    document.getElementById('out').appendChild(d);
+  }
+
+</script>
+</body>
+</html>

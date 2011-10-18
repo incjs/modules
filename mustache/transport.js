@@ -1,7 +1,7 @@
 /**
  * @package https://raw.github.com/janl/mustache.js/master/lib/package.json
  *
- * @version 0.3.1
+ * @version 0.4.0
  * @src https://raw.github.com/janl/mustache.js/master/mustache.js
  */
 

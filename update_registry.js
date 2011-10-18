@@ -58,9 +58,9 @@ function output() {
     indent_level: 2,
     quote_keys: true
   });
-  code = code.replace('define({', '{').replace('});', '}');
+  //code = code.replace('define({', '{').replace('});', '}');
 
-  var outputFile = path.join(__dirname, 'registry.json');
+  var outputFile = path.join(__dirname, 'registry.js');
 
   fs.writeFile(outputFile, code, 'utf8', function() {
     console.log('  Done!');
