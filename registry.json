@@ -10,18 +10,6 @@
     "min": "http://code.jquery.com/jquery-1.6.4.min.js",
     "gzipped": 32090
   },
-  "json": {
-    "package": "https://raw.github.com/seajs/dew/master/src/json/package.json",
-    "name": "json",
-    "description": "JSON in JavaScript",
-    "url": "https://github.com/seajs/dew/tree/master/src/json",
-    "keywords": [ "util" ],
-    "author": "Frank Wang <lifesinger@gmail.com>",
-    "version": "1.0.0",
-    "src": "https://raw.github.com/seajs/dew/master/build/json/json-debug.js",
-    "min": "https://raw.github.com/seajs/dew/master/build/json/json.js",
-    "gzipped": 1303
-  },
   "mustache": {
     "package": "https://raw.github.com/janl/mustache.js/master/lib/package.json",
     "version": "0.3.1",
@@ -33,17 +21,29 @@
     "main": "./mustache",
     "gzipped": 1668
   },
-  "cookie": {
-    "package": "https://raw.github.com/seajs/dew/master/src/cookie/package.json",
-    "name": "cookie",
-    "description": "Provides utilities for dealing with cookies.",
-    "url": "https://github.com/seajs/dew/tree/master/src/cookie",
+  "es5-safe": {
+    "package": "https://raw.github.com/seajs/dew/master/src/es5-safe/package.json",
+    "name": "es5-safe",
+    "description": "Provides compatibility shims so that legacy JavaScript engines behave as closely as possible to ES5.",
+    "url": "https://github.com/seajs/dew/tree/master/src/es5-safe",
     "keywords": [ "util" ],
     "author": "Frank Wang <lifesinger@gmail.com>",
-    "version": "1.0.1",
-    "src": "https://raw.github.com/seajs/dew/master/build/cookie/cookie-debug.js",
-    "min": "https://raw.github.com/seajs/dew/master/build/cookie/cookie.js",
-    "gzipped": 675
+    "version": "0.9.1",
+    "src": "https://raw.github.com/seajs/dew/master/build/es5-safe/es5-safe-debug.js",
+    "min": "https://raw.github.com/seajs/dew/master/build/es5-safe/es5-safe.js",
+    "gzipped": 1286
+  },
+  "json": {
+    "package": "https://raw.github.com/seajs/dew/master/src/json/package.json",
+    "name": "json",
+    "description": "JSON in JavaScript",
+    "url": "https://github.com/seajs/dew/tree/master/src/json",
+    "keywords": [ "util" ],
+    "author": "Frank Wang <lifesinger@gmail.com>",
+    "version": "1.0.0",
+    "src": "https://raw.github.com/seajs/dew/master/build/json/json-debug.js",
+    "min": "https://raw.github.com/seajs/dew/master/build/json/json.js",
+    "gzipped": 1303
   },
   "backbone": {
     "package": "https://raw.github.com/documentcloud/backbone/master/package.json",
@@ -63,6 +63,18 @@
     "version": "0.5.3",
     "gzipped": 4944
   },
+  "querystring": {
+    "package": "https://raw.github.com/seajs/dew/master/src/querystring/package.json",
+    "name": "querystring",
+    "description": "Provides utilities for dealing with query strings.",
+    "url": "https://github.com/seajs/dew/tree/master/src/querystring",
+    "keywords": [ "util" ],
+    "author": "Frank Wang <lifesinger@gmail.com>",
+    "version": "1.0.0",
+    "src": "https://raw.github.com/seajs/dew/master/build/querystring/querystring-debug.js",
+    "min": "https://raw.github.com/seajs/dew/master/build/querystring/querystring.js",
+    "gzipped": 709
+  },
   "seajs": {
     "package": "https://raw.github.com/seajs/seajs/master/package.json",
     "filename": "sea",
@@ -81,8 +93,20 @@
       "url": "git://github.com/lifesinger/seajs.git"
     },
     "main": "build/sea.js",
+    "version": "1.0.2",
+    "gzipped": 3834
+  },
+  "cookie": {
+    "package": "https://raw.github.com/seajs/dew/master/src/cookie/package.json",
+    "name": "cookie",
+    "description": "Provides utilities for dealing with cookies.",
+    "url": "https://github.com/seajs/dew/tree/master/src/cookie",
+    "keywords": [ "util" ],
+    "author": "Frank Wang <lifesinger@gmail.com>",
     "version": "1.0.1",
-    "gzipped": 3812
+    "src": "https://raw.github.com/seajs/dew/master/build/cookie/cookie-debug.js",
+    "min": "https://raw.github.com/seajs/dew/master/build/cookie/cookie.js",
+    "gzipped": 675
   },
   "underscore": {
     "package": "https://raw.github.com/documentcloud/underscore/master/package.json",
