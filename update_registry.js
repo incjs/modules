@@ -21,33 +21,49 @@ var items = fs.readdirSync(__dirname).filter(function(item) {
   return fs.statSync(item).isDirectory() && item.charAt(0) !== '.';
 });
 
-items.forEach(function(item, i) {
-  var filepath = path.join(__dirname, item, 'transport.js');
 
-  Transport.prototype.getMeta(filepath, function(meta) {
-    registry[meta.name.toLowerCase()] = meta;
+processItem(items.shift());
 
-    gzipSize(meta, function() {
-      if (i === items.length - 1) {
-        output();
-      }
+
+function processItem(item) {
+  if (item) {
+    var filepath = path.join(__dirname, item, 'transport.js');
+
+    Transport.prototype.getMeta(filepath, function(meta) {
+      registry[meta.name.toLowerCase()] = meta;
+
+      getFileSize(meta, function() {
+        processItem(items.shift());
+      });
     });
-  });
-});
+  }
+  else {
+    output();
+  }
+}
 
 
-function gzipSize(meta, callback) {
+function getFileSize(meta, callback) {
   var filename = (meta['filename'] || meta['name']).toLowerCase();
   var minFile = path.join(__dirname, meta['name'], meta.version, filename + '.js');
+  var srcFile = minFile.replace(/\.js$/, '-debug.js');
+
+  console.log('  ... Reading %s', minFile);
 
   gzip(fs.readFileSync(minFile, 'utf8'), function(err, data) {
-    if (err) {
-      throw err;
-    }
+    if (err) throw err;
+    meta['gzipped'] = formatSize(data.length);
 
-    meta['gzipped'] = data.length;
+    console.log('  ... Reading %s', srcFile);
+    meta['raw'] = formatSize(fs.statSync(srcFile).size);
+
     callback();
-  })
+  });
+}
+
+
+function formatSize(size) {
+  return Math.round(size / 1024) + 'KB';
 }
 
 
