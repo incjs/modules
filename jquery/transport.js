@@ -1,5 +1,5 @@
 /**
- * @name jQuery
+ * @name jquery
  * @description A new kind of JavaScript Library.
  * @author John Resig
  * @url http://jquery.com/
