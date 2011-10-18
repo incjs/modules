@@ -3,6 +3,16 @@
 <head>
 <meta charset="utf-8"/>
 <title>Modules Test</title>
+<style>
+  .pass {
+    color: green;
+  }
+
+  .fail,
+  .error {
+    color: red;
+  }
+</style>
 </head>
 <body>
 
@@ -10,7 +20,7 @@
 
 <div id="out"></div>
 
-<script src="seajs/1.0.2/sea-debug.js"></script>
+<script src="seajs/1.0.2/sea.js"></script>
 <script>
 
   seajs.config({
@@ -33,19 +43,22 @@
     var global = this;
 
     var testCases = {
-      'backbone': checkVersion,
-      'cookie': checkVersion,
+      'backbone': normalCheck('Backbone'),
+      'cookie': normalCheck('Cookie'),
 
       'jquery': function(meta, $) {
+        test.assert(this['jQuery'] === undefined, 'no global jQuery');
+        test.assert(this['$'] === undefined, 'no global $');
         test.assert($.fn.jquery === meta.version, $.fn.jquery);
       },
 
       'mustache': function(meta, Mustache) {
+        test.assert(this['Mustache'] === undefined, 'no global Mustache');
         test.assert(Mustache.version.indexOf(meta.version) === 0, Mustache.version);
       },
 
-      'querystring': checkVersion,
-      'underscore': checkVersion
+      'querystring': normalCheck('QueryString'),
+      'underscore': normalCheck('_')
     };
 
 
@@ -67,7 +80,6 @@
           test.print('<br />');
           test.print('test ' + name + ' v' + meta.version + ' {{{ ');
 
-          test.assert(this[meta.name] === undefined, 'dont pollute global');
           testCases[name](meta, O);
 
           test.print('}}}');
@@ -87,9 +99,13 @@
     exports.getTestItems = getTestItems;
 
 
-    function checkVersion(meta, O) {
-      var version = O.version || O.VERSION;
-      test.assert(version === meta.version, version);
+    function normalCheck(globalName) {
+      return function(meta, O) {
+        test.assert(this[globalName] === undefined, 'no global ' + globalName);
+
+        var version = O.version || O.VERSION;
+        test.assert(version === meta.version, version);
+      };
     }
 
     function getTestItems() {
