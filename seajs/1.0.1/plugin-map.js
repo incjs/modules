@@ -1,4 +1,3 @@
-
 /**
  * @fileoverview The map plugin for auto responder.
  */
