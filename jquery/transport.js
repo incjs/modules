@@ -19,7 +19,7 @@
 (function(factory) {
 
   if (typeof define === 'function') {
-    define('jquery', [], factory);
+    define('#{{id}}', [], factory);
   }
   else {
     factory();

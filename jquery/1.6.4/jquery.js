@@ -1,7 +1,7 @@
 (function(factory) {
 
   if (typeof define === 'function') {
-    define('jquery', [], factory);
+    define('#jquery/1.6.4/jquery', [], factory);
   }
   else {
     factory();
