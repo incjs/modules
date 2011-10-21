@@ -56,7 +56,7 @@ define({
     "version": "1.6.4",
     "src": "http://code.jquery.com/jquery-1.6.4.js",
     "min": "http://code.jquery.com/jquery-1.6.4.min.js",
-    "notes": 'jQuery can not be run in node due to some browser proprietary objects such as "window", "document". And don\'t bother me with some "jsdom" module that is not robust.',
+    "notes": "jQuery can not be run in node due to some browser proprietary objects such as window, document. And do NOT bother me with some jsdom module that is not robust.",
     "filename": "jquery",
     "gzipped": "31KB",
     "raw": "233KB"
