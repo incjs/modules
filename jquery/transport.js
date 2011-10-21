@@ -12,7 +12,7 @@
  * @min http://code.jquery.com/jquery-1.6.4.min.js
  *
  * @notes jQuery can not be run in node due to some browser proprietary objects
- *        such as "window", "document". And don't bother me with some "jsdom"
+ *        such as window, document. And do NOT bother me with some jsdom
  *        module that is not robust.
  */
 
