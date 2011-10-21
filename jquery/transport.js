@@ -10,19 +10,24 @@
  * @version 1.6.4
  * @src http://code.jquery.com/jquery-1.6.4.js
  * @min http://code.jquery.com/jquery-1.6.4.min.js
+ *
+ * @notes jQuery can not be run in node due to some browser proprietary objects
+ *        such as "window", "document". And don't bother me with some "jsdom"
+ *        module that is not robust.
  */
 
 (function(factory) {
 
   if (typeof define === 'function') {
     define('jquery', [], factory);
-  } else {
+  }
+  else {
     factory();
   }
 
-})(function() {
+})(function(require, exports, module) {
 
   /*{{code}}*/
 
-  return $.noConflict(true);
+  if (module) return $.noConflict(true);
 });

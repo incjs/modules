@@ -29,7 +29,7 @@ function processItem(item) {
   if (item) {
     var filepath = path.join(__dirname, item, 'transport.js');
 
-    Transport.prototype.getMeta(filepath, function(meta) {
+    Transport.getMeta(filepath, function(meta) {
       registry[meta.name.toLowerCase()] = meta;
 
       getFileSize(meta, function() {

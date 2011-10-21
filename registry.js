@@ -15,6 +15,7 @@ define({
     "lib": ".",
     "main": "backbone.js",
     "version": "0.5.3",
+    "filename": "backbone",
     "gzipped": "5KB",
     "raw": "42KB"
   },
@@ -25,9 +26,10 @@ define({
     "url": "https://github.com/seajs/dew/tree/master/src/cookie",
     "keywords": [ "util" ],
     "author": "Frank Wang <lifesinger@gmail.com>",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "src": "https://raw.github.com/seajs/dew/master/build/cookie/cookie-debug.js",
     "min": "https://raw.github.com/seajs/dew/master/build/cookie/cookie.js",
+    "filename": "cookie",
     "gzipped": "1KB",
     "raw": "5KB"
   },
@@ -38,9 +40,10 @@ define({
     "url": "https://github.com/seajs/dew/tree/master/src/es5-safe",
     "keywords": [ "util" ],
     "author": "Frank Wang <lifesinger@gmail.com>",
-    "version": "0.9.1",
+    "version": "0.9.2",
     "src": "https://raw.github.com/seajs/dew/master/build/es5-safe/es5-safe-debug.js",
     "min": "https://raw.github.com/seajs/dew/master/build/es5-safe/es5-safe.js",
+    "filename": "es5-safe",
     "gzipped": "1KB",
     "raw": "10KB"
   },
@@ -53,6 +56,8 @@ define({
     "version": "1.6.4",
     "src": "http://code.jquery.com/jquery-1.6.4.js",
     "min": "http://code.jquery.com/jquery-1.6.4.min.js",
+    "notes": 'jQuery can not be run in node due to some browser proprietary objects such as "window", "document". And don\'t bother me with some "jsdom" module that is not robust.',
+    "filename": "jquery",
     "gzipped": "31KB",
     "raw": "233KB"
   },
@@ -63,9 +68,10 @@ define({
     "url": "https://github.com/seajs/dew/tree/master/src/json",
     "keywords": [ "util" ],
     "author": "Frank Wang <lifesinger@gmail.com>",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "src": "https://raw.github.com/seajs/dew/master/build/json/json-debug.js",
     "min": "https://raw.github.com/seajs/dew/master/build/json/json.js",
+    "filename": "json",
     "gzipped": "1KB",
     "raw": "17KB"
   },
@@ -78,8 +84,9 @@ define({
     "description": "{{ mustache }} in JavaScript — Logic-less templates.",
     "keywords": [ "template" ],
     "main": "./mustache",
+    "filename": "mustache",
     "gzipped": "2KB",
-    "raw": "11KB"
+    "raw": "12KB"
   },
   "querystring": {
     "package": "https://raw.github.com/seajs/dew/master/src/querystring/package.json",
@@ -88,9 +95,10 @@ define({
     "url": "https://github.com/seajs/dew/tree/master/src/querystring",
     "keywords": [ "util" ],
     "author": "Frank Wang <lifesinger@gmail.com>",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "src": "https://raw.github.com/seajs/dew/master/build/querystring/querystring-debug.js",
     "min": "https://raw.github.com/seajs/dew/master/build/querystring/querystring.js",
+    "filename": "querystring",
     "gzipped": "1KB",
     "raw": "5KB"
   },
@@ -133,7 +141,8 @@ define({
     },
     "main": "underscore.js",
     "version": "1.2.0",
+    "filename": "underscore",
     "gzipped": "4KB",
-    "raw": "32KB"
+    "raw": "33KB"
   }
 });

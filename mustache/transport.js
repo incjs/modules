@@ -8,14 +8,17 @@
 (function(factory) {
 
   if (typeof define === 'function') {
-    define('mustache', [], factory);
-  } else {
-    this['Mustache'] = factory();
+    define('#{{id}}', [], factory);
+  }
+  else if (typeof module !== 'undefined') {
+    module.exports = factory();
+  }
+  else {
+    this.Mustache = factory();
   }
 
 })(function() {
 
 /*{{code}}*/
-
-  return Mustache;
+return Mustache;
 });

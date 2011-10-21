@@ -8,8 +8,12 @@
 (function(factory) {
 
   if (typeof define === 'function') {
-    define('underscore', [], factory);
-  } else {
+    define('#{{id}}', [], factory);
+  }
+  else if (typeof exports !== 'undefined') {
+    factory(require, exports, module);
+  }
+  else {
     factory();
   }
 

@@ -1,6 +1,15 @@
+(function(factory) {
+
+  if (typeof define === 'function') {
+    define('#es5-safe/0.9.2/es5-safe-debug', [], factory);
+  }else {
+    factory();
+  }
+
+})(function() {
+
 /**
- * @license The safe part of es5-shim v0.9.0
- * https://github.com/seajs/dew/tree/master/src/es5-safe
+ * @preserve The safe part of es5-shim v0.9.2 | https://github.com/seajs/dew/tree/master/src/es5-safe | MIT Licensed
  */
 
 /**
@@ -18,15 +27,7 @@
  *   - https://code.google.com/p/v8/
  */
 
-(function(factory) {
-
-  if (typeof define === 'function') {
-    define([], factory);
-  } else {
-    factory();
-  }
-
-})(function() {
+(function() {
 
   var OP = Object.prototype;
   var AP = Array.prototype;
@@ -53,46 +54,55 @@
     var boundArgs = slice.call(arguments, 1);
 
     function bound() {
-      return target.apply(
-          this instanceof bound ? this : that,
-          boundArgs.concat(slice.call(arguments)));
+      // Called as a constructor.
+      if (this instanceof bound) {
+        var self = createObject(target.prototype);
+        var result = target.apply(
+            self,
+            boundArgs.concat(slice.call(arguments))
+        );
+        return Object(result) === result ? result : self;
+      }
+      // Called as a function.
+      else {
+        return target.apply(
+            that,
+            boundArgs.concat(slice.call(arguments))
+        );
+      }
     }
 
-    bound.prototype = Object.create(target.prototype);
-
-    // NOTICE: The function.length can not be changed.
+    // NOTICE: The function.length is not writable.
     //bound.length = Math.max(target.length - boundArgs.length, 0);
 
     return bound;
   });
 
 
+  // Helpers
+  function createObject(proto) {
+    var o;
+
+    if (Object.create) {
+      o = Object.create(proto);
+    }
+    else {
+      /** @constructor */
+      function F() {
+      }
+
+      F.prototype = proto;
+      o = new F();
+    }
+
+    return o;
+  }
+
+
   /*---------------------------------------*
    * Object
    *---------------------------------------*/
   // http://ejohn.org/blog/ecmascript-5-objects-and-properties/
-
-  // ES5 15.2.3.5
-  // http://stackoverflow.com/questions/3075308/what-modernizer-scripts-exist-for-the-new-ecmascript-5-functions
-  // https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object/create
-  Object.create || (Object.create = function (proto) {
-    if (proto === null) {
-      throw new TypeError('null prototype is not supported');
-    }
-    if (typeof proto !== 'object' && typeof proto !== 'function') {
-      throw new TypeError(proto + ' not an object or null');
-    }
-    if (arguments.length > 1) {
-      throw Error('The second parameter is not supported');
-    }
-
-    /** @constructor */
-    function F() {
-    }
-    F.prototype = proto;
-    return new F();
-  });
-
 
   // ES5 15.2.3.14
   // http://whattheheadsaid.com/2010/10/a-safer-object-keys-compatibility-implementation
@@ -135,7 +145,7 @@
 
       return result;
     };
-    
+
   })());
 
 
@@ -166,12 +176,15 @@
   // ES5 15.4.4.19
   // https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Objects/Array/map
   AP.map || (AP.map = function (fn, context) {
-    var result = [];
-    for (var i = 0, len = this.length >>> 0; i < len; i++) {
+    var len = this.length >>> 0;
+    var result = new Array(len);
+
+    for (var i = 0; i < len; i++) {
       if (i in this) {
         result[i] = fn.call(context, this[i], i, this);
       }
     }
+
     return result;
   });
 
@@ -180,6 +193,7 @@
   // https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Objects/Array/filter
   AP.filter || (AP.filter = function (fn, context) {
     var result = [], val;
+
     for (var i = 0, len = this.length >>> 0; i < len; i++) {
       if (i in this) {
         val = this[i]; // in case fn mutates this
@@ -188,6 +202,7 @@
         }
       }
     }
+
     return result;
   });
 
@@ -258,7 +273,7 @@
     if(typeof fn !== 'function') {
       throw new TypeError(fn + ' is not an function');
     }
-    
+
     var len = this.length >>> 0, i = len - 1, result;
 
     if (arguments.length > 1) {
@@ -286,7 +301,7 @@
     return result;
   });
 
-  
+
   // ES5 15.4.4.14
   // https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Objects/Array/indexOf
   AP.indexOf || (AP.indexOf = function (value, from) {
@@ -394,7 +409,10 @@
   // ES5 15.9.4.4
   // https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Date/now
   Date.now || (Date.now = function () {
-    return new Date().getTime();
+    return +new Date;
   });
-  
+
+})();
+
+
 });

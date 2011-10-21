@@ -1,6 +1,19 @@
+(function(factory) {
+
+  if (typeof define === 'function') {
+    define('#cookie/1.0.2/cookie-debug', [], factory);
+  }
+  else if (typeof exports !== 'undefined') {
+    factory(require, exports);
+  }
+  else {
+    factory();
+  }
+
+})(function(require, exports) {
+
 /**
- * @license Cookie v1.0.0
- * https://github.com/seajs/dew/tree/master/src/cookie
+ * @preserve Cookie v1.0.2 | https://github.com/seajs/dew/tree/master/src/cookie | MIT Licensed
  */
 
 /**
@@ -10,20 +23,23 @@
  * @see Thanks to:
  *   - http://www.nczonline.net/blog/2009/05/05/http-cookies-explained/
  *   - http://developer.yahoo.com/yui/3/cookie/
- *   - https://github.com/kissyteam/kissy/blob/master/src/cookie/
  */
 
-(function(factory) {
+(function() {
 
-  if (typeof define === 'function') {
-    define('cookie', [], factory);
+  var Cookie;
+
+  if (typeof exports !== 'undefined') {
+    Cookie = exports;
   } else {
-    factory(null, (this['Cookie'] = {}));
+    Cookie = this.Cookie = {};
   }
 
-})(function(require, exports) {
 
-  exports.version = '1.0.0';
+  Cookie.version = '1.0.2';
+
+  var decode = decodeURIComponent;
+  var encode = encodeURIComponent;
 
 
   /**
@@ -42,7 +58,7 @@
    *     the cookie doesn't exist. If the converter is specified, returns the
    *     value returned from the converter.
    */
-  exports.get = function(name, options) {
+  Cookie.get = function(name, options) {
     validateCookieName(name);
 
     if (typeof options === 'function') {
@@ -52,16 +68,8 @@
       options = options || {};
     }
 
-    var decode = (1 || options['raw']) ? nop : decodeURIComponent;
-    var converter = options.converter || nop;
-
-    var ret, m, text = document.cookie;
-    if (isString(text) && (m =
-        text.match(new RegExp('(?:^| )' + name + '(?:(?:=([^;]*))|;|$)')))) {
-      ret = converter(m[1] ? decode(m[1]) : '');
-    }
-
-    return ret;
+    var cookies = parseCookieString(document.cookie, !options['raw']);
+    return (options.converter || same)(cookies[name]);
   };
 
 
@@ -80,7 +88,7 @@
    *
    * @return {string} The created cookie string.
    */
-  exports.set = function(name, value, options) {
+  Cookie.set = function(name, value, options) {
     validateCookieName(name);
 
     options = options || {};
@@ -89,7 +97,7 @@
     var path = options['path'];
 
     if (!options['raw']) {
-      value = encodeURIComponent(String(value));
+      value = encode(String(value));
     }
 
     var text = name + '=' + value;
@@ -137,11 +145,50 @@
    *
    * @return {string} The created cookie string.
    */
-  exports.remove = function(name, options) {
+  Cookie.remove = function(name, options) {
     options = options || {};
     options['expires'] = new Date(0);
     return this.set(name, '', options);
   };
+
+
+  function parseCookieString(text, shouldDecode) {
+    var cookies = {};
+
+    if (isString(text) && text.length > 0) {
+
+      var decodeValue = shouldDecode ? decode : same;
+      var cookieParts = text.split(/;\s/g);
+      var cookieName;
+      var cookieValue;
+      var cookieNameValue;
+
+      for (var i = 0, len = cookieParts.length; i < len; i++) {
+
+        // check for normally-formatted cookie (name-value)
+        cookieNameValue = cookieParts[i].match(/([^=]+)=/i);
+        if (cookieNameValue instanceof Array) {
+          try {
+            cookieName = decode(cookieNameValue[1]);
+            cookieValue = decodeValue(cookieParts[i].substring(cookieNameValue[1].length + 1));
+          } catch (ex) {
+            // intentionally ignore the cookie - the encoding is wrong
+          }
+        } else {
+          // means the cookie does not have an "=", so treat it as a boolean flag
+          cookieName = decode(cookieParts[i]);
+          cookieValue = '';
+        }
+
+        if (cookieName) {
+          cookies[cookieName] = cookieValue;
+        }
+      }
+
+    }
+
+    return cookies;
+  }
 
 
   // Helpers
@@ -159,8 +206,11 @@
     }
   }
 
-  function nop(s) {
+  function same(s) {
     return s;
   }
+
+})();
+
 
 });

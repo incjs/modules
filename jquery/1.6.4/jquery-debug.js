@@ -2,11 +2,12 @@
 
   if (typeof define === 'function') {
     define('jquery', [], factory);
-  } else {
+  }
+  else {
     factory();
   }
 
-})(function() {
+})(function(require, exports, module) {
 
   /*!
  * jQuery JavaScript Library v1.6.4
@@ -9056,5 +9057,5 @@ window.jQuery = window.$ = jQuery;
 })(window);
 
 
-  return $.noConflict(true);
+  if (module) return $.noConflict(true);
 });

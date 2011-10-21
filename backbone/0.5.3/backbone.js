@@ -1,8 +1,12 @@
 (function(factory) {
 
   if (typeof define === 'function') {
-    define('backbone', ['underscore', 'jquery'], factory);
-  } else {
+    define('#backbone/0.5.3/backbone', ['underscore', 'jquery'], factory);
+  }
+  else if (typeof exports !== 'undefined') {
+    factory(require, exports);
+  }
+  else {
     factory();
   }
 

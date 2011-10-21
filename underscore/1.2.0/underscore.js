@@ -1,8 +1,12 @@
 (function(factory) {
 
   if (typeof define === 'function') {
-    define('underscore', [], factory);
-  } else {
+    define('#underscore/1.2.0/underscore', [], factory);
+  }
+  else if (typeof exports !== 'undefined') {
+    factory(require, exports, module);
+  }
+  else {
     factory();
   }
 
