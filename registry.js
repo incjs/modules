@@ -75,6 +75,20 @@ define({
     "gzipped": "1KB",
     "raw": "17KB"
   },
+  "labjs": {
+    "name": "labjs",
+    "description": "Loading And Blocking JavaScript.",
+    "author": "Kyle Simpson",
+    "url": "http://labjs.com/",
+    "keywords": [ "loader", "performance" ],
+    "version": "2.0.3",
+    "filename": "lab",
+    "src": "https://raw.github.com/getify/LABjs/master/LAB.src.js",
+    "min": "https://raw.github.com/getify/LABjs/master/LAB.js",
+    "notes": "Run LABjs in node is not significant.",
+    "gzipped": "2KB",
+    "raw": "19KB"
+  },
   "mustache": {
     "package": "https://raw.github.com/janl/mustache.js/master/lib/package.json",
     "version": "0.4.0",
