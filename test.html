@@ -47,13 +47,13 @@
       'cookie': normalCheck('Cookie'),
 
       'jquery': function(meta, $) {
-        test.assert(this['jQuery'] === undefined, 'no global jQuery');
-        test.assert(this['$'] === undefined, 'no global $');
+        test.assert(global['jQuery'] === undefined, 'no global jQuery');
+        test.assert(global['$'] === undefined, 'no global $');
         test.assert($.fn.jquery === meta.version, $.fn.jquery);
       },
 
       'mustache': function(meta, Mustache) {
-        test.assert(this['Mustache'] === undefined, 'no global Mustache');
+        test.assert(global['Mustache'] === undefined, 'no global Mustache');
         test.assert(Mustache.version.indexOf(meta.version) === 0, Mustache.version);
       },
 
@@ -61,8 +61,13 @@
       'underscore': normalCheck('_'),
 
       'labjs': function(meta, LAB) {
-        test.assert(this['$LAB'] === undefined, 'no global $LAB');
+        test.assert(global['$LAB'] === undefined, 'no global $LAB');
         test.assert(LAB.script, '$LAB.script is ok');
+      },
+
+      'coffee': function(meta, CS) {
+        test.assert(global['CoffeeScript'], 'has global CoffeeScript');
+        test.assert(CS.VERSION, CS.VERSION);
       }
     };
 
@@ -143,5 +148,7 @@
   }
 
 </script>
+
+<script src="coffee/1.1.2/coffee-script.js"></script>
 </body>
 </html>
