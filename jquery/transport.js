@@ -7,9 +7,9 @@
  * @keywords event
  * @keywords library
  *
- * @version 1.6.3
- * @src http://code.jquery.com/jquery-1.6.3.js
- * @min http://code.jquery.com/jquery-1.6.3.min.js
+ * @version 1.6.4
+ * @src http://code.jquery.com/jquery-1.6.4.js
+ * @min http://code.jquery.com/jquery-1.6.4.min.js
  *
  * @notes jQuery can not be run in node due to some browser proprietary objects
  *        such as window, document. And do NOT bother me with some jsdom

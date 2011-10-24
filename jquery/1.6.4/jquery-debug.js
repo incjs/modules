@@ -7,7 +7,7 @@
     factory();
   }
 
-})(function(require, exports, module) {
+})(function(require) {
 
   /*!
  * jQuery JavaScript Library v1.6.4
@@ -9057,5 +9057,5 @@ window.jQuery = window.$ = jQuery;
 })(window);
 
 
-  if (module) return $.noConflict(true);
+  if (require) return $.noConflict(true);
 });
