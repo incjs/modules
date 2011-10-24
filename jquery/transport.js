@@ -25,9 +25,9 @@
     factory();
   }
 
-})(function(require, exports, module) {
+})(function(require) {
 
   /*{{code}}*/
 
-  if (module) return $.noConflict(true);
+  if (require) return $.noConflict(true);
 });
