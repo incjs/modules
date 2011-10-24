@@ -61,8 +61,10 @@
         <a href="{{minpath}}">{{minfile}}</a>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         ({{gzipped}}, Minified and Gzipped)<br/>
+        {{#src}}
         <a href="{{srcpath}}">{{srcfile}}</a>
         &nbsp;&nbsp;&nbsp;({{raw}}, Uncompressed Code)
+        {{/src}}
       </p>
   </dl>
 </script>
