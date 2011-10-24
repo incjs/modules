@@ -54,8 +54,10 @@ function getFileSize(meta, callback) {
     if (err) throw err;
     meta['gzipped'] = formatSize(data.length);
 
-    console.log('  ... Reading %s', srcFile);
-    meta['raw'] = formatSize(fs.statSync(srcFile).size);
+    if (path.existsSync(srcFile)) {
+      console.log('  ... Reading %s', srcFile);
+      meta['raw'] = formatSize(fs.statSync(srcFile).size);
+    }
 
     callback();
   });

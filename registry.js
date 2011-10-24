@@ -19,6 +19,17 @@ define({
     "gzipped": "5KB",
     "raw": "42KB"
   },
+  "coffee": {
+    "name": "coffee",
+    "description": "CoffeeScript is a little language that compiles into JavaScript.",
+    "author": "Jeremy Ashkenas",
+    "url": "http://coffeescript.org",
+    "keywords": "compiler",
+    "version": "1.1.2",
+    "filename": "coffee-script",
+    "min": "http://jashkenas.github.com/coffee-script/extras/coffee-script.js",
+    "gzipped": "39KB"
+  },
   "cookie": {
     "package": "https://raw.github.com/seajs/dew/master/src/cookie/package.json",
     "name": "cookie",
