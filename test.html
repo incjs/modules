@@ -58,7 +58,12 @@
       },
 
       'querystring': normalCheck('QueryString'),
-      'underscore': normalCheck('_')
+      'underscore': normalCheck('_'),
+
+      'labjs': function(meta, LAB) {
+        test.assert(this['$LAB'] === undefined, 'no global $LAB');
+        test.assert(LAB.script, '$LAB.script is ok');
+      }
     };
 
 
@@ -118,8 +123,11 @@
 
   seajs.use('~/tests', function(tests) {
     var alias = {};
+
     tests.getTestItems().forEach(function(name) {
-      alias[name] = name + '/' + tests.registry[name].version + '/' + name;
+      var meta = tests.registry[name];
+      var filename = meta.filename || meta.name;
+      alias[name] = name + '/' + meta.version + '/' + filename;
     });
 
     seajs.config({ alias: alias });
