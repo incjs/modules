@@ -100,6 +100,31 @@ define({
     "gzipped": "2KB",
     "raw": "19KB"
   },
+  "less": {
+    "package": "https://raw.github.com/cloudhead/less.js/master/package.json",
+    "src": "https://raw.github.com/cloudhead/less.js/master/dist/less-1.1.4.js",
+    "min": "https://raw.github.com/cloudhead/less.js/master/dist/less-1.1.4.min.js",
+    "name": "less",
+    "description": "Leaner CSS",
+    "url": "http://lesscss.org",
+    "keywords": [ "css", "parser", "lesscss", "browser" ],
+    "author": "Alexis Sellier <self@cloudhead.net>",
+    "contributors": [],
+    "version": "1.1.4",
+    "bin": {
+      "lessc": "./bin/lessc"
+    },
+    "main": "./lib/less/index",
+    "directories": {
+      "test": "./test"
+    },
+    "engines": {
+      "node": ">=0.4.0"
+    },
+    "filename": "less",
+    "gzipped": "11KB",
+    "raw": "91KB"
+  },
   "mustache": {
     "package": "https://raw.github.com/janl/mustache.js/master/lib/package.json",
     "version": "0.4.0",
@@ -165,9 +190,9 @@ define({
       "url": "git://github.com/documentcloud/underscore.git"
     },
     "main": "underscore.js",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "filename": "underscore",
     "gzipped": "4KB",
-    "raw": "33KB"
+    "raw": "34KB"
   }
 });

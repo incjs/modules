@@ -66,8 +66,13 @@
       },
 
       'coffee': function(meta, CS) {
-        test.assert(global['CoffeeScript'], 'has global CoffeeScript');
+        test.assert(global['CoffeeScript'], 'global.CoffeeScript is ok');
         test.assert(CS.VERSION, CS.VERSION);
+      },
+
+      'less': function(meta, less) {
+        test.assert(global['less'], 'global.less is ok');
+        test.assert(less.Parser, 'less.Parser');
       }
     };
 
