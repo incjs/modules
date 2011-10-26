@@ -202,11 +202,12 @@ seajs._fn = {};
   }
 
 })(seajs._util, seajs._data);
+
 /**
  * @fileoverview Core utilities for the framework.
  */
 
-(function(util, data, global) {
+(function(util, data, fn, global) {
 
   var config = data.config;
 
@@ -283,14 +284,12 @@ seajs._fn = {};
    */
   function parseAlias(id) {
     var alias = config['alias'];
-
-    // #xxx means xxx is parsed
     var c = id.charAt(0);
-    if (c === '#') {
-      id = id.substring(1);
-    }
-    // no need to parse relative id
-    else if (alias && c !== '.') {
+
+    // 1. #xxx means xxx is parsed.
+    // 2. No need to parse relative id.
+    if (alias && c !== '#' && c !== '.') {
+
       var parts = id.split('/');
       var first = parts[0];
 
@@ -301,7 +300,7 @@ seajs._fn = {};
       }
     }
 
-    return id;
+    return (c === '#' ? '' : '#') + id;
   }
 
 
@@ -362,7 +361,7 @@ seajs._fn = {};
       normalizePathname(loc.pathname);
 
   // local file in IE: C:\path\to\xx.js
-  if (pageUrl.indexOf('\\') !== -1) {
+  if (~pageUrl.indexOf('\\')) {
     pageUrl = pageUrl.replace(/\\/g, '/');
   }
 
@@ -370,13 +369,9 @@ seajs._fn = {};
    * Converts id to uri.
    * @param {string} id The module id.
    * @param {string=} refUrl The referenced uri for relative id.
-   * @param {boolean=} aliasParsed When set to true, alias has been parsed.
    */
-  function id2Uri(id, refUrl, aliasParsed) {
-    if (!aliasParsed) {
-      id = parseAlias(id);
-    }
-
+  function id2Uri(id, refUrl) {
+    id = parseAlias(id).substring(1); // strip #
     refUrl = refUrl || pageUrl;
     var ret;
 
@@ -418,18 +413,6 @@ seajs._fn = {};
   }
 
 
-  /**
-   * Converts ids to uris.
-   * @param {Array.<string>} ids The module ids.
-   * @param {string=} refUri The referenced uri for relative id.
-   */
-  function ids2Uris(ids, refUri) {
-    return util.map(ids, function(id) {
-      return id2Uri(id, refUri);
-    });
-  }
-
-
   var memoizedMods = data.memoizedMods;
 
   /**
@@ -440,14 +423,16 @@ seajs._fn = {};
 
     // define(id, ...)
     if (id) {
-      uri = id2Uri(id, url, true);
+      uri = id2Uri(id, url);
     }
     else {
       uri = url;
     }
 
     mod.id = uri; // change id to absolute path.
-    mod.dependencies = ids2Uris(mod.dependencies, uri);
+    mod.dependencies = fn.Require.prototype._batchResolve(mod.dependencies, {
+      uri: uri
+    });
     memoizedMods[uri] = mod;
 
     // guest module in package
@@ -498,7 +483,7 @@ seajs._fn = {};
 
     var deps = mod.dependencies || [];
     if (deps.length) {
-      if (util.indexOf(deps, uri) !== -1) {
+      if (~util.indexOf(deps, uri)) {
         return true;
       } else {
         for (var i = 0; i < deps.length; i++) {
@@ -531,7 +516,7 @@ seajs._fn = {};
 
 
   function isAbsolute(id) {
-    return id.indexOf('://') !== -1 || id.indexOf('//') === 0;
+    return ~id.indexOf('://') || id.indexOf('//') === 0;
   }
 
 
@@ -555,7 +540,6 @@ seajs._fn = {};
 
   util.parseAlias = parseAlias;
   util.id2Uri = id2Uri;
-  util.ids2Uris = ids2Uris;
 
   util.memoize = memoize;
   util.setReadyState = setReadyState;
@@ -570,7 +554,7 @@ seajs._fn = {};
     util.getHost = getHost;
   }
 
-})(seajs._util, seajs._data, this);
+})(seajs._util, seajs._data, seajs._fn, this);
 
 /**
  * @fileoverview Utilities for fetching js ans css files.
@@ -579,7 +563,7 @@ seajs._fn = {};
 (function(util, data) {
 
   var head = document.getElementsByTagName('head')[0];
-  var isWebKit = navigator.userAgent.indexOf('AppleWebKit') !== -1;
+  var isWebKit = ~navigator.userAgent.indexOf('AppleWebKit');
 
 
   util.getAsset = function(url, callback, charset) {
@@ -755,171 +739,6 @@ seajs._fn = {};
  */
 
 /**
- * @fileoverview Loads a module and gets it ready to be require()d.
- */
-
-(function(util, data, fn, global) {
-
-  /**
-   * Modules that are being downloaded.
-   * { uri: scriptNode, ... }
-   */
-  var fetchingMods = {};
-
-  var memoizedMods = data.memoizedMods;
-
-  var config = data.config;
-
-
-  /**
-   * Loads preload modules before callback.
-   * @param {function()} callback The callback function.
-   */
-  fn.preload = function(callback) {
-    var preloadMods = config.preload;
-    var len = preloadMods.length;
-
-    if (len) {
-      config.preload = preloadMods.slice(len);
-      fn.load(preloadMods, function() {
-        fn.preload(callback);
-      });
-    }
-    else {
-      callback();
-    }
-  };
-
-
-  /**
-   * Loads modules to the environment.
-   * @param {Array.<string>} ids An array composed of module id.
-   * @param {function(*)=} callback The callback function.
-   * @param {string=} refUrl The referenced uri for relative id.
-   */
-  fn.load = function(ids, callback, refUrl) {
-    if (util.isString(ids)) {
-      ids = [ids];
-    }
-    var uris = util.ids2Uris(ids, refUrl);
-
-    provide(uris, function() {
-      fn.preload(function() {
-        var require = fn.createRequire({
-          uri: refUrl
-        });
-
-        var args = util.map(uris, function(uri) {
-          return require(data.memoizedMods[uri]);
-        });
-
-        if (callback) {
-          callback.apply(global, args);
-        }
-      });
-    });
-  };
-
-
-  /**
-   * Provides modules to the environment.
-   * @param {Array.<string>} uris An array composed of module uri.
-   * @param {function()=} callback The callback function.
-   */
-  function provide(uris, callback) {
-    var unReadyUris = util.getUnReadyUris(uris);
-
-    if (unReadyUris.length === 0) {
-      return onProvide();
-    }
-
-    for (var i = 0, n = unReadyUris.length, remain = n; i < n; i++) {
-      (function(uri) {
-
-        if (memoizedMods[uri]) {
-          onLoad();
-        } else {
-          fetch(uri, onLoad);
-        }
-
-        function onLoad() {
-          var deps = (memoizedMods[uri] || 0).dependencies || [];
-          var m = deps.length;
-
-          if (m) {
-            // if a -> [b -> [c -> [a, e], d]]
-            // when use(['a', 'b'])
-            // should remove a from c.deps
-            deps = util.removeCyclicWaitingUris(uri, deps);
-            m = deps.length;
-          }
-
-          if (m) {
-            remain += m;
-            provide(deps, function() {
-              remain -= m;
-              if (remain === 0) onProvide();
-            });
-          }
-          if (--remain === 0) onProvide();
-        }
-
-      })(unReadyUris[i]);
-    }
-
-    function onProvide() {
-      util.setReadyState(unReadyUris);
-      callback();
-    }
-  }
-
-
-  /**
-   * Fetches a module file.
-   * @param {string} uri The module uri.
-   * @param {function()} callback The callback function.
-   */
-  function fetch(uri, callback) {
-
-    if (fetchingMods[uri]) {
-      util.assetOnload(fetchingMods[uri], cb);
-    }
-    else {
-      // See fn-define.js: "uri = data.pendingModIE"
-      data.pendingModIE = uri;
-
-      fetchingMods[uri] = util.getAsset(
-          uri,
-          cb,
-          data.config.charset
-          );
-
-      data.pendingModIE = null;
-    }
-
-    function cb() {
-
-      if (data.pendingMods) {
-        util.forEach(data.pendingMods, function(pendingMod) {
-          util.memoize(pendingMod.id, uri, pendingMod);
-        });
-
-        data.pendingMods = [];
-      }
-
-      if (fetchingMods[uri]) {
-        delete fetchingMods[uri];
-      }
-
-      if (callback) {
-        callback();
-      }
-    }
-  }
-
-})(seajs._util, seajs._data, seajs._fn, this);
-
-/**
  * @fileoverview Module Constructor.
  */
 
@@ -979,16 +798,19 @@ seajs._fn = {};
       deps = parseDependencies(factory.toString());
     }
 
+
+    var pureId, mod, immediate, url;
+
     // parse alias in id
     if (id) {
       id = util.parseAlias(id);
+      pureId = id.substring(1); // strip #
     }
 
-    var mod = new fn.Module(id, deps, factory);
-    var url, immediate;
+    mod = new fn.Module(id, deps, factory);
 
     // id is absolute or top-level.
-    if (id && (util.isAbsolute(id) || util.isTopLevel(id))) {
+    if (pureId && (util.isAbsolute(pureId) || util.isTopLevel(pureId))) {
       immediate = true;
     }
     else if (document.attachEvent && !global['opera']) {
@@ -1062,70 +884,130 @@ seajs._fn = {};
 
 (function(util, data, fn) {
 
+  var slice = Array.prototype.slice;
+  var RP = Require.prototype;
+
+
   /**
-   * The factory of "require" function.
-   * @param {Object} sandbox The data related to "require" instance.
+   * the require constructor function
+   * @param {string} id The module id.
    */
-  function createRequire(sandbox) {
-    // sandbox: {
-    //   uri: '',
-    //   deps: [],
-    //   parent: sandbox
-    // }
+  function Require(id) {
+    var context = this.context;
+    var uri, mod;
 
-    function require(id) {
-      var uri, mod;
+    // require(mod) ** inner use ONLY.
+    if (util.isObject(id)) {
+      mod = id;
+      uri = mod.id;
+    }
+    // NOTICE: id maybe undefined in 404 etc cases.
+    else if (util.isString(id)) {
+      uri = RP.resolve(id, context);
+      mod = data.memoizedMods[uri];
+    }
 
-      // require(mod) ** inner use ONLY.
-      if (util.isObject(id)) {
-        mod = id;
-        uri = mod.id;
-      }
-      // NOTICE: id maybe undefined in 404 etc cases.
-      else if (util.isString(id)) {
-        uri = util.id2Uri(id, sandbox.uri);
-        mod = data.memoizedMods[uri];
-      }
+    // Just return null when:
+    //  1. the module file is 404.
+    //  2. the module file is not written with valid module format.
+    //  3. other error cases.
+    if (!mod) {
+      return null;
+    }
 
-      // Just return null when:
-      //  1. the module file is 404.
-      //  2. the module file is not written with valid module format.
-      //  3. other error cases.
-      if (!mod) {
-        return null;
-      }
-
-      // Checks cyclic dependencies.
-      if (isCyclic(sandbox, uri)) {
-        util.error({
-          message: 'found cyclic dependencies',
-          from: 'require',
-          uri: uri,
-          type: 'warn'
-        });
-
-        return mod.exports;
-      }
-
-      // Initializes module exports.
-      if (!mod.exports) {
-        initExports(mod, {
-          uri: uri,
-          parent: sandbox
-        });
-      }
+    // Checks cyclic dependencies.
+    if (isCyclic(context, uri)) {
+      util.error({
+        message: 'found cyclic dependencies',
+        from: 'require',
+        uri: uri,
+        type: 'warn'
+      });
 
       return mod.exports;
     }
 
-    require.async = function(ids, callback) {
-      fn.load(ids, callback, sandbox.uri);
-    };
+    // Initializes module exports.
+    if (!mod.exports) {
+      initExports(mod, {
+        uri: uri,
+        parent: context
+      });
+    }
+
+    return mod.exports;
+  }
+
+
+  /**
+   * Use the internal require() machinery to look up the location of a module,
+   * but rather than loading the module, just return the resolved filepath.
+   *
+   * @param {string} id The module id to be resolved.
+   * @param {Object=} context The context of require function.
+   */
+  RP.resolve = function(id, context) {
+    return util.id2Uri(id, (context || this.context).uri);
+  };
+
+
+  RP._batchResolve = function(ids, context) {
+    return util.map(ids, function(id) {
+      return RP.resolve(id, context || {});
+    });
+  };
+
+
+  /**
+   * Loads the specified modules asynchronously and execute the optional
+   * callback when complete.
+   * @param {Array.<string>} ids The specified modules.
+   * @param {function(*)=} callback The optional callback function.
+   */
+  RP.async = function(ids, callback) {
+    fn.load(ids, callback, this.context);
+  };
+
+
+  /**
+   * Plugin can override this method to add custom loading.
+   */
+  RP.load = util.getAsset;
+
+
+  /**
+   * The factory of "require" function.
+   * @param {Object} context The data related to "require" instance.
+   */
+  function createRequire(context) {
+    // context: {
+    //   uri: '',
+    //   deps: [],
+    //   parent: context
+    // }
+    var that = { context: context || {} };
+
+    function require(id) {
+      return Require.call(that, id);
+    }
+
+    require.constructor = Require;
+
+    for (var p in RP) {
+      if (RP.hasOwnProperty(p) && p.charAt(0) !== '_') {
+        (function(name) {
+          require[name] = function() {
+            return RP[name].apply(that, slice.call(arguments));
+          };
+        })(p);
+      }
+    }
 
     return require;
   }
 
-  function initExports(mod, sandbox) {
+
+  function initExports(mod, context) {
     var ret;
     var factory = mod.factory;
 
@@ -1135,7 +1017,7 @@ seajs._fn = {};
 
     if (util.isFunction(factory)) {
       checkPotentialErrors(factory, mod.id);
-      ret = factory(createRequire(sandbox), mod.exports, mod);
+      ret = factory(createRequire(context), mod.exports, mod);
       if (ret !== undefined) {
         mod.exports = ret;
       }
@@ -1145,18 +1027,20 @@ seajs._fn = {};
     }
   }
 
-  function isCyclic(sandbox, uri) {
-    if (sandbox.uri === uri) {
+
+  function isCyclic(context, uri) {
+    if (context.uri === uri) {
       return true;
     }
-    if (sandbox.parent) {
-      return isCyclic(sandbox.parent, uri);
+    if (context.parent) {
+      return isCyclic(context.parent, uri);
     }
     return false;
   }
 
+
   function checkPotentialErrors(factory, uri) {
-    if (factory.toString().search(/\sexports\s*=\s*[^=]/) !== -1) {
+    if (~factory.toString().search(/\sexports\s*=\s*[^=]/)) {
       util.error({
         message: 'found invalid setter: exports = {...}',
         from: 'require',
@@ -1166,7 +1050,173 @@ seajs._fn = {};
     }
   }
 
+
+  fn.Require = Require;
   fn.createRequire = createRequire;
+
+})(seajs._util, seajs._data, seajs._fn);
+
+/**
+ * @fileoverview Loads a module and gets it ready to be require()d.
+ */
+
+(function(util, data, fn) {
+
+  /**
+   * Modules that are being downloaded.
+   * { uri: scriptNode, ... }
+   */
+  var fetchingMods = {};
+
+  var memoizedMods = data.memoizedMods;
+  var config = data.config;
+  var RP = fn.Require.prototype;
+
+
+
+  /**
+   * Loads preload modules before callback.
+   * @param {function()} callback The callback function.
+   */
+  fn.preload = function(callback) {
+    var preloadMods = config.preload;
+    var len = preloadMods.length;
+
+    if (len) {
+      config.preload = preloadMods.slice(len);
+      fn.load(preloadMods, function() {
+        fn.preload(callback);
+      });
+    }
+    else {
+      callback();
+    }
+  };
+
+
+  /**
+   * Loads modules to the environment.
+   * @param {Array.<string>} ids An array composed of module id.
+   * @param {function(*)=} callback The callback function.
+   * @param {Object=} context The context of current executing environment.
+   */
+  fn.load = function(ids, callback, context) {
+    if (util.isString(ids)) {
+      ids = [ids];
+    }
+    var uris = RP._batchResolve(ids, context);
+
+    provide(uris, function() {
+      fn.preload(function() {
+        var require = fn.createRequire(context);
+
+        var args = util.map(uris, function(uri) {
+          return require(data.memoizedMods[uri]);
+        });
+
+        if (callback) {
+          callback.apply(null, args);
+        }
+      });
+    });
+  };
+
+
+  /**
+   * Provides modules to the environment.
+   * @param {Array.<string>} uris An array composed of module uri.
+   * @param {function()=} callback The callback function.
+   */
+  function provide(uris, callback) {
+    var unReadyUris = util.getUnReadyUris(uris);
+
+    if (unReadyUris.length === 0) {
+      return onProvide();
+    }
+
+    for (var i = 0, n = unReadyUris.length, remain = n; i < n; i++) {
+      (function(uri) {
+
+        if (memoizedMods[uri]) {
+          onLoad();
+        } else {
+          fetch(uri, onLoad);
+        }
+
+        function onLoad() {
+          var deps = (memoizedMods[uri] || 0).dependencies || [];
+          var m = deps.length;
+
+          if (m) {
+            // if a -> [b -> [c -> [a, e], d]]
+            // when use(['a', 'b'])
+            // should remove a from c.deps
+            deps = util.removeCyclicWaitingUris(uri, deps);
+            m = deps.length;
+          }
+
+          if (m) {
+            remain += m;
+            provide(deps, function() {
+              remain -= m;
+              if (remain === 0) onProvide();
+            });
+          }
+          if (--remain === 0) onProvide();
+        }
+
+      })(unReadyUris[i]);
+    }
+
+    function onProvide() {
+      util.setReadyState(unReadyUris);
+      callback();
+    }
+  }
+
+
+  /**
+   * Fetches a module file.
+   * @param {string} uri The module uri.
+   * @param {function()} callback The callback function.
+   */
+  function fetch(uri, callback) {
+
+    if (fetchingMods[uri]) {
+      util.assetOnload(fetchingMods[uri], cb);
+    }
+    else {
+      // See fn-define.js: "uri = data.pendingModIE"
+      data.pendingModIE = uri;
+
+      fetchingMods[uri] = RP.load(
+          uri,
+          cb,
+          data.config.charset
+          );
+
+      data.pendingModIE = null;
+    }
+
+    function cb() {
+
+      if (data.pendingMods) {
+        util.forEach(data.pendingMods, function(pendingMod) {
+          util.memoize(pendingMod.id, uri, pendingMod);
+        });
+
+        data.pendingMods = [];
+      }
+
+      if (fetchingMods[uri]) {
+        delete fetchingMods[uri];
+      }
+
+      if (callback) {
+        callback();
+      }
+    }
+  }
 
 })(seajs._util, seajs._data, seajs._fn);
 
@@ -1174,7 +1224,7 @@ seajs._fn = {};
  * @fileoverview The configuration.
  */
 
-(function(util, data, fn, global) {
+(function(util, data, fn) {
 
   var config = data.config;
   var noCacheTimeStamp = 'seajs-ts=' + util.now();
@@ -1189,9 +1239,11 @@ seajs._fn = {};
     loaderScript = scripts[scripts.length - 1];
   }
 
-  var loaderSrc = util.getScriptAbsoluteSrc(loaderScript), loaderDir;
+  var loaderSrc = util.getScriptAbsoluteSrc(loaderScript);
   if (loaderSrc) {
-    var base = loaderDir = util.dirname(loaderSrc);
+    var base = util.dirname(loaderSrc);
+    util.loaderDir = base;
+
     // When src is "http://test.com/libs/seajs/1.0.0/sea.js", redirect base
     // to "http://test.com/libs/"
     var match = base.match(/^(.+\/)seajs\/[\d\.]+\/$/);
@@ -1215,15 +1267,6 @@ seajs._fn = {};
 
   // The max time to load a script file.
   config.timeout = 20000;
-
-
-  // seajs-debug
-  if (loaderDir &&
-      (global.location.search.indexOf('seajs-debug') !== -1 ||
-          document.cookie.indexOf('seajs=1') !== -1)) {
-    config.debug = true;
-    config.preload.push(loaderDir + 'plugin-map');
-  }
 
 
   /**
@@ -1313,7 +1356,7 @@ seajs._fn = {};
     }
   }
 
-})(seajs._util, seajs._data, seajs._fn, this);
+})(seajs._util, seajs._data, seajs._fn);
 
 /**
  * @fileoverview The bootstrap and entrances.
@@ -1357,6 +1400,39 @@ seajs._fn = {};
   })((host._seajs || 0)['args']);
 
 })(seajs, seajs._data, seajs._fn);
+
+/**
+ * @fileoverview Prepare for plugins environment.
+ */
+
+(function(data, util, fn, global) {
+
+  var config = data.config;
+
+
+  // register plugin names
+  var alias = {};
+  var loaderDir = util.loaderDir;
+
+  util.forEach(['base', 'map', 'text', 'coffee', 'less'], function(name) {
+    name = 'plugin-' + name;
+    alias[name] = loaderDir + name;
+  });
+
+  fn.config({
+    alias: alias
+  });
+
+
+  // handle seajs-debug
+  if (~global.location.search.indexOf('seajs-debug') ||
+      ~document.cookie.indexOf('seajs=1')) {
+    config.debug = true;
+    config.preload.push('plugin-map');
+  }
+
+
+})(seajs._data, seajs._util, seajs._fn, this);
 
 /**
  * @fileoverview The public api of seajs.

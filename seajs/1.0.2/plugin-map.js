@@ -3,13 +3,13 @@
  * @fileoverview The map plugin for auto responder.
  */
 
-define(function() {
+define('plugin-map', [], function() {
 
   var config = getConfig();
   var loc = this.location;
 
   // Force debug to true when load via ?seajs-debug.
-  if (loc.search.indexOf('seajs-debug') !== -1) {
+  if (~loc.search.indexOf('seajs-debug')) {
     config.debug = 1;
     config.console = 1;
     saveConfig(config);
