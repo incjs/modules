@@ -9,6 +9,7 @@
  * @extra https://raw.github.com/seajs/seajs/master/build/plugin-coffee.js
  * @extra https://raw.github.com/seajs/seajs/master/build/plugin-less.js
  * @extra https://raw.github.com/seajs/seajs/master/build/plugin-text.js
+ * @extra https://raw.github.com/seajs/seajs/master/build/plugin-json.js
  */
 
 /*{{code}}*/
