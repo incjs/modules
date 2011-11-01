@@ -172,7 +172,7 @@ define({
     "main": "build/sea.js",
     "version": "1.0.2",
     "gzipped": "4KB",
-    "raw": "31KB"
+    "raw": "32KB"
   },
   "underscore": {
     "package": "https://raw.github.com/documentcloud/underscore/master/package.json",
