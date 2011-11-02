@@ -283,12 +283,15 @@ seajs._fn = {};
    * Parses alias in the module id. Only parse the first part.
    */
   function parseAlias(id) {
-    var alias = config['alias'];
-    var c = id.charAt(0);
+    // #xxx means xxx is parsed.
+    if (id.charAt(0) === '#') {
+      return id.substring(1);
+    }
 
-    // 1. #xxx means xxx is parsed.
+    var alias;
+
     // 2. Only top-level id needs to parse alias.
-    if (c !== '#' && isTopLevel(id) && alias) {
+    if (isTopLevel(id) && (alias = config.alias)) {
 
       var parts = id.split('/');
       var first = parts[0];
@@ -300,9 +303,11 @@ seajs._fn = {};
       }
     }
 
-    return (c === '#' ? '' : '#') + id;
+    return id;
   }
 
+
+  var mapCache = {};
 
   /**
    * Maps the module id.
@@ -313,26 +318,24 @@ seajs._fn = {};
     // config.map: [[match, replace], ...]
     map = map || config['map'] || [];
     if (!map.length) return url;
-
-    // [match, replace, -1]
-    var last = [];
+    var ret = url;
 
     util.forEach(map, function(rule) {
       if (rule && rule.length > 1) {
-        if (rule[2] === -1) {
-          last.push([rule[0], rule[1]]);
-        }
-        else {
-          url = url.replace(rule[0], rule[1]);
-        }
+        ret = ret.replace(rule[0], rule[1]);
       }
     });
 
-    if (last.length) {
-      url = parseMap(url, last);
-    }
+    mapCache[ret] = url;
+    return ret;
+  }
 
-    return url;
+  /**
+   * Gets the original url.
+   * @param {string} url The url string.
+   */
+  function unParseMap(url) {
+    return mapCache[url] || url;
   }
 
 
@@ -365,14 +368,16 @@ seajs._fn = {};
     pageUrl = pageUrl.replace(/\\/g, '/');
   }
 
+
   /**
    * Converts id to uri.
    * @param {string} id The module id.
    * @param {string=} refUrl The referenced uri for relative id.
    */
   function id2Uri(id, refUrl) {
-    id = parseAlias(id).substring(1); // strip #
+    id = parseAlias(id);
     refUrl = refUrl || pageUrl;
+
     var ret;
 
     // absolute id
@@ -394,10 +399,7 @@ seajs._fn = {};
       ret = getConfigBase() + '/' + id;
     }
 
-    ret = normalize(ret);
-    ret = parseMap(ret);
-
-    return ret;
+    return normalize(ret);
   }
 
 
@@ -511,6 +513,8 @@ seajs._fn = {};
   util.dirname = dirname;
 
   util.parseAlias = parseAlias;
+  util.parseMap = parseMap;
+  util.unParseMap = unParseMap;
   util.id2Uri = id2Uri;
 
   util.memoize = memoize;
@@ -765,7 +769,7 @@ seajs._fn = {};
       }
     }
 
-    // parse deps
+    // Parse deps
     if (!util.isArray(deps) && util.isFunction(factory)) {
       deps = parseDependencies(factory.toString());
     }
@@ -773,10 +777,11 @@ seajs._fn = {};
 
     var pureId, mod, immediate, url;
 
-    // parse alias in id
+    // Parse alias
     if (id) {
-      id = util.parseAlias(id);
-      pureId = id.substring(1); // strip #
+      pureId = id;
+      // Use prefix # to indicate that alias is parsed.
+      id = '#' + util.parseAlias(id);
     }
 
     mod = new fn.Module(id, deps, factory);
@@ -793,6 +798,7 @@ seajs._fn = {};
       var script = util.getInteractiveScript();
       if (script) {
         url = util.getScriptAbsoluteSrc(script);
+        url = util.unParseMap(url);
       }
 
       // In IE6-9, if the script is in the cache, the "interactive" mode
@@ -944,7 +950,9 @@ seajs._fn = {};
   /**
    * Plugin can override this method to add custom loading.
    */
-  RP.load = util.getAsset;
+  RP.load = function(uri, callback, charset) {
+    return util.getAsset(util.parseMap(uri), callback, charset);
+  };
 
 
   /**
@@ -1318,7 +1326,7 @@ seajs._fn = {};
     // Make sure config.base is absolute path.
     var base = config.base;
     if (!util.isAbsolute(base)) {
-      config.base = util.id2Uri(base + '#');
+      config.base = util.id2Uri('./' + base + '#');
     }
 
     // Use map to implement nocache
@@ -1331,7 +1339,7 @@ seajs._fn = {};
               url += (url.indexOf('?') === -1 ? '?' : '&') + noCacheTimeStamp;
             }
             return url;
-          }, -1]
+          }]
         ]
       });
     }
@@ -1358,6 +1366,39 @@ seajs._fn = {};
   }
 
 })(seajs, seajs._util, seajs._data, seajs._fn);
+
+/**
+ * @fileoverview Prepare for plugins environment.
+ */
+
+(function(data, util, fn, global) {
+
+  var config = data.config;
+
+
+  // register plugin names
+  var alias = {};
+  var loaderDir = util.loaderDir;
+
+  util.forEach(['base', 'map', 'text', 'json', 'coffee', 'less'], function(name) {
+    name = 'plugin-' + name;
+    alias[name] = loaderDir + name;
+  });
+
+  fn.config({
+    alias: alias
+  });
+
+
+  // handle seajs-debug
+  if (~global.location.search.indexOf('seajs-debug') ||
+      ~document.cookie.indexOf('seajs=1')) {
+    fn.config({ debug: 2 });
+    config.preload.push('plugin-map');
+  }
+
+
+})(seajs._data, seajs._util, seajs._fn, this);
 
 /**
  * @fileoverview The bootstrap and entrances.
@@ -1399,39 +1440,6 @@ seajs._fn = {};
   })((host._seajs || 0)['args']);
 
 })(seajs, seajs._data, seajs._fn);
-
-/**
- * @fileoverview Prepare for plugins environment.
- */
-
-(function(data, util, fn, global) {
-
-  var config = data.config;
-
-
-  // register plugin names
-  var alias = {};
-  var loaderDir = util.loaderDir;
-
-  util.forEach(['base', 'map', 'text', 'json', 'coffee', 'less'], function(name) {
-    name = 'plugin-' + name;
-    alias[name] = loaderDir + name;
-  });
-
-  fn.config({
-    alias: alias
-  });
-
-
-  // handle seajs-debug
-  if (~global.location.search.indexOf('seajs-debug') ||
-      ~document.cookie.indexOf('seajs=1')) {
-    fn.config({ debug: 2 });
-    config.preload.push('plugin-map');
-  }
-
-
-})(seajs._data, seajs._util, seajs._fn, this);
 
 /**
  * @fileoverview The public api of seajs.
