@@ -60,11 +60,16 @@
       <p class="size">
         <a href="{{minpath}}">{{minfile}}</a>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        ({{gzipped}}, Minified and Gzipped)<br/>
+        ({{gzipped}}, Minified and Gzipped)<br>
         {{#src}}
         <a href="{{srcpath}}">{{srcfile}}</a>
         &nbsp;&nbsp;&nbsp;({{raw}}, Uncompressed Code)
         {{/src}}
+        <br>
+        {{#extraFiles}}
+        <br>
+        <a href="{{url}}">{{filename}}</a>
+        {{/extraFiles}}
       </p>
   </dl>
 </script>
@@ -98,6 +103,17 @@
         meta.srcfile = filename + '-debug.js';
         meta.minpath = path + meta.minfile;
         meta.srcpath = path + meta.srcfile;
+
+        // for seajs plugins
+        if (meta.extra) {
+          meta.extraFiles = meta.extra.map(function(filepath) {
+            var filename = filepath.replace(/^.*\/(.*)$/, '$1');
+            return {
+              filename: filename,
+              url: path + filename
+            };
+          });
+        }
 
         html += mustache.to_html(tmpl, meta);
       }
