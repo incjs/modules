@@ -49,7 +49,7 @@
       'jquery': function(meta, $) {
         test.assert(global['jQuery'] === undefined, 'no global jQuery');
         test.assert(global['$'] === undefined, 'no global $');
-        test.assert($.fn.jquery === meta.version, $.fn.jquery);
+        test.assert(meta.version.indexOf($.fn.jquery) === 0, $.fn.jquery);
       },
 
       'mustache': function(meta, Mustache) {

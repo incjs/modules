@@ -64,13 +64,13 @@ define({
     "author": "John Resig",
     "url": "http://jquery.com/",
     "keywords": [ "dom", "event", "library" ],
-    "version": "1.6.4",
-    "src": "http://code.jquery.com/jquery-1.6.4.js",
-    "min": "http://code.jquery.com/jquery-1.6.4.min.js",
+    "version": "1.7.0",
+    "src": "http://code.jquery.com/jquery-1.7.js",
+    "min": "http://code.jquery.com/jquery-1.7.min.js",
     "notes": "jQuery can not be run in node due to some browser proprietary objects such as window, document. And do NOT bother me with some jsdom module that is not robust.",
     "filename": "jquery",
-    "gzipped": "31KB",
-    "raw": "233KB"
+    "gzipped": "33KB",
+    "raw": "244KB"
   },
   "json": {
     "package": "https://raw.github.com/seajs/dew/master/src/json/package.json",
@@ -154,6 +154,7 @@ define({
   },
   "seajs": {
     "package": "https://raw.github.com/seajs/seajs/master/package.json",
+    "version": "1.0.2",
     "filename": "sea",
     "src": "https://raw.github.com/seajs/seajs/master/build/sea-debug.js",
     "min": "https://raw.github.com/seajs/seajs/master/build/sea.js",
@@ -170,7 +171,6 @@ define({
       "url": "git://github.com/lifesinger/seajs.git"
     },
     "main": "build/sea.js",
-    "version": "1.0.2",
     "gzipped": "4KB",
     "raw": "32KB"
   },
