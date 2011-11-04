@@ -1,7 +1,6 @@
 /**
  * @package https://raw.github.com/seajs/seajs/master/package.json
  *
- * @version 1.0.2
  * @filename sea
  * @src https://raw.github.com/seajs/seajs/master/build/sea-debug.js
  * @min https://raw.github.com/seajs/seajs/master/build/sea.js
