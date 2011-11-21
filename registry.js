@@ -64,13 +64,13 @@ define({
     "author": "John Resig",
     "url": "http://jquery.com/",
     "keywords": [ "dom", "event", "library" ],
-    "version": "1.7.0",
-    "src": "http://code.jquery.com/jquery-1.7.js",
-    "min": "http://code.jquery.com/jquery-1.7.min.js",
+    "version": "1.7.1",
+    "src": "http://code.jquery.com/jquery-1.7rc1.js",
+    "min": "http://code.jquery.com/jquery-1.7rc1.min.js",
     "notes": "jQuery can not be run in node due to some browser proprietary objects such as window, document. And do NOT bother me with some jsdom module that is not robust.",
     "filename": "jquery",
     "gzipped": "33KB",
-    "raw": "244KB"
+    "raw": "243KB"
   },
   "json": {
     "package": "https://raw.github.com/seajs/dew/master/src/json/package.json",
@@ -102,15 +102,15 @@ define({
   },
   "less": {
     "package": "https://raw.github.com/cloudhead/less.js/master/package.json",
-    "src": "https://raw.github.com/cloudhead/less.js/master/dist/less-1.1.4.js",
-    "min": "https://raw.github.com/cloudhead/less.js/master/dist/less-1.1.4.min.js",
+    "src": "https://raw.github.com/cloudhead/less.js/master/dist/less-1.1.5.js",
+    "min": "https://raw.github.com/cloudhead/less.js/master/dist/less-1.1.5.min.js",
     "name": "less",
     "description": "Leaner CSS",
     "url": "http://lesscss.org",
     "keywords": [ "css", "parser", "lesscss", "browser" ],
     "author": "Alexis Sellier <self@cloudhead.net>",
     "contributors": [],
-    "version": "1.1.4",
+    "version": "1.1.5",
     "bin": {
       "lessc": "./bin/lessc"
     },
@@ -123,7 +123,7 @@ define({
     },
     "filename": "less",
     "gzipped": "11KB",
-    "raw": "91KB"
+    "raw": "92KB"
   },
   "mustache": {
     "package": "https://raw.github.com/janl/mustache.js/master/lib/package.json",
@@ -154,7 +154,6 @@ define({
   },
   "seajs": {
     "package": "https://raw.github.com/seajs/seajs/master/package.json",
-    "version": "1.0.2",
     "filename": "sea",
     "src": "https://raw.github.com/seajs/seajs/master/build/sea-debug.js",
     "min": "https://raw.github.com/seajs/seajs/master/build/sea.js",
@@ -171,8 +170,9 @@ define({
       "url": "git://github.com/lifesinger/seajs.git"
     },
     "main": "build/sea.js",
+    "version": "1.1.0",
     "gzipped": "4KB",
-    "raw": "32KB"
+    "raw": "31KB"
   },
   "underscore": {
     "package": "https://raw.github.com/documentcloud/underscore/master/package.json",
@@ -190,7 +190,7 @@ define({
       "url": "git://github.com/documentcloud/underscore.git"
     },
     "main": "underscore.js",
-    "version": "1.2.1",
+    "version": "1.2.2",
     "filename": "underscore",
     "gzipped": "4KB",
     "raw": "34KB"
