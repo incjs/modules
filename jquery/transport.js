@@ -18,7 +18,7 @@
 
 (function(factory) {
 
-  if (typeof define === 'function') {
+  if (typeof define === 'function' && define.cmd) {
     define('#{{id}}', [], factory);
   }
   else {
