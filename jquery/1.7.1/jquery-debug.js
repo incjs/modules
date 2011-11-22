@@ -1,6 +1,6 @@
 (function(factory) {
 
-  if (typeof define === 'function' && define.cmd) {
+  if (typeof define === 'function') {
     define('#jquery/1.7.1/jquery-debug', [], factory);
   }
   else {
