@@ -65,12 +65,12 @@ define({
     "url": "http://jquery.com/",
     "keywords": [ "dom", "event", "library" ],
     "version": "1.7.1",
-    "src": "http://code.jquery.com/jquery-1.7rc1.js",
-    "min": "http://code.jquery.com/jquery-1.7rc1.min.js",
+    "src": "http://code.jquery.com/jquery-1.7.js",
+    "min": "http://code.jquery.com/jquery-1.7.min.js",
     "notes": "jQuery can not be run in node due to some browser proprietary objects such as window, document. And do NOT bother me with some jsdom module that is not robust.",
     "filename": "jquery",
     "gzipped": "33KB",
-    "raw": "243KB"
+    "raw": "244KB"
   },
   "json": {
     "package": "https://raw.github.com/seajs/dew/master/src/json/package.json",
