@@ -10,9 +10,9 @@ var path = require('path');
 var uglifyjs = require('uglify-js');
 var jsp = uglifyjs.parser;
 var pro = uglifyjs.uglify;
-var gzip = require('gzip');
+var zlib = require('zlib');
 
-var Transport = require('../lib/actions/Transport');
+var Transport = require('../lib/actions/transport.js');
 
 
 var registry = {};
@@ -50,7 +50,7 @@ function getFileSize(meta, callback) {
 
   console.log('  ... Reading %s', minFile);
 
-  gzip(fs.readFileSync(minFile, 'utf8'), function(err, data) {
+  zlib.gzip(fs.readFileSync(minFile, 'utf8'), function(err, data) {
     if (err) throw err;
     meta['gzipped'] = formatSize(data.length);
 
@@ -72,9 +72,9 @@ function formatSize(size) {
 function output() {
   var ast = jsp.parse('define(' + JSON.stringify(registry) + ')');
   var code = pro.gen_code(ast, {
-    beautify: true,
-    indent_level: 2,
-    quote_keys: true
+    'beautify': true,
+    'indent_level': 2,
+    'quote_keys': true
   });
   //code = code.replace('define({', '{').replace('});', '}');
 
