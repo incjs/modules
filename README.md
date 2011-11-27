@@ -1,9 +1,8 @@
 
 The repository of seajs modules.
 
-Visits http://modules.seajs.com/ to download the latest modules.
-
-The test page: http://modules.seajs.com/test.html
+http://modules.seajs.com/
+http://modules.seajs.com/test.html
 
 
 For Advanced Users
