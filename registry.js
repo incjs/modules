@@ -20,14 +20,38 @@ define({
     "raw": "42KB"
   },
   "coffee": {
+    "package": "https://raw.github.com/jashkenas/coffee-script/master/package.json",
     "name": "coffee",
-    "description": "CoffeeScript is a little language that compiles into JavaScript.",
-    "author": "Jeremy Ashkenas",
-    "url": "http://coffeescript.org",
-    "keywords": "compiler",
-    "version": "1.1.2",
     "filename": "coffee-script",
+    "version": "1.1.3",
     "min": "http://jashkenas.github.com/coffee-script/extras/coffee-script.js",
+    "description": "Unfancy JavaScript",
+    "keywords": [ "javascript", "language", "coffeescript", "compiler" ],
+    "author": "Jeremy Ashkenas",
+    "licenses": [ {
+      "type": "MIT",
+      "url": "http://github.com/jashkenas/coffee-script/raw/master/LICENSE"
+    } ],
+    "engines": {
+      "node": ">=0.4.0"
+    },
+    "directories": {
+      "lib": "./lib/coffee-script"
+    },
+    "main": "./lib/coffee-script/coffee-script",
+    "bin": {
+      "coffee": "./bin/coffee",
+      "cake": "./bin/cake"
+    },
+    "homepage": "http://coffeescript.org",
+    "repository": {
+      "type": "git",
+      "url": "git://github.com/jashkenas/coffee-script.git"
+    },
+    "devDependencies": {
+      "uglify-js": "1.0.6",
+      "jison": "0.2.11"
+    },
     "gzipped": "39KB"
   },
   "cookie": {
@@ -65,12 +89,12 @@ define({
     "url": "http://jquery.com/",
     "keywords": [ "dom", "event", "library" ],
     "version": "1.7.1",
-    "src": "http://code.jquery.com/jquery-1.7.js",
-    "min": "http://code.jquery.com/jquery-1.7.min.js",
+    "src": "http://code.jquery.com/jquery-1.7.1.js",
+    "min": "http://code.jquery.com/jquery-1.7.1.min.js",
     "notes": "jQuery can not be run in node due to some browser proprietary objects such as window, document. And do NOT bother me with some jsdom module that is not robust.",
     "filename": "jquery",
     "gzipped": "33KB",
-    "raw": "244KB"
+    "raw": "243KB"
   },
   "json": {
     "package": "https://raw.github.com/seajs/dew/master/src/json/package.json",
@@ -157,7 +181,7 @@ define({
     "filename": "sea",
     "src": "https://raw.github.com/seajs/seajs/master/build/sea-debug.js",
     "min": "https://raw.github.com/seajs/seajs/master/build/sea.js",
-    "extra": [ "https://raw.github.com/seajs/seajs/master/build/plugin-base.js", "https://raw.github.com/seajs/seajs/master/build/plugin-map.js", "https://raw.github.com/seajs/seajs/master/build/plugin-coffee.js", "https://raw.github.com/seajs/seajs/master/build/plugin-less.js", "https://raw.github.com/seajs/seajs/master/build/plugin-text.js", "https://raw.github.com/seajs/seajs/master/build/plugin-json.js" ],
+    "extra": [ "https://raw.github.com/seajs/seajs/master/build/plugin-base.js", "https://raw.github.com/seajs/seajs/master/build/plugin-map.js", "https://raw.github.com/seajs/seajs/master/build/plugin-text.js", "https://raw.github.com/seajs/seajs/master/build/plugin-json.js", "https://raw.github.com/seajs/seajs/master/build/plugin-coffee.js", "https://raw.github.com/seajs/seajs/master/build/plugin-less.js" ],
     "name": "seajs",
     "description": "SeaJS is a new kind of JavaScript Loader that makes it easy to build scalable web applications. SeaJS is designed to change the way you organize JavaScript.",
     "homepage": "https://seajs.com/",

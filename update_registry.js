@@ -32,6 +32,11 @@ function processItem(item) {
     Transport.getMeta(filepath, function(meta) {
       registry[meta.name.toLowerCase()] = meta;
 
+      // delete unnecessary properties
+      delete meta.transportFile;
+      delete meta.root;
+
+      // get file size info
       getFileSize(meta, function() {
         processItem(items.shift());
       });
@@ -44,7 +49,7 @@ function processItem(item) {
 
 
 function getFileSize(meta, callback) {
-  var filename = (meta['filename'] || meta['name']).toLowerCase();
+  var filename = meta['filename'];
   var minFile = path.join(__dirname, meta['name'], meta.version, filename + '.js');
   var srcFile = minFile.replace(/\.js$/, '-debug.js');
 
