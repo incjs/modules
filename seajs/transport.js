@@ -1,15 +1,11 @@
 /**
  * @package https://raw.github.com/seajs/seajs/master/package.json
- *
  * @filename sea
- * @src https://raw.github.com/seajs/seajs/master/build/sea-debug.js
- * @min https://raw.github.com/seajs/seajs/master/build/sea.js
- * @extra https://raw.github.com/seajs/seajs/master/build/plugin-base.js
- * @extra https://raw.github.com/seajs/seajs/master/build/plugin-map.js
- * @extra https://raw.github.com/seajs/seajs/master/build/plugin-coffee.js
- * @extra https://raw.github.com/seajs/seajs/master/build/plugin-less.js
- * @extra https://raw.github.com/seajs/seajs/master/build/plugin-text.js
- * @extra https://raw.github.com/seajs/seajs/master/build/plugin-json.js
+ *
+ * @root https://raw.github.com/seajs/seajs/master/build/
+ * @src sea-debug.js
+ * @min sea.js
+ * @extra plugin-base.js,plugin-map.js,plugin-text.js,plugin-json.js,plugin-coffee.js,plugin-less.js
  */
 
 /*{{code}}*/
