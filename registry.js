@@ -179,9 +179,10 @@ define({
   "seajs": {
     "package": "https://raw.github.com/seajs/seajs/master/package.json",
     "filename": "sea",
-    "src": "https://raw.github.com/seajs/seajs/master/build/sea-debug.js",
-    "min": "https://raw.github.com/seajs/seajs/master/build/sea.js",
-    "extra": [ "https://raw.github.com/seajs/seajs/master/build/plugin-base.js", "https://raw.github.com/seajs/seajs/master/build/plugin-map.js", "https://raw.github.com/seajs/seajs/master/build/plugin-text.js", "https://raw.github.com/seajs/seajs/master/build/plugin-json.js", "https://raw.github.com/seajs/seajs/master/build/plugin-coffee.js", "https://raw.github.com/seajs/seajs/master/build/plugin-less.js" ],
+    "root": "https://raw.github.com/seajs/seajs/master/build/",
+    "src": "sea-debug.js",
+    "min": "sea.js",
+    "extra": [ "plugin-base.js", "plugin-map.js", "plugin-text.js", "plugin-json.js", "plugin-coffee.js", "plugin-less.js" ],
     "name": "seajs",
     "description": "SeaJS is a new kind of JavaScript Loader that makes it easy to build scalable web applications. SeaJS is designed to change the way you organize JavaScript.",
     "homepage": "https://seajs.com/",

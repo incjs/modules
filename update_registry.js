@@ -34,7 +34,19 @@ function processItem(item) {
 
       // delete unnecessary properties
       delete meta.transportFile;
-      delete meta.root;
+
+      if (meta.root.indexOf(':') !== -1) { // not local path
+        if (meta.extra) {
+          meta.extra = meta.extra.map(function(p) {
+            return p.replace(meta.root, '');
+          });
+        }
+        cutRoot(meta, 'src');
+        cutRoot(meta, 'min');
+      }
+      else {
+        delete meta.root;
+      }
 
       // get file size info
       getFileSize(meta, function() {
@@ -44,6 +56,13 @@ function processItem(item) {
   }
   else {
     output();
+  }
+}
+
+
+function cutRoot(meta, name) {
+  if (meta[name]) {
+    meta[name] = meta[name].replace(meta.root, '');
   }
 }
 
