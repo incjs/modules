@@ -1,14 +1,8 @@
 /**
- * @name coffee
- * @description CoffeeScript is a little language that compiles into JavaScript.
- * @author Jeremy Ashkenas
- * @url http://coffeescript.org
- * @keywords compiler
+ * @package https://raw.github.com/jashkenas/coffee-script/master/package.json
  *
- * @version 1.1.2
- * @filename coffee-script
+ * @version 1.1.3
  * @min http://jashkenas.github.com/coffee-script/extras/coffee-script.js
- *
  */
 
 (function(factory) {
