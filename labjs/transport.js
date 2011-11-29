@@ -6,7 +6,6 @@
  * @keywords loader
  * @keywords performance
  *
- * @version 2.0.3
  * @filename lab
  * @src https://raw.github.com/getify/LABjs/master/LAB.src.js
  * @min https://raw.github.com/getify/LABjs/master/LAB.js
