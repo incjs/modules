@@ -1,6 +1,6 @@
 /**
- * @fileoverview update registry.json
- * @usage node update_registry.js
+ * @fileoverview update all modules to the latest version and rewrite registry.json
+ * @usage node update_all.js
  * @author lifesinger@gmail.com <Frank Wang>
  */
 
