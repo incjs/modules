@@ -15,21 +15,44 @@ var zlib = require('zlib');
 var Transport = require('../lib/actions/transport.js');
 
 
+// init registry
+const REGISTRY_FILE = path.join(__dirname, 'registry.js');
 var registry = {};
+if (path.existsSync(REGISTRY_FILE)) {
+  var code = fs.readFileSync(REGISTRY_FILE, 'utf8');
+  registry = JSON.parse(code.replace('define({', '{').replace('});', '}'));
+}
 
+
+// get all modules
 var items = fs.readdirSync(__dirname).filter(function(item) {
   return fs.statSync(item).isDirectory() && item.charAt(0) !== '.';
 });
 
 
-processItem(items.shift());
+// go
+next();
+
+
+function next() {
+  processItem(items.shift());
+}
 
 
 function processItem(item) {
   if (item) {
     var filepath = path.join(__dirname, item, 'transport.js');
 
-    Transport.getMeta(filepath, function(meta) {
+    Transport.transport(filepath, function(data) {
+      var meta = data.meta;
+
+      // already exists
+      if (data.errCode) {
+        next();
+        return;
+      }
+
+      // add to registry
       registry[meta.name.toLowerCase()] = meta;
 
       // delete unnecessary properties
@@ -49,13 +72,11 @@ function processItem(item) {
       }
 
       // get file size info
-      getFileSize(meta, function() {
-        processItem(items.shift());
-      });
+      getFileSize(meta, next);
     });
   }
   else {
-    output();
+    updateRegistry();
   }
 }
 
@@ -93,7 +114,7 @@ function formatSize(size) {
 }
 
 
-function output() {
+function updateRegistry() {
   var ast = jsp.parse('define(' + JSON.stringify(registry) + ')');
   var code = pro.gen_code(ast, {
     'beautify': true,
@@ -102,9 +123,7 @@ function output() {
   });
   //code = code.replace('define({', '{').replace('});', '}');
 
-  var outputFile = path.join(__dirname, 'registry.js');
-
-  fs.writeFile(outputFile, code, 'utf8', function() {
+  fs.writeFile(REGISTRY_FILE, code, 'utf8', function() {
     console.log('  Done!');
   });
 }

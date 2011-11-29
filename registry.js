@@ -23,11 +23,11 @@ define({
     "package": "https://raw.github.com/jashkenas/coffee-script/master/package.json",
     "name": "coffee",
     "filename": "coffee-script",
-    "version": "1.1.3",
     "min": "http://jashkenas.github.com/coffee-script/extras/coffee-script.js",
     "description": "Unfancy JavaScript",
     "keywords": [ "javascript", "language", "coffeescript", "compiler" ],
     "author": "Jeremy Ashkenas",
+    "version": "1.1.3",
     "licenses": [ {
       "type": "MIT",
       "url": "http://github.com/jashkenas/coffee-script/raw/master/LICENSE"
@@ -88,10 +88,9 @@ define({
     "author": "John Resig",
     "url": "http://jquery.com/",
     "keywords": [ "dom", "event", "library" ],
+    "src": "http://code.jquery.com/jquery-latest.js",
+    "min": "http://code.jquery.com/jquery-latest.min.js",
     "version": "1.7.1",
-    "src": "http://code.jquery.com/jquery-1.7.1.js",
-    "min": "http://code.jquery.com/jquery-1.7.1.min.js",
-    "notes": "jQuery can not be run in node due to some browser proprietary objects such as window, document. And do NOT bother me with some jsdom module that is not robust.",
     "filename": "jquery",
     "gzipped": "33KB",
     "raw": "243KB"
@@ -116,11 +115,11 @@ define({
     "author": "Kyle Simpson",
     "url": "http://labjs.com/",
     "keywords": [ "loader", "performance" ],
-    "version": "2.0.3",
     "filename": "lab",
     "src": "https://raw.github.com/getify/LABjs/master/LAB.src.js",
     "min": "https://raw.github.com/getify/LABjs/master/LAB.js",
     "notes": "Run LABjs in node is not significant.",
+    "version": "2.0.3",
     "gzipped": "2KB",
     "raw": "19KB"
   },
