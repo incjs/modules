@@ -73,7 +73,7 @@ function processItem(item) {
 
       // get file size info
       getFileSize(meta, next);
-    });
+    }, {});
   }
   else {
     updateRegistry();
