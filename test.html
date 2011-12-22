@@ -43,6 +43,11 @@
     var global = this;
 
     var testCases = {
+      'async': function(meta, async) {
+        test.assert(global['async'] === undefined, 'no global async');
+        test.assert(async.forEach, 'async.forEach');
+      },
+
       'backbone': normalCheck('Backbone'),
       'cookie': normalCheck('Cookie'),
 

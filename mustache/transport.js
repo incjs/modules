@@ -1,5 +1,5 @@
 /**
- * @package https://raw.github.com/janl/mustache.js/master/lib/package.json
+ * @package https://raw.github.com/janl/mustache.js/2f4ccb950f064d56b473f184b5d5a7986b85e40d/wrappers/commonjs/package.json
  *
  * @version 0.4.0
  * @src https://raw.github.com/janl/mustache.js/master/mustache.js

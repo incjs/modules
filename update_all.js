@@ -45,15 +45,16 @@ function processItem(item) {
 
     Transport.transport(filepath, function(data) {
       var meta = data.meta;
+      var name = meta.name.toLowerCase();
 
       // already exists
-      if (data.errCode) {
+      if (data.errCode && registry[name]) {
         next();
         return;
       }
 
       // add to registry
-      registry[meta.name.toLowerCase()] = meta;
+      registry[name] = meta;
 
       // delete unnecessary properties
       delete meta.transportFile;

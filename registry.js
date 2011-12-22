@@ -1,4 +1,28 @@
 define({
+  "async": {
+    "package": "https://raw.github.com/caolan/async/master/package.json",
+    "src": "https://github.com/caolan/async/raw/master/lib/async.js",
+    "min": "https://raw.github.com/caolan/async/master/dist/async.min.js",
+    "name": "async",
+    "description": "Higher-order functions and common patterns for asynchronous code",
+    "main": "./index",
+    "author": "Caolan McMahon",
+    "version": "0.1.15",
+    "repository": {
+      "type": "git",
+      "url": "http://github.com/caolan/async.git"
+    },
+    "bugs": {
+      "url": "http://github.com/caolan/async/issues"
+    },
+    "licenses": [ {
+      "type": "MIT",
+      "url": "http://github.com/caolan/async/raw/master/LICENSE"
+    } ],
+    "filename": "async",
+    "gzipped": "2KB",
+    "raw": "21KB"
+  },
   "backbone": {
     "package": "https://raw.github.com/documentcloud/backbone/master/package.json",
     "src": "http://documentcloud.github.com/backbone/backbone.js",
@@ -27,7 +51,7 @@ define({
     "description": "Unfancy JavaScript",
     "keywords": [ "javascript", "language", "coffeescript", "compiler" ],
     "author": "Jeremy Ashkenas",
-    "version": "1.1.3",
+    "version": "1.2.0",
     "licenses": [ {
       "type": "MIT",
       "url": "http://github.com/jashkenas/coffee-script/raw/master/LICENSE"
@@ -49,8 +73,8 @@ define({
       "url": "git://github.com/jashkenas/coffee-script.git"
     },
     "devDependencies": {
-      "uglify-js": "1.0.6",
-      "jison": "0.2.11"
+      "uglify-js": ">=1.0.0",
+      "jison": ">=0.2.0"
     },
     "gzipped": "39KB"
   },
@@ -125,15 +149,15 @@ define({
   },
   "less": {
     "package": "https://raw.github.com/cloudhead/less.js/master/package.json",
-    "src": "https://raw.github.com/cloudhead/less.js/master/dist/less-1.1.5.js",
-    "min": "https://raw.github.com/cloudhead/less.js/master/dist/less-1.1.5.min.js",
+    "src": "https://raw.github.com/cloudhead/less.js/master/dist/less-1.1.6.js",
+    "min": "https://raw.github.com/cloudhead/less.js/master/dist/less-1.1.6.min.js",
     "name": "less",
     "description": "Leaner CSS",
     "url": "http://lesscss.org",
     "keywords": [ "css", "parser", "lesscss", "browser" ],
     "author": "Alexis Sellier <self@cloudhead.net>",
     "contributors": [],
-    "version": "1.1.5",
+    "version": "1.1.6",
     "bin": {
       "lessc": "./bin/lessc"
     },
@@ -145,17 +169,17 @@ define({
       "node": ">=0.4.0"
     },
     "filename": "less",
-    "gzipped": "11KB",
-    "raw": "92KB"
+    "gzipped": "13KB",
+    "raw": "98KB"
   },
   "mustache": {
-    "package": "https://raw.github.com/janl/mustache.js/master/lib/package.json",
+    "package": "https://raw.github.com/janl/mustache.js/2f4ccb950f064d56b473f184b5d5a7986b85e40d/wrappers/commonjs/package.json",
     "version": "0.4.0",
     "src": "https://raw.github.com/janl/mustache.js/master/mustache.js",
     "name": "mustache",
     "author": "http://mustache.github.com/",
-    "description": "{{ mustache }} in JavaScript — Logic-less templates.",
-    "keywords": [ "template" ],
+    "description": "Logic-less {{mustache}} templates with JavaScript",
+    "keywords": [ "template", "templates", "mustache" ],
     "main": "./mustache",
     "filename": "mustache",
     "gzipped": "2KB",
@@ -183,20 +207,23 @@ define({
     "min": "sea.js",
     "extra": [ "plugin-base.js", "plugin-map.js", "plugin-text.js", "plugin-json.js", "plugin-coffee.js", "plugin-less.js" ],
     "name": "seajs",
-    "description": "SeaJS is a new kind of JavaScript Loader that makes it easy to build scalable web applications. SeaJS is designed to change the way you organize JavaScript.",
+    "version": "1.1.1",
+    "description": "A Module Loader for the Web",
     "homepage": "https://seajs.com/",
-    "keywords": [ "loader", "modular", "CommonJS", "browser", "framework" ],
+    "keywords": [ "loader", "module", "commonjs", "browser", "nodejs" ],
     "author": "Frank Wang <lifesinger@gmail.com>",
-    "contributors": [],
+    "engines": {
+      "node": ">= 0.6.3"
+    },
     "dependencies": [],
     "repository": {
       "type": "git",
-      "url": "git://github.com/lifesinger/seajs.git"
+      "url": "git://github.com/seajs/seajs.git"
     },
-    "main": "build/sea.js",
-    "version": "1.1.0",
+    "main": "./lib/sea-node.js",
+    "preferGlobal": true,
     "gzipped": "4KB",
-    "raw": "31KB"
+    "raw": "32KB"
   },
   "underscore": {
     "package": "https://raw.github.com/documentcloud/underscore/master/package.json",
@@ -214,7 +241,7 @@ define({
       "url": "git://github.com/documentcloud/underscore.git"
     },
     "main": "underscore.js",
-    "version": "1.2.2",
+    "version": "1.2.3",
     "filename": "underscore",
     "gzipped": "4KB",
     "raw": "34KB"
