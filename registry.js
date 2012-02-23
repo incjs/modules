@@ -114,7 +114,7 @@ define({
     "keywords": [ "dom", "event", "library" ],
     "src": "http://code.jquery.com/jquery-latest.js",
     "min": "http://code.jquery.com/jquery-latest.min.js",
-    "version": "1.7.1",
+    "version": "1.7.2",
     "filename": "jquery",
     "gzipped": "33KB",
     "raw": "243KB"
