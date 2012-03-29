@@ -12,11 +12,11 @@ For Advanced Users
 Update xxx module:
 
 ````
-spm transport xxx/transport.js --force
+spm transport xxx --force
 ````
 
 Update registry.js:
 
 ````
-node update_registry.js
+node update_all.js
 ````

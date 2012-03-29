@@ -1,7 +1,5 @@
 
-var https = require('https');
 var url = require('url');
-
 const API_URL = 'https://api.github.com/repos/';
 
 

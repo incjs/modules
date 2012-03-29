@@ -7,7 +7,7 @@ define({
     "description": "Higher-order functions and common patterns for asynchronous code",
     "main": "./index",
     "author": "Caolan McMahon",
-    "version": "0.1.15",
+    "version": "0.1.18",
     "repository": {
       "type": "git",
       "url": "http://github.com/caolan/async.git"
@@ -19,6 +19,11 @@ define({
       "type": "MIT",
       "url": "http://github.com/caolan/async/raw/master/LICENSE"
     } ],
+    "devDependencies": {
+      "nodeunit": ">0.0.0",
+      "uglify-js": "1.2.x",
+      "nodelint": ">0.0.0"
+    },
     "filename": "async",
     "gzipped": "2KB",
     "raw": "21KB"
@@ -29,19 +34,19 @@ define({
     "min": "http://documentcloud.github.com/backbone/backbone-min.js",
     "name": "backbone",
     "description": "Give your JS App some Backbone with Models, Views, Collections, and Events.",
-    "url": "http://documentcloud.github.com/backbone/",
+    "url": "http://backbonejs.org",
     "keywords": [ "util", "functional", "server", "client", "browser" ],
     "author": "Jeremy Ashkenas <jeremy@documentcloud.org>",
     "contributors": [],
     "dependencies": {
-      "underscore": ">=1.1.2"
+      "underscore": ">=1.3.1"
     },
     "lib": ".",
     "main": "backbone.js",
-    "version": "0.5.3",
+    "version": "0.9.2",
     "filename": "backbone",
-    "gzipped": "5KB",
-    "raw": "42KB"
+    "gzipped": "6KB",
+    "raw": "52KB"
   },
   "coffee": {
     "package": "https://raw.github.com/jashkenas/coffee-script/master/package.json",
@@ -149,15 +154,15 @@ define({
   },
   "less": {
     "package": "https://raw.github.com/cloudhead/less.js/master/package.json",
-    "src": "https://raw.github.com/cloudhead/less.js/master/dist/less-1.1.6.js",
-    "min": "https://raw.github.com/cloudhead/less.js/master/dist/less-1.1.6.min.js",
+    "src": "https://raw.github.com/cloudhead/less.js/master/dist/less-1.3.0.js",
+    "min": "https://raw.github.com/cloudhead/less.js/master/dist/less-1.3.0.min.js",
     "name": "less",
     "description": "Leaner CSS",
     "url": "http://lesscss.org",
     "keywords": [ "css", "parser", "lesscss", "browser" ],
     "author": "Alexis Sellier <self@cloudhead.net>",
     "contributors": [],
-    "version": "1.1.6",
+    "version": "1.3.0",
     "bin": {
       "lessc": "./bin/lessc"
     },
@@ -169,21 +174,21 @@ define({
       "node": ">=0.4.0"
     },
     "filename": "less",
-    "gzipped": "13KB",
-    "raw": "98KB"
+    "gzipped": "15KB",
+    "raw": "115KB"
   },
   "mustache": {
-    "package": "https://raw.github.com/janl/mustache.js/2f4ccb950f064d56b473f184b5d5a7986b85e40d/wrappers/commonjs/package.json",
-    "version": "0.4.0",
+    "package": "https://raw.github.com/janl/mustache.js/master/package.json",
+    "version": "0.5.0",
     "src": "https://raw.github.com/janl/mustache.js/master/mustache.js",
     "name": "mustache",
-    "author": "http://mustache.github.com/",
     "description": "Logic-less {{mustache}} templates with JavaScript",
-    "keywords": [ "template", "templates", "mustache" ],
+    "author": "mustache.js Authors <http://github.com/janl/mustache.js>",
+    "keywords": [ "mustache", "template", "templates", "ejs" ],
     "main": "./mustache",
     "filename": "mustache",
     "gzipped": "2KB",
-    "raw": "12KB"
+    "raw": "14KB"
   },
   "querystring": {
     "package": "https://raw.github.com/seajs/dew/master/src/querystring/package.json",
@@ -234,16 +239,14 @@ define({
     "homepage": "http://documentcloud.github.com/underscore/",
     "keywords": [ "util", "functional", "server", "client", "browser" ],
     "author": "Jeremy Ashkenas <jeremy@documentcloud.org>",
-    "contributors": [],
-    "dependencies": [],
     "repository": {
       "type": "git",
       "url": "git://github.com/documentcloud/underscore.git"
     },
     "main": "underscore.js",
-    "version": "1.2.3",
+    "version": "1.3.1",
     "filename": "underscore",
     "gzipped": "4KB",
-    "raw": "34KB"
+    "raw": "35KB"
   }
 });
