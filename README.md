@@ -1,9 +1,9 @@
 
 The repository of SeaJS modules.
 
-http://modules.seajs.com/
+http://modules.seajs.org/
 
-http://modules.seajs.com/test.html
+http://modules.seajs.org/test.html
 
 
 For Advanced Users

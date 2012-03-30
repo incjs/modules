@@ -214,7 +214,7 @@ define({
     "name": "seajs",
     "version": "1.1.1",
     "description": "A Module Loader for the Web",
-    "homepage": "https://seajs.com/",
+    "homepage": "https://seajs.org/",
     "keywords": [ "loader", "module", "commonjs", "browser", "nodejs" ],
     "author": "Frank Wang <lifesinger@gmail.com>",
     "engines": {

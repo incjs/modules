@@ -66,7 +66,7 @@ define(function() {
         '  <button>Exit</button>' +
         '  <button>Hide</button>' +
         '  <button>Refresh</button>' +
-        '  <a href="http://seajs.com/docs/appendix-map-plugin.html"' +
+        '  <a href="http://seajs.org/docs/appendix-map-plugin.html"' +
         ' target="_blank">help</a>' +
         '</div>';
 
