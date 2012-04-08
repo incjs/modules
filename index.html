@@ -97,7 +97,12 @@
 
         var meta = registry[p];
         var filename = meta.filename;
-        var path = BASE + '/' + meta.name + '/' + meta.version + '/';
+
+        var dirname = meta.name.indexOf('jq-') === 0 ?
+            'jq-modules/' + meta.name.substring(3) :
+            meta.name;
+
+        var path = BASE + '/' + dirname + '/' + meta.version + '/';
 
         meta.minfile = filename + '.js';
         meta.srcfile = filename + '-debug.js';
