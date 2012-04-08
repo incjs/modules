@@ -1,5 +1,5 @@
 /**
- * @name blockui
+ * @name jq-blockui
  *
  * @description The jQuery BlockUI Plugin lets you simulate synchronous behavior
  * when using AJAX, without locking the browser[1]. When activated, it will
@@ -11,6 +11,7 @@
  * @url http://malsup.com/jquery/block/
  * @keywords jquery plugin
  *
+ * @filename blockui
  * @version 2.39.0
  * @src https://raw.github.com/malsup/blockui/master/jquery.blockUI.js
  */
