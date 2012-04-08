@@ -223,7 +223,7 @@ define({
     "min": "sea.js",
     "extra": [ "plugin-base.js", "plugin-map.js", "plugin-text.js", "plugin-json.js", "plugin-coffee.js", "plugin-less.js" ],
     "name": "seajs",
-    "version": "1.1.1",
+    "version": "1.1.0",
     "description": "A Module Loader for the Web",
     "homepage": "https://seajs.org/",
     "keywords": [ "loader", "module", "commonjs", "browser", "nodejs" ],
