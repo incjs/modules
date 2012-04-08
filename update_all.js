@@ -63,6 +63,9 @@ function processItem(item) {
       // add to registry
       registry[name] = meta;
 
+      // add dirpath
+      meta.dirpath = item;
+
       // delete unnecessary properties
       delete meta.transportFile;
 
@@ -80,7 +83,7 @@ function processItem(item) {
       }
 
       // get file size info
-      getFileSize(item, meta, next);
+      getFileSize(meta, next);
     }, {});
   }
   else {
@@ -105,9 +108,9 @@ function cutRoot(meta, name) {
 }
 
 
-function getFileSize(item, meta, callback) {
+function getFileSize(meta, callback) {
   var filename = meta['filename'];
-  var minFile = path.join(__dirname, item, meta.version, filename + '.js');
+  var minFile = path.join(__dirname, meta.dirpath, meta.version, filename + '.js');
   var srcFile = minFile.replace(/\.js$/, '-debug.js');
 
   console.log('  ... Reading %s', minFile);
