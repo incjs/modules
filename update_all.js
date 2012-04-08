@@ -15,6 +15,7 @@ var pro = uglifyjs.uglify;
 var zlib = require('zlib');
 
 var Transport = require('../lib/actions/transport.js');
+const JQ_MODULES = 'jq-modules';
 
 
 // init registry
@@ -27,9 +28,13 @@ if (path.existsSync(REGISTRY_FILE)) {
 
 
 // get all modules
-var items = fs.readdirSync(__dirname).filter(function(item) {
-  return fs.statSync(item).isDirectory() && item.charAt(0) !== '.';
-});
+var items = getModuleNames(__dirname);
+
+// get jq-modules
+items = items.concat(
+    getModuleNames(path.join(__dirname, JQ_MODULES)).map(function(item) {
+      return path.join(JQ_MODULES, item);
+    }));
 
 
 // go
@@ -75,12 +80,21 @@ function processItem(item) {
       }
 
       // get file size info
-      getFileSize(meta, next);
+      getFileSize(item, meta, next);
     }, {});
   }
   else {
     updateRegistry();
   }
+}
+
+
+function getModuleNames(dirpath) {
+  return fs.readdirSync(dirpath).filter(function(item) {
+    return item.charAt(0) !== '.' &&
+        item !== JQ_MODULES &&
+        fs.statSync(path.join(dirpath, item)).isDirectory();
+  });
 }
 
 
@@ -91,9 +105,9 @@ function cutRoot(meta, name) {
 }
 
 
-function getFileSize(meta, callback) {
+function getFileSize(item, meta, callback) {
   var filename = meta['filename'];
-  var minFile = path.join(__dirname, meta['name'], meta.version, filename + '.js');
+  var minFile = path.join(__dirname, item, meta.version, filename + '.js');
   var srcFile = minFile.replace(/\.js$/, '-debug.js');
 
   console.log('  ... Reading %s', minFile);
