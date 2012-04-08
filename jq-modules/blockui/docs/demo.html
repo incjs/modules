@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>jQuery BlockUI Demo</title>
+<style>
+  .section { display: none; margin-bottom: 30px; }
+</style>
+</head>
+<body>
+
+<div id="waiting">Please wait...</div>
+
+
+<div class="section">
+
+  <h2>Page Blocking Examples</h2>
+
+  <p>This page demonstrates several ways to block the page. Each button below
+    activates BlockUI and then makes a remote call to the server.</p>
+
+  <p>
+    <input id="pageDemo1" class="demo" type="submit" value="Default Message">
+    <input id="pageDemo2" class="demo" type="submit" value="Custom Message">
+    <input id="pageDemo3" class="demo" type="submit" value="Custom Style">
+    <input id="pageDemo4" class="demo" type="submit" value="DOM Element as Message">
+  </p>
+
+  <div id="domMessage" style="display:none;">
+    <h1>We are processing your request. Please be patient.</h1>
+  </div>
+
+</div>
+
+
+<div class="section">
+
+  <h2>Simple Modal Dialog Example</h2>
+
+  <p>
+    This page demonstrates how to display a simple modal dialog. The button
+    below will invoke BlockUI with a custom message. Depending upon the user
+    response (yes or no) an ajax call will be made while keeping the UI blocked.
+  </p>
+
+  <p>
+    <input id="showDialog" type="submit" value="Show Dialog">
+  </p>
+
+  <div id="question" style="cursor: default; display: none; ">
+    <h1>Would you like to contine?</h1>
+    <input type="button" id="yes" value="Yes">
+    <input type="button" id="no" value="No">
+  </div>
+
+</div>
+
+
+<div class="section">
+
+  <h2>Element Blocking Examples</h2>
+
+  <p>This page demonstrates how to block selected elements on the page rather
+    than the entire page. The buttons below will block/unblock access to the
+    bordered area beneath them.</p>
+
+  <p>
+    <input id="blockButton" type="submit" value="Block">
+    <input id="blockButton2" type="submit" value="Block with Message">
+    <input id="unblockButton" type="submit" value="Unblock">
+  </p>
+
+  <style>
+    div.blockMe {
+      padding: 30px;
+      margin: 30px;
+      border: 10px solid #CCC;
+      background-color: #FFD;
+    }
+  </style>
+
+  <div class="blockMe">
+      <a href="#" class="test">Test link - click me!</a>
+      <p>
+        <select><option>Option 1</option><option>Option 2</option></select>
+        lorem ipsum dolor sit amet
+        consectetuer adipiscing elit
+        sed lorem leo
+        lorem leo consectetuer adipiscing elit
+        sed lorem leo
+        rhoncus sit amet
+        <select><option>Option 1</option><option>Option 2</option></select>
+
+        lorem ipsum dolor sit amet
+        consectetuer adipiscing elit
+        sed lorem leo
+        <a href="#" class="test">Test link - click me!</a>
+        lorem leo consectetuer adipiscing elit
+        sed lorem leo
+        rhoncus sit amet<br>
+        <textarea rows="2" cols="20">test textarea</textarea>
+
+      </p></div>
+
+  <p>The following code is used on this page:
+    <a href="demo.js">demo.js</a>
+  </p>
+
+</div>
+
+
+<script src="../../../seajs/1.1.0/sea.js"></script>
+<script>
+  seajs.use('./demo');
+</script>
+</body>
+</html>
