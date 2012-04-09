@@ -274,5 +274,39 @@ define({
     "dirpath": "jq-modules/blockui",
     "gzipped": "3KB",
     "raw": "17KB"
+  },
+  "iscroll": {
+    "package": "https://raw.github.com/cubiq/iscroll/master/package.json",
+    "src": "https://raw.github.com/cubiq/iscroll/master/src/iscroll.js",
+    "name": "iscroll",
+    "description": "smooth scrolling for mobile webkit",
+    "version": "4.1.9",
+    "homepage": "http://cubiq.org/iscroll-4",
+    "author": "Matteo Spinelli <> (http://cubiq.org)",
+    "keywords": [ "ender", "iscroll", "scrolling", "webkit", "iphone", "android" ],
+    "main": "./src/iscroll.js",
+    "ender": "./src/ender.js",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/cubiq/iscroll.git"
+    },
+    "filename": "iscroll",
+    "dirpath": "iscroll",
+    "gzipped": "6KB",
+    "raw": "33KB"
+  },
+  "zepto": {
+    "package": "https://raw.github.com/lifesinger/zepto/master/package.json",
+    "src": "https://raw.github.com/lifesinger/zepto/master/dist/zepto.js",
+    "name": "zepto",
+    "description": "Zepto is a minimalist JavaScript framework for modern browsers with a largely jQuery-compatible API.",
+    "url": "http://zeptojs.com",
+    "keywords": [ "dom", "webkit", "util" ],
+    "author": "Thomas Fuchs",
+    "version": "0.8.0",
+    "filename": "zepto",
+    "dirpath": "zepto",
+    "gzipped": "9KB",
+    "raw": "51KB"
   }
 });
