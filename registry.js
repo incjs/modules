@@ -58,7 +58,7 @@ define({
     "description": "Unfancy JavaScript",
     "keywords": [ "javascript", "language", "coffeescript", "compiler" ],
     "author": "Jeremy Ashkenas",
-    "version": "1.2.0",
+    "version": "1.3.1",
     "licenses": [ {
       "type": "MIT",
       "url": "http://github.com/jashkenas/coffee-script/raw/master/LICENSE"
@@ -84,7 +84,7 @@ define({
       "jison": ">=0.2.0"
     },
     "dirpath": "coffee",
-    "gzipped": "39KB"
+    "gzipped": "41KB"
   },
   "cookie": {
     "package": "https://raw.github.com/seajs/dew/master/src/cookie/package.json",
@@ -256,11 +256,11 @@ define({
       "url": "git://github.com/documentcloud/underscore.git"
     },
     "main": "underscore.js",
-    "version": "1.3.1",
+    "version": "1.3.3",
     "filename": "underscore",
     "dirpath": "underscore",
     "gzipped": "4KB",
-    "raw": "35KB"
+    "raw": "37KB"
   },
   "jq-blockui": {
     "name": "jq-blockui",
