@@ -6,6 +6,7 @@
  * @keywords test
  *
  * @version 1.1.0
+ * @extra jasmine-html.js,jasmine.css
  */
 
 /* manually transport */

@@ -318,6 +318,7 @@ define({
     "version": "1.1.0",
     "filename": "jasmine",
     "dirpath": "jasmine",
+    "extra": [ "jasmine-html.js", "jasmine.css" ],
     "gzipped": "15KB"
   }
 });
