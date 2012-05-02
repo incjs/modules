@@ -1,5 +1,5 @@
 /**
- * @package https://raw.github.com/seajs/dew/master/src/querystring/package.json
+ * @package https://raw.github.com/seajs/dew/master/lib/querystring/package.json
  */
 
 (function(factory) {

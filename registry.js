@@ -320,5 +320,43 @@ define({
     "dirpath": "jasmine",
     "extra": [ "jasmine-html.js", "jasmine.css" ],
     "gzipped": "15KB"
+  },
+  "moment": {
+    "package": "https://github.com/timrwood/moment/raw/master/package.json",
+    "src": "https://raw.github.com/timrwood/moment/1.6.1/moment.js",
+    "min": "https://raw.github.com/timrwood/moment/1.6.1/min/moment.min.js",
+    "name": "moment",
+    "version": "1.6.1",
+    "description": "Moment.js is a javascript date library that helps create, manipulate, and format dates without extending the `Date` prototype.",
+    "homepage": "https://github.com/timrwood/moment",
+    "author": "Tim Wood <washwithcare@gmail.com> (http://timwoodcreates.com/)",
+    "keywords": [ "moment", "date", "ender" ],
+    "main": "./moment.js",
+    "engines": {
+      "node": "*"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/timrwood/moment.git"
+    },
+    "bugs": {
+      "url": "https://github.com/timrwood/moment/issues"
+    },
+    "licenses": [ {
+      "type": "MIT"
+    } ],
+    "devDependencies": {
+      "jshint": "latest",
+      "uglify-js": "latest",
+      "nodeunit": "latest"
+    },
+    "scripts": {
+      "test": "nodeunit ./test/moment ./test/lang"
+    },
+    "ender": "./ender.js",
+    "filename": "moment",
+    "dirpath": "moment",
+    "gzipped": "4KB",
+    "raw": "31KB"
   }
 });

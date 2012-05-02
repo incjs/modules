@@ -1,5 +1,5 @@
 /**
- * @package https://raw.github.com/seajs/dew/master/src/es5-safe/package.json
+ * @package https://raw.github.com/seajs/dew/master/lib/es5-safe/package.json
  */
 
 (function(factory) {

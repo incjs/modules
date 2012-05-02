@@ -1,5 +1,5 @@
 /**
- * @package https://raw.github.com/seajs/dew/master/src/json/package.json
+ * @package https://raw.github.com/seajs/dew/master/lib/json/package.json
  *
  */
 

@@ -1,5 +1,5 @@
 /**
- * @package https://raw.github.com/seajs/dew/master/src/cookie/package.json
+ * @package https://raw.github.com/seajs/dew/master/lib/cookie/package.json
  */
 
 (function(factory) {
