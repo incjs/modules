@@ -1,8 +1,6 @@
 define('#jasmine/1.1.0/jasmine-html', ['./jasmine', './jasmine.css'], function(require) {
 
-var jasmine = require('./jasmine');
-require('./jasmine.css');
-
+require('./jasmine');
 
 jasmine.HtmlReporterHelpers = {};
 
