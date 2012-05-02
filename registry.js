@@ -262,19 +262,6 @@ define({
     "gzipped": "4KB",
     "raw": "37KB"
   },
-  "jq-blockui": {
-    "name": "jq-blockui",
-    "description": "The jQuery BlockUI Plugin lets you simulate synchronous behavior when using AJAX, without locking the browser[1]. When activated, it will prevent user activity with the page (or part of the page) until it is deactivated. BlockUI adds elements to the DOM to give it both the appearance and behavior of blocking user interaction.",
-    "author": "John Resig",
-    "url": "http://malsup.com/jquery/block/",
-    "keywords": "jquery plugin",
-    "filename": "blockui",
-    "version": "2.39.0",
-    "src": "https://raw.github.com/malsup/blockui/master/jquery.blockUI.js",
-    "dirpath": "jq-modules/blockui",
-    "gzipped": "3KB",
-    "raw": "17KB"
-  },
   "iscroll": {
     "package": "https://raw.github.com/cubiq/iscroll/master/package.json",
     "src": "https://raw.github.com/cubiq/iscroll/master/src/iscroll.js",

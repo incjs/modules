@@ -64,7 +64,6 @@
 
       'querystring': normalCheck('QueryString'),
       'underscore': normalCheck('_'),
-      'moment': normalCheck('moment'),
 
       'labjs': function(meta, LAB) {
         test.assert(global['$LAB'] === undefined, 'no global $LAB');
@@ -79,6 +78,26 @@
       'less': function(meta, less) {
         test.assert(global['less'], 'global.less is ok');
         test.assert(less.Parser, 'less.Parser');
+      },
+
+      'jasmine': function(meta, jasmine) {
+        test.assert(global['jasmine'], 'global.jasmine is ok');
+        test.assert(global['describe'], 'describe is ok');
+      },
+
+      'iscroll': function(meta, iScroll) {
+        test.assert(global['iScroll'] === undefined, 'no global iScroll');
+        test.assert(iScroll.prototype.scrollTo, 'iScroll.scrollTo is ok');
+      },
+
+      'moment': function(meta, moment) {
+        test.assert(global['moment'] === undefined, 'no global moment');
+        test.assert(moment.isMoment, 'moment.isMoment is ok');
+      },
+
+      'zepto': function(meta, Zepto) {
+        test.assert(global['Zepto'] === undefined, 'no global Zepto');
+        test.assert(Zepto.Event, 'Zepto.Event is ok');
       }
     };
 
