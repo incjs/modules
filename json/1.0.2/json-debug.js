@@ -487,5 +487,5 @@ if (!JSON) {
     }
 }());
 
-return JSON;
+return this.JSON = JSON;
 });

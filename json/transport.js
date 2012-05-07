@@ -10,5 +10,5 @@
 
 define(function() {
 /*{{code}}*/
-return JSON;
+return this.JSON = JSON;
 });
