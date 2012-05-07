@@ -130,21 +130,6 @@ define({
     "gzipped": "33KB",
     "raw": "247KB"
   },
-  "json": {
-    "package": "https://raw.github.com/seajs/dew/master/src/json/package.json",
-    "name": "json",
-    "description": "JSON in JavaScript",
-    "url": "https://github.com/seajs/dew/tree/master/src/json",
-    "keywords": [ "util" ],
-    "author": "Frank Wang <lifesinger@gmail.com>",
-    "version": "1.0.1",
-    "src": "https://raw.github.com/seajs/dew/master/build/json/json-debug.js",
-    "min": "https://raw.github.com/seajs/dew/master/build/json/json.js",
-    "filename": "json",
-    "dirpath": "json",
-    "gzipped": "1KB",
-    "raw": "17KB"
-  },
   "labjs": {
     "name": "labjs",
     "description": "Loading And Blocking JavaScript.",
@@ -345,5 +330,17 @@ define({
     "dirpath": "moment",
     "gzipped": "4KB",
     "raw": "31KB"
+  },
+  "json": {
+    "name": "json",
+    "description": "JSON in JavaScript.",
+    "author": "Douglas Crockford",
+    "url": "http://www.JSON.org/",
+    "version": "1.0.2",
+    "src": "https://raw.github.com/douglascrockford/JSON-js/master/json2.js",
+    "filename": "json",
+    "dirpath": "json",
+    "gzipped": "1KB",
+    "raw": "17KB"
   }
 });
