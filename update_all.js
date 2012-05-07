@@ -15,8 +15,6 @@ var pro = uglifyjs.uglify;
 var zlib = require('zlib');
 
 var Transport = require('../lib/actions/transport.js');
-const JQ_MODULES = 'jq-modules';
-
 
 // init registry
 const REGISTRY_FILE = path.join(__dirname, 'registry.js');
@@ -29,13 +27,6 @@ if (path.existsSync(REGISTRY_FILE)) {
 
 // get all modules
 var items = getModuleNames(__dirname);
-
-// get jq-modules
-items = items.concat(
-    getModuleNames(path.join(__dirname, JQ_MODULES)).map(function(item) {
-      return path.join(JQ_MODULES, item);
-    }));
-
 
 // go
 next();
@@ -95,7 +86,6 @@ function processItem(item) {
 function getModuleNames(dirpath) {
   return fs.readdirSync(dirpath).filter(function(item) {
     return item.charAt(0) !== '.' &&
-        item !== JQ_MODULES &&
         fs.statSync(path.join(dirpath, item)).isDirectory();
   });
 }

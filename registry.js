@@ -310,10 +310,10 @@ define({
   },
   "moment": {
     "package": "https://github.com/timrwood/moment/raw/master/package.json",
-    "src": "https://raw.github.com/timrwood/moment/1.6.1/moment.js",
-    "min": "https://raw.github.com/timrwood/moment/1.6.1/min/moment.min.js",
+    "src": "https://raw.github.com/timrwood/moment/1.6.2/moment.js",
+    "min": "https://raw.github.com/timrwood/moment/1.6.2/min/moment.min.js",
     "name": "moment",
-    "version": "1.6.1",
+    "version": "1.6.2",
     "description": "Moment.js is a javascript date library that helps create, manipulate, and format dates without extending the `Date` prototype.",
     "homepage": "https://github.com/timrwood/moment",
     "author": "Tim Wood <washwithcare@gmail.com> (http://timwoodcreates.com/)",
