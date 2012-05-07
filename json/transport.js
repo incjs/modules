@@ -1,22 +1,14 @@
 /**
- * @package https://raw.github.com/seajs/dew/master/lib/json/package.json
+ * @name json
+ * @description JSON in JavaScript.
+ * @author Douglas Crockford
+ * @url http://www.JSON.org/
  *
+ * @version 1.0.2
+ * @src https://raw.github.com/douglascrockford/JSON-js/master/json2.js
  */
 
-(function(factory) {
-
-  if (typeof define === 'function') {
-    define('#{{id}}', [], factory);
-  }
-  else if (typeof exports !== 'undefined') {
-    factory(require, exports);
-  }
-  else {
-    factory();
-  }
-
-})(function(require, exports) {
-
+define(function() {
 /*{{code}}*/
-
+return JSON;
 });
