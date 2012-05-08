@@ -95,6 +95,11 @@
         test.assert(moment.isMoment, 'moment.isMoment is ok');
       },
 
+      'marked': function(meta, marked) {
+          test.assert(global['marked'] == undefined, 'no global marked');
+          test.assert(marked.parse, 'marked.parse is ok');
+      },
+
       'zepto': function(meta, Zepto) {
         test.assert(global['Zepto'] === undefined, 'no global Zepto');
         test.assert(Zepto.Event, 'Zepto.Event is ok');

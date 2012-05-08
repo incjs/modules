@@ -342,5 +342,28 @@ define({
     "dirpath": "json",
     "gzipped": "1KB",
     "raw": "17KB"
+  },
+  "marked": {
+    "package": "https://raw.github.com/chjj/marked/master/package.json",
+    "src": "https://raw.github.com/chjj/marked/v0.2.4/lib/marked.js",
+    "version": "0.2.4",
+    "name": "marked",
+    "description": "A markdown parser built for speed",
+    "author": "Christopher Jeffrey",
+    "main": "./lib/marked.js",
+    "bin": "./bin/marked",
+    "man": "./man/marked.1",
+    "preferGlobal": false,
+    "repository": "git://github.com/chjj/marked.git",
+    "homepage": "https://github.com/chjj/marked",
+    "bugs": {
+      "url": "http://github.com/chjj/marked/issues"
+    },
+    "keywords": [ "markdown", "markup", "html" ],
+    "tags": [ "markdown", "markup", "html" ],
+    "filename": "marked",
+    "dirpath": "marked",
+    "gzipped": "3KB",
+    "raw": "16KB"
   }
 });
