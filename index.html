@@ -90,7 +90,7 @@
   seajs.use(['./registry', 'mustache'], function(registry, mustache) {
     var BASE = location.href.replace(/(.*)\/.*/, '$1');
     var tmpl = document.getElementById('module-tmpl').text;
-    var html = '';
+    var html = '<div id="analytics">There are <strong>'+ Object.keys(registry).length +'</strong> modules in the sea.</div>';
 
     for (var p in registry) {
       if (registry.hasOwnProperty(p)) {
