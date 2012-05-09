@@ -7,16 +7,7 @@
  * @min http://jashkenas.github.com/coffee-script/extras/coffee-script.js
  */
 
-(function(factory) {
-
-  if (typeof define === 'function') {
-    define('#{{id}}', [], factory);
-  }
-  else {
-    factory();
-  }
-
-})(function() {
+define('#{{id}}', [], function() {
 
   /*{{code}}*/
 

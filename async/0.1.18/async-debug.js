@@ -1,18 +1,5 @@
-(function(factory) {
-
-  if (typeof define === 'function') {
-    define('#async/0.1.18/async-debug', [], factory);
-  }
-  else if (typeof exports !== 'undefined') {
-    factory(require, exports, module);
-  }
-  else {
-    factory();
-  }
-
-})(function(require, exports, module) {
-
-  /*global setTimeout: false, console: false */
+define('#async/0.1.18/async-debug', [], function(require, exports, module) {
+/*global setTimeout: false, console: false */
 (function () {
 
     var async = {};
@@ -704,6 +691,5 @@
     };
 
 }());
-
 
 });

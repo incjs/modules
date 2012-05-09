@@ -1,21 +1,9 @@
-(function(factory) {
-
-  if (typeof define === 'function') {
-    define('#backbone/0.9.2/backbone', ['underscore', 'jquery'], factory);
-  }
-  else if (typeof exports !== 'undefined') {
-    factory(require, exports);
-  }
-  else {
-    factory();
-  }
-
-})(function(require, exports) {
+define('#backbone/0.9.2/backbone', ['underscore', '$'], function(require, exports) {
 
   var previousUnderscore = this._;
   var previousJQuery = this.jQuery;
   this._ = require('underscore');
-  this.jQuery = require('jquery');
+  this.jQuery = require('$');
 
 // Backbone.js 0.9.2
 

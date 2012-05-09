@@ -1,21 +1,5 @@
 /**
- * @package https://raw.github.com/seajs/dew/master/lib/cookie/package.json
+ * @package https://raw.github.com/alipay/arale/master/lib/cookie/package.json
  */
 
-(function(factory) {
-
-  if (typeof define === 'function') {
-    define('#{{id}}', [], factory);
-  }
-  else if (typeof exports !== 'undefined') {
-    factory(require, exports);
-  }
-  else {
-    factory();
-  }
-
-})(function(require, exports) {
-
 /*{{code}}*/
-
-});

@@ -1,13 +1,4 @@
-(function(factory) {
-
-  if (typeof define === 'function') {
-    define('#coffee/1.3.1/coffee-script', [], factory);
-  }
-  else {
-    factory();
-  }
-
-})(function() {
+define('#coffee/1.3.1/coffee-script', [], function() {
 
   /**
  * CoffeeScript Compiler v1.3.1
