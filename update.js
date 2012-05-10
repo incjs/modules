@@ -14,6 +14,9 @@ var jsp = uglifyjs.parser;
 var pro = uglifyjs.uglify;
 var zlib = require('zlib');
 
+var argv2 = process.argv[2];
+var force = process.argv[3] === '-f' || process.argv[3] === '--force';
+
 var Transport = require('../lib/actions/transport.js');
 
 // init registry
@@ -26,7 +29,6 @@ if (path.existsSync(REGISTRY_FILE)) {
 
 
 // get module names
-var argv2 = process.argv[2];
 var items = argv2 ? [argv2] : getModuleNames(__dirname);
 
 // run
@@ -76,7 +78,7 @@ function processItem(item) {
 
       // get file size info
       getFileSize(meta, next);
-    }, {});
+    }, { force: force });
   }
   else {
     updateRegistry();

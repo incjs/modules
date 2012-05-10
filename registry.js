@@ -120,6 +120,32 @@ define({
     "gzipped": "1KB",
     "raw": "10KB"
   },
+  "handlebars": {
+    "package": "https://raw.github.com/wycats/handlebars.js/master/package.json",
+    "dependencies": [],
+    "version": "1.0.0",
+    "src": "https://github.com/downloads/wycats/handlebars.js/handlebars.runtime-1.0.0.beta.6",
+    "name": "handlebars",
+    "description": "Extension of the Mustache logicless template language",
+    "homepage": "http://www.handlebarsjs.com/",
+    "keywords": [ "handlebars mustache template html" ],
+    "repository": {
+      "type": "git",
+      "url": "git://github.com/kpdecker/handlebars.js.git"
+    },
+    "engines": {
+      "node": ">=0.4.7"
+    },
+    "devDependencies": {},
+    "main": "lib/handlebars.js",
+    "bin": {
+      "handlebars": "bin/handlebars"
+    },
+    "filename": "handlebars",
+    "dirpath": "handlebars",
+    "gzipped": "1KB",
+    "raw": "6KB"
+  },
   "iscroll": {
     "package": "https://raw.github.com/cubiq/iscroll/master/package.json",
     "src": "https://raw.github.com/cubiq/iscroll/master/src/iscroll.js",
@@ -336,40 +362,6 @@ define({
     "gzipped": "4KB",
     "raw": "31KB"
   },
-  "underscore": {
-    "package": "https://raw.github.com/documentcloud/underscore/master/package.json",
-    "src": "http://documentcloud.github.com/underscore/underscore.js",
-    "min": "http://documentcloud.github.com/underscore/underscore-min.js",
-    "name": "underscore",
-    "description": "JavaScript's functional programming helper library.",
-    "homepage": "http://documentcloud.github.com/underscore/",
-    "keywords": [ "util", "functional", "server", "client", "browser" ],
-    "author": "Jeremy Ashkenas <jeremy@documentcloud.org>",
-    "repository": {
-      "type": "git",
-      "url": "git://github.com/documentcloud/underscore.git"
-    },
-    "main": "underscore.js",
-    "version": "1.3.3",
-    "filename": "underscore",
-    "dirpath": "underscore",
-    "gzipped": "4KB",
-    "raw": "37KB"
-  },
-  "zepto": {
-    "package": "https://raw.github.com/lifesinger/zepto/master/package.json",
-    "src": "https://raw.github.com/lifesinger/zepto/master/dist/zepto.js",
-    "name": "zepto",
-    "description": "Zepto is a minimalist JavaScript framework for modern browsers with a largely jQuery-compatible API.",
-    "url": "http://zeptojs.com",
-    "keywords": [ "dom", "webkit", "util" ],
-    "author": "Thomas Fuchs",
-    "version": "0.8.0",
-    "filename": "zepto",
-    "dirpath": "zepto",
-    "gzipped": "9KB",
-    "raw": "51KB"
-  },
   "store": {
     "package": "https://raw.github.com/marcuswestin/store.js/master/package.json",
     "src": "https://github.com/marcuswestin/store.js/raw/master/store.js",
@@ -420,33 +412,38 @@ define({
     "gzipped": "4KB",
     "raw": "25KB"
   },
-  "handlebars": {
-    "package": "https://raw.github.com/wycats/handlebars.js/master/package.json",
-    "version": "1.0.0",
-    "src": "https://github.com/downloads/wycats/handlebars.js/handlebars.runtime-1.0.0.beta.6",
-    "name": "handlebars",
-    "description": "Extension of the Mustache logicless template language",
-    "homepage": "http://www.handlebarsjs.com/",
-    "keywords": [ "handlebars mustache template html" ],
+  "underscore": {
+    "package": "https://raw.github.com/documentcloud/underscore/master/package.json",
+    "src": "http://documentcloud.github.com/underscore/underscore.js",
+    "min": "http://documentcloud.github.com/underscore/underscore-min.js",
+    "name": "underscore",
+    "description": "JavaScript's functional programming helper library.",
+    "homepage": "http://documentcloud.github.com/underscore/",
+    "keywords": [ "util", "functional", "server", "client", "browser" ],
+    "author": "Jeremy Ashkenas <jeremy@documentcloud.org>",
     "repository": {
       "type": "git",
-      "url": "git://github.com/kpdecker/handlebars.js.git"
+      "url": "git://github.com/documentcloud/underscore.git"
     },
-    "engines": {
-      "node": ">=0.4.7"
-    },
-    "dependencies": {
-      "optimist": "~0.3",
-      "uglify-js": "~1.2"
-    },
-    "devDependencies": {},
-    "main": "lib/handlebars.js",
-    "bin": {
-      "handlebars": "bin/handlebars"
-    },
-    "filename": "handlebars",
-    "dirpath": "handlebars",
-    "gzipped": "1KB",
-    "raw": "6KB"
+    "main": "underscore.js",
+    "version": "1.3.3",
+    "filename": "underscore",
+    "dirpath": "underscore",
+    "gzipped": "4KB",
+    "raw": "37KB"
+  },
+  "zepto": {
+    "package": "https://raw.github.com/lifesinger/zepto/master/package.json",
+    "src": "https://raw.github.com/lifesinger/zepto/master/dist/zepto.js",
+    "name": "zepto",
+    "description": "Zepto is a minimalist JavaScript framework for modern browsers with a largely jQuery-compatible API.",
+    "url": "http://zeptojs.com",
+    "keywords": [ "dom", "webkit", "util" ],
+    "author": "Thomas Fuchs",
+    "version": "0.8.0",
+    "filename": "zepto",
+    "dirpath": "zepto",
+    "gzipped": "9KB",
+    "raw": "51KB"
   }
 });
