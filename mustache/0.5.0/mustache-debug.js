@@ -1,16 +1,4 @@
-(function(factory) {
-
-  if (typeof define === 'function') {
-    define('#mustache/0.5.0/mustache-debug', [], factory);
-  }
-  else if (typeof module !== 'undefined') {
-    module.exports = factory();
-  }
-  else {
-    this.Mustache = factory();
-  }
-
-})(function() {
+define('#mustache/0.5.0/mustache-debug', [], function() {
 
 /*!
  * mustache.js - Logic-less {{mustache}} templates with JavaScript

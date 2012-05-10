@@ -13,16 +13,7 @@
  * @notes Run LABjs in node is not significant.
  */
 
-(function(factory) {
-
-  if (typeof define === 'function') {
-    define('#{{id}}', [], factory);
-  }
-  else {
-    factory();
-  }
-
-})(function(require) {
+define('#{{id}}', [], function(require) {
 
   /*{{code}}*/
 

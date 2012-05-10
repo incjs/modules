@@ -11,16 +11,7 @@
  * @min http://code.jquery.com/jquery-latest.min.js
  */
 
-(function(factory) {
-
-  if (typeof define === 'function') {
-    define('#{{id}}', [], factory);
-  }
-  else {
-    factory();
-  }
-
-})(function(require) {
+define('#{{id}}', [], function(require) {
 
   /*{{code}}*/
 

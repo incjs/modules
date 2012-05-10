@@ -8,7 +8,7 @@
  * @src https://raw.github.com/douglascrockford/JSON-js/master/json2.js
  */
 
-define(function() {
+define('#{{id}}', [], function() {
 /*{{code}}*/
 return this.JSON = JSON;
 });

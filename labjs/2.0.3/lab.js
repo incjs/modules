@@ -1,13 +1,4 @@
-(function(factory) {
-
-  if (typeof define === 'function') {
-    define('#labjs/2.0.3/lab', [], factory);
-  }
-  else {
-    factory();
-  }
-
-})(function(require) {
+define('#labjs/2.0.3/lab', [], function(require) {
 
   /*! LAB.js (LABjs :: Loading And Blocking JavaScript)
     v2.0.3 (c) Kyle Simpson

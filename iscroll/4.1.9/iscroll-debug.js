@@ -1,16 +1,4 @@
-(function(factory) {
-
-  if (typeof define === 'function') {
-    define('#iscroll/4.1.9/iscroll-debug', [], factory);
-  }
-  else if (typeof exports !== 'undefined') {
-    factory(require, exports, module);
-  }
-  else {
-    factory();
-  }
-
-})(function(require, exports, module) {
+define('#iscroll/4.1.9/iscroll-debug', [], function(require, exports, module) {
 
   /*!
  * iScroll v4.1.9 ~ Copyright (c) 2011 Matteo Spinelli, http://cubiq.org
@@ -41,7 +29,7 @@ var m = Math,
 			|| window.mozRequestAnimationFrame
 			|| window.oRequestAnimationFrame
 			|| window.msRequestAnimationFrame
-			|| function(callback) { return setTimeout(callback, 1); }
+			|| function(callback) { return setTimeout(callback, 1); };
 	})(),
 	cancelFrame = (function () {
 	    return window.cancelRequestAnimationFrame
@@ -50,7 +38,7 @@ var m = Math,
 			|| window.mozCancelRequestAnimationFrame
 			|| window.oCancelRequestAnimationFrame
 			|| window.msCancelRequestAnimationFrame
-			|| clearTimeout
+			|| clearTimeout;
 	})(),
 
 	// Events

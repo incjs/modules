@@ -1,13 +1,4 @@
-(function(factory) {
-
-  if (typeof define === 'function') {
-    define('#less/1.3.0/less', [], factory);
-  }
-  else {
-    factory();
-  }
-
-})(function() {
+define('#less/1.3.0/less', [], function() {
 
   //
 // LESS - Leaner CSS v1.3.0

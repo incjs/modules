@@ -5,16 +5,7 @@
  * @min https://raw.github.com/cloudhead/less.js/master/dist/less-{{version}}.min.js
  */
 
-(function(factory) {
-
-  if (typeof define === 'function') {
-    define('#{{id}}', [], factory);
-  }
-  else {
-    factory();
-  }
-
-})(function() {
+define('#{{id}}', [], function() {
 
   /*{{code}}*/
 

@@ -1,13 +1,4 @@
-(function(factory) {
-
-  if (typeof define === 'function') {
-    define('#jquery/1.7.2/jquery-debug', [], factory);
-  }
-  else {
-    factory();
-  }
-
-})(function(require) {
+define('#jquery/1.7.2/jquery-debug', [], function(require) {
 
   /*!
  * jQuery JavaScript Library v1.7.2
