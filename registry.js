@@ -406,5 +406,18 @@ define({
     "dirpath": "store",
     "gzipped": "1KB",
     "raw": "7KB"
+  },
+  "swfobject": {
+    "name": "swfobject",
+    "description": "SWFObject is an easy-to-use and standards-friendly method to embed Flash content, which utilizes one small JavaScript file.",
+    "author": "https://github.com/swfobject",
+    "url": "https://github.com/swfobject/swfobject",
+    "keywords": "util",
+    "version": "2.2.0",
+    "extra": [ "expressInstall.swf" ],
+    "filename": "swfobject",
+    "dirpath": "swfobject",
+    "gzipped": "4KB",
+    "raw": "25KB"
   }
 });

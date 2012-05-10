@@ -114,6 +114,11 @@
         test.assert(store.get, 'store.get is ok');
       },
 
+      'swfobject': function(meta, swfobject) {
+        test.assert(global['swfobject'] === undefined, 'no global variable');
+        test.assert(swfobject.embedSWF, 'swfobject.embedSWF is ok');
+      },
+
       'underscore': function(meta, _) {
         test.assert(global['_'] === undefined, 'no global variable');
         test.assert(_.VERSION === meta.version, meta.version);
