@@ -147,7 +147,7 @@ define({
     "url": "http://pivotal.github.com/jasmine/",
     "keywords": "test",
     "version": "1.1.0",
-    "extra": [ "/Users/lifesinger/Sites/seajs/spm/modules/jasmine/jasmine-html.js", "/Users/lifesinger/Sites/seajs/spm/modules/jasmine/jasmine.css" ],
+    "extra": [ "jasmine-html.js", "jasmine.css" ],
     "filename": "jasmine",
     "dirpath": "jasmine",
     "gzipped": "15KB"
