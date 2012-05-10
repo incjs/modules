@@ -29,7 +29,7 @@ if (path.existsSync(REGISTRY_FILE)) {
 var argv2 = process.argv[2];
 var items = argv2 ? [argv2] : getModuleNames(__dirname);
 
-// go
+// run
 next();
 
 
