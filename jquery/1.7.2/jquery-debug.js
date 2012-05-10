@@ -9406,5 +9406,5 @@ if ( typeof define === "function" && define.amd && define.amd.jQuery ) {
 })( window );
 
 
-  if (require) return $.noConflict(true);
+  return $.noConflict(true);
 });

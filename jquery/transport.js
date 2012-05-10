@@ -15,5 +15,5 @@ define('#{{id}}', [], function(require) {
 
   /*{{code}}*/
 
-  if (require) return $.noConflict(true);
+  return $.noConflict(true);
 });
