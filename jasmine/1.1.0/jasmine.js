@@ -608,7 +608,7 @@ define('#jasmine/1.1.0/jasmine', [], function(require, exports, module) {
   var xdescribe = function(description, specDefinitions) {
     return jasmine.getEnv().xdescribe(description, specDefinitions);
   };
-  setExports('xdescrible', xdescribe);
+  setExports('xdescribe', xdescribe);
 
 
 // Provide the XMLHttpRequest class for IE 5.x-6.x:
