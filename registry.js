@@ -414,7 +414,7 @@ define({
     "url": "https://github.com/swfobject/swfobject",
     "keywords": "util",
     "version": "2.2.0",
-    "extra": [ "expressInstall.swf" ],
+    "extra": [ "swfobject-debug.js", "expressInstall.swf" ],
     "filename": "swfobject",
     "dirpath": "swfobject",
     "gzipped": "4KB",

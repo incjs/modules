@@ -6,7 +6,7 @@
  * @keywords util
  *
  * @version 2.2.0
- * @extra expressInstall.swf
+ * @extra swfobject-debug.js,expressInstall.swf
  */
 
 /* manually transport */
