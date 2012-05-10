@@ -109,6 +109,11 @@
         test.assert(QS.parse, 'QueryString.parse is ok');
       },
 
+      'store': function(meta, store) {
+        test.assert(global['store'] === undefined, 'no global variable');
+        test.assert(store.get, 'store.get is ok');
+      },
+
       'underscore': function(meta, _) {
         test.assert(global['_'] === undefined, 'no global variable');
         test.assert(_.VERSION === meta.version, meta.version);
