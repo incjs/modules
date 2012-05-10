@@ -419,5 +419,34 @@ define({
     "dirpath": "swfobject",
     "gzipped": "4KB",
     "raw": "25KB"
+  },
+  "handlebars": {
+    "package": "https://raw.github.com/wycats/handlebars.js/master/package.json",
+    "version": "1.0.0",
+    "src": "https://github.com/downloads/wycats/handlebars.js/handlebars.runtime-1.0.0.beta.6",
+    "name": "handlebars",
+    "description": "Extension of the Mustache logicless template language",
+    "homepage": "http://www.handlebarsjs.com/",
+    "keywords": [ "handlebars mustache template html" ],
+    "repository": {
+      "type": "git",
+      "url": "git://github.com/kpdecker/handlebars.js.git"
+    },
+    "engines": {
+      "node": ">=0.4.7"
+    },
+    "dependencies": {
+      "optimist": "~0.3",
+      "uglify-js": "~1.2"
+    },
+    "devDependencies": {},
+    "main": "lib/handlebars.js",
+    "bin": {
+      "handlebars": "bin/handlebars"
+    },
+    "filename": "handlebars",
+    "dirpath": "handlebars",
+    "gzipped": "1KB",
+    "raw": "6KB"
   }
 });

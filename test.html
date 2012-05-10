@@ -68,6 +68,11 @@
         test.assert(iScroll.prototype.scrollTo, 'iScroll.scrollTo is ok');
       },
 
+      'handlebars': function(meta, Handlebars) {
+        test.assert(global['Handlebars'] === undefined, 'no global variable');
+        test.assert(Handlebars.registerHelper, 'Handlebars.registerHelper is ok');
+      },
+
       'jasmine': function(meta, jasmine) {
         test.assert(global['jasmine'], 'global.jasmine is ok');
         test.assert(global['describe'], 'describe is ok');

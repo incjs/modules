@@ -25,8 +25,9 @@ if (path.existsSync(REGISTRY_FILE)) {
 }
 
 
-// get all modules
-var items = getModuleNames(__dirname);
+// get module names
+var argv2 = process.argv[2];
+var items = argv2 ? [argv2] : getModuleNames(__dirname);
 
 // go
 next();
