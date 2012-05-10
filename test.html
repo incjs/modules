@@ -38,36 +38,19 @@
 
   define('~/tests', function(require, exports) {
 
-    var test = require('http://seajs.github.com/seajs/test/test.js');
+    var test = require('http://seajs.org/test/test.js');
     var registry = require('./registry');
     var global = this;
 
     var testCases = {
       'async': function(meta, async) {
-        test.assert(global['async'] === undefined, 'no global async');
+        test.assert(global['async'] === undefined, 'no global variable');
         test.assert(async.forEach, 'async.forEach');
       },
 
-      'backbone': normalCheck('Backbone'),
-      'cookie': normalCheck('Cookie'),
-
-      'jquery': function(meta, $) {
-        test.assert(global['jQuery'] === undefined, 'no global jQuery');
-        test.assert(global['$'] === undefined, 'no global $');
-        test.assert(meta.version.indexOf($.fn.jquery) === 0, $.fn.jquery);
-      },
-
-      'mustache': function(meta, Mustache) {
-        test.assert(global['Mustache'] === undefined, 'no global Mustache');
-        test.assert(Mustache.version.indexOf(meta.version) === 0, Mustache.version);
-      },
-
-      'querystring': normalCheck('QueryString'),
-      'underscore': normalCheck('_'),
-
-      'labjs': function(meta, LAB) {
-        test.assert(global['$LAB'] === undefined, 'no global $LAB');
-        test.assert(LAB.script, '$LAB.script is ok');
+      'backbone': function(meta, Backbone) {
+        test.assert(global['Backbone'] === undefined, 'no global variable');
+        test.assert(Backbone.VERSION === meta.version, meta.version);
       },
 
       'coffee': function(meta, CS) {
@@ -75,9 +58,14 @@
         test.assert(CS.VERSION, CS.VERSION);
       },
 
-      'less': function(meta, less) {
-        test.assert(global['less'], 'global.less is ok');
-        test.assert(less.Parser, 'less.Parser');
+      'cookie': function(meta, Cookie) {
+        test.assert(global['Cookie'] === undefined, 'no global variable');
+        test.assert(Cookie.get, 'Cookie.get is ok');
+      },
+
+      'iscroll': function(meta, iScroll) {
+        test.assert(global['iScroll'] === undefined, 'no global variable');
+        test.assert(iScroll.prototype.scrollTo, 'iScroll.scrollTo is ok');
       },
 
       'jasmine': function(meta, jasmine) {
@@ -85,23 +73,49 @@
         test.assert(global['describe'], 'describe is ok');
       },
 
-      'iscroll': function(meta, iScroll) {
-        test.assert(global['iScroll'] === undefined, 'no global iScroll');
-        test.assert(iScroll.prototype.scrollTo, 'iScroll.scrollTo is ok');
+      'jquery': function(meta, $) {
+        test.assert(global['jQuery'] === undefined, 'no global variable');
+        test.assert(global['$'] === undefined, 'no global $');
+        test.assert(meta.version.indexOf($.fn.jquery) === 0, $.fn.jquery);
       },
 
-      'moment': function(meta, moment) {
-        test.assert(global['moment'] === undefined, 'no global moment');
-        test.assert(moment.isMoment, 'moment.isMoment is ok');
+      'labjs': function(meta, LAB) {
+        test.assert(global['$LAB'] === undefined, 'no global variable');
+        test.assert(LAB.script, '$LAB.script is ok');
+      },
+
+      'less': function(meta, less) {
+        test.assert(global['less'], 'global.less is ok');
+        test.assert(less.Parser, 'less.Parser');
       },
 
       'marked': function(meta, marked) {
-          test.assert(global['marked'] == undefined, 'no global marked');
-          test.assert(marked.parse, 'marked.parse is ok');
+        test.assert(global['marked'] == undefined, 'no global variable');
+        test.assert(marked.parse, 'marked.parse is ok');
+      },
+
+      'moment': function(meta, moment) {
+        test.assert(global['moment'] === undefined, 'no global variable');
+        test.assert(moment.isMoment, 'moment.isMoment is ok');
+      },
+
+      'mustache': function(meta, Mustache) {
+        test.assert(global['Mustache'] === undefined, 'no global variable');
+        test.assert(Mustache.version.indexOf(meta.version) === 0, Mustache.version);
+      },
+
+      'querystring': function(meta, QS) {
+        test.assert(global['QueryString'] === undefined, 'no global variable');
+        test.assert(QS.parse, 'QueryString.parse is ok');
+      },
+
+      'underscore': function(meta, _) {
+        test.assert(global['_'] === undefined, 'no global variable');
+        test.assert(_.VERSION === meta.version, meta.version);
       },
 
       'zepto': function(meta, Zepto) {
-        test.assert(global['Zepto'] === undefined, 'no global Zepto');
+        test.assert(global['Zepto'] === undefined, 'no global variable');
         test.assert(Zepto.Event, 'Zepto.Event is ok');
       }
     };
@@ -144,15 +158,6 @@
     exports.getTestItems = getTestItems;
 
 
-    function normalCheck(globalName) {
-      return function(meta, O) {
-        test.assert(this[globalName] === undefined, 'no global ' + globalName);
-
-        var version = O.version || O.VERSION;
-        test.assert(version === meta.version, version);
-      };
-    }
-
     function getTestItems() {
       return Object.keys(registry).filter(function(item) {
         return ['seajs', 'es5-safe', 'json'].indexOf(item) === -1;
@@ -168,6 +173,10 @@
       var meta = tests.registry[name];
       var filename = meta.filename;
       alias[name] = name + '/' + meta.version + '/' + filename;
+
+      if (name === 'jquery') {
+        alias['$'] = alias[name];
+      }
     });
 
     seajs.config({ alias: alias });

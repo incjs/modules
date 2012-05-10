@@ -87,34 +87,70 @@ define({
     "gzipped": "41KB"
   },
   "cookie": {
-    "package": "https://raw.github.com/seajs/dew/master/src/cookie/package.json",
+    "package": "https://raw.github.com/alipay/arale/master/lib/cookie/package.json",
     "name": "cookie",
     "description": "Provides utilities for dealing with cookies.",
-    "url": "https://github.com/seajs/dew/tree/master/src/cookie",
+    "url": "https://github.com/alipay/arale/tree/master/lib/cookie",
     "keywords": [ "util" ],
     "author": "Frank Wang <lifesinger@gmail.com>",
     "version": "1.0.2",
-    "src": "https://raw.github.com/seajs/dew/master/build/cookie/cookie-debug.js",
-    "min": "https://raw.github.com/seajs/dew/master/build/cookie/cookie.js",
+    "files": [ "./src/cookie.js" ],
+    "src": "http://aralejs.org/dist/cookie/1.0.2/cookie-debug.js",
+    "min": "http://aralejs.org/dist/cookie/1.0.2/cookie.js",
+    "dist": {
+      "cookie.js": [ "default" ]
+    },
     "filename": "cookie",
     "dirpath": "cookie",
     "gzipped": "1KB",
-    "raw": "5KB"
+    "raw": "6KB"
   },
   "es5-safe": {
-    "package": "https://raw.github.com/seajs/dew/master/src/es5-safe/package.json",
+    "package": "https://raw.github.com/lifesinger/dew/master/lib/es5-safe/package.json",
     "name": "es5-safe",
     "description": "Provides compatibility shims so that legacy JavaScript engines behave as closely as possible to ES5.",
-    "url": "https://github.com/seajs/dew/tree/master/src/es5-safe",
+    "url": "https://github.com/lifesinger/dew/es5-safe",
     "keywords": [ "util" ],
     "author": "Frank Wang <lifesinger@gmail.com>",
     "version": "0.9.2",
-    "src": "https://raw.github.com/seajs/dew/master/build/es5-safe/es5-safe-debug.js",
-    "min": "https://raw.github.com/seajs/dew/master/build/es5-safe/es5-safe.js",
+    "src": "https://raw.github.com/lifesinger/dew/master/dist/es5-safe/0.9.2/es5-safe-debug.js",
+    "min": "https://raw.github.com/lifesinger/dew/master/dist/es5-safe/0.9.2/es5-safe.js",
     "filename": "es5-safe",
     "dirpath": "es5-safe",
     "gzipped": "1KB",
     "raw": "10KB"
+  },
+  "iscroll": {
+    "package": "https://raw.github.com/cubiq/iscroll/master/package.json",
+    "src": "https://raw.github.com/cubiq/iscroll/master/src/iscroll.js",
+    "name": "iscroll",
+    "description": "smooth scrolling for mobile webkit",
+    "version": "4.1.9",
+    "homepage": "http://cubiq.org/iscroll-4",
+    "author": "Matteo Spinelli <> (http://cubiq.org)",
+    "keywords": [ "ender", "iscroll", "scrolling", "webkit", "iphone", "android" ],
+    "main": "./src/iscroll.js",
+    "ender": "./src/ender.js",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/cubiq/iscroll.git"
+    },
+    "filename": "iscroll",
+    "dirpath": "iscroll",
+    "gzipped": "6KB",
+    "raw": "33KB"
+  },
+  "jasmine": {
+    "name": "jasmine",
+    "description": "Jasmine is a behavior-driven development framework for testing your JavaScript code. It does not depend on any other JavaScript frameworks. It does not require a DOM. And it has a clean, obvious syntax so that you can easily write tests.",
+    "author": "Pivotal Labs",
+    "url": "http://pivotal.github.com/jasmine/",
+    "keywords": "test",
+    "version": "1.1.0",
+    "extra": [ "/Users/lifesinger/Sites/seajs/spm/modules/jasmine/jasmine-html.js", "/Users/lifesinger/Sites/seajs/spm/modules/jasmine/jasmine.css" ],
+    "filename": "jasmine",
+    "dirpath": "jasmine",
+    "gzipped": "15KB"
   },
   "jquery": {
     "name": "jquery",
@@ -129,6 +165,18 @@ define({
     "dirpath": "jquery",
     "gzipped": "33KB",
     "raw": "247KB"
+  },
+  "json": {
+    "name": "json",
+    "description": "JSON in JavaScript.",
+    "author": "Douglas Crockford",
+    "url": "http://www.JSON.org/",
+    "version": "1.0.2",
+    "src": "https://raw.github.com/douglascrockford/JSON-js/master/json2.js",
+    "filename": "json",
+    "dirpath": "json",
+    "gzipped": "1KB",
+    "raw": "17KB"
   },
   "labjs": {
     "name": "labjs",
@@ -169,129 +217,30 @@ define({
     "filename": "less",
     "dirpath": "less",
     "gzipped": "15KB",
-    "raw": "115KB"
+    "raw": "114KB"
   },
-  "mustache": {
-    "package": "https://raw.github.com/janl/mustache.js/master/package.json",
-    "version": "0.5.0",
-    "src": "https://raw.github.com/janl/mustache.js/master/mustache.js",
-    "name": "mustache",
-    "description": "Logic-less {{mustache}} templates with JavaScript",
-    "author": "mustache.js Authors <http://github.com/janl/mustache.js>",
-    "keywords": [ "mustache", "template", "templates", "ejs" ],
-    "main": "./mustache",
-    "filename": "mustache",
-    "dirpath": "mustache",
-    "gzipped": "2KB",
-    "raw": "14KB"
-  },
-  "querystring": {
-    "package": "https://raw.github.com/seajs/dew/master/src/querystring/package.json",
-    "name": "querystring",
-    "description": "Provides utilities for dealing with query strings.",
-    "url": "https://github.com/seajs/dew/tree/master/src/querystring",
-    "keywords": [ "util" ],
-    "author": "Frank Wang <lifesinger@gmail.com>",
-    "version": "1.0.1",
-    "src": "https://raw.github.com/seajs/dew/master/build/querystring/querystring-debug.js",
-    "min": "https://raw.github.com/seajs/dew/master/build/querystring/querystring.js",
-    "filename": "querystring",
-    "dirpath": "querystring",
-    "gzipped": "1KB",
-    "raw": "5KB"
-  },
-  "seajs": {
-    "package": "https://raw.github.com/seajs/seajs/master/package.json",
-    "filename": "sea",
-    "root": "https://raw.github.com/seajs/seajs/master/build/",
-    "src": "sea-debug.js",
-    "min": "sea.js",
-    "extra": [ "plugin-base.js", "plugin-map.js", "plugin-text.js", "plugin-json.js", "plugin-coffee.js", "plugin-less.js" ],
-    "name": "seajs",
-    "version": "1.1.0",
-    "description": "A Module Loader for the Web",
-    "homepage": "https://seajs.org/",
-    "keywords": [ "loader", "module", "commonjs", "browser", "nodejs" ],
-    "author": "Frank Wang <lifesinger@gmail.com>",
-    "engines": {
-      "node": ">= 0.6.3"
+  "marked": {
+    "package": "https://raw.github.com/chjj/marked/master/package.json",
+    "src": "https://raw.github.com/chjj/marked/v0.2.4/lib/marked.js",
+    "version": "0.2.4",
+    "name": "marked",
+    "description": "A markdown parser built for speed",
+    "author": "Christopher Jeffrey",
+    "main": "./lib/marked.js",
+    "bin": "./bin/marked",
+    "man": "./man/marked.1",
+    "preferGlobal": false,
+    "repository": "git://github.com/chjj/marked.git",
+    "homepage": "https://github.com/chjj/marked",
+    "bugs": {
+      "url": "http://github.com/chjj/marked/issues"
     },
-    "dependencies": [],
-    "repository": {
-      "type": "git",
-      "url": "git://github.com/seajs/seajs.git"
-    },
-    "main": "./lib/sea-node.js",
-    "preferGlobal": true,
-    "dirpath": "seajs",
-    "gzipped": "4KB",
-    "raw": "32KB"
-  },
-  "underscore": {
-    "package": "https://raw.github.com/documentcloud/underscore/master/package.json",
-    "src": "http://documentcloud.github.com/underscore/underscore.js",
-    "min": "http://documentcloud.github.com/underscore/underscore-min.js",
-    "name": "underscore",
-    "description": "JavaScript's functional programming helper library.",
-    "homepage": "http://documentcloud.github.com/underscore/",
-    "keywords": [ "util", "functional", "server", "client", "browser" ],
-    "author": "Jeremy Ashkenas <jeremy@documentcloud.org>",
-    "repository": {
-      "type": "git",
-      "url": "git://github.com/documentcloud/underscore.git"
-    },
-    "main": "underscore.js",
-    "version": "1.3.3",
-    "filename": "underscore",
-    "dirpath": "underscore",
-    "gzipped": "4KB",
-    "raw": "37KB"
-  },
-  "iscroll": {
-    "package": "https://raw.github.com/cubiq/iscroll/master/package.json",
-    "src": "https://raw.github.com/cubiq/iscroll/master/src/iscroll.js",
-    "name": "iscroll",
-    "description": "smooth scrolling for mobile webkit",
-    "version": "4.1.9",
-    "homepage": "http://cubiq.org/iscroll-4",
-    "author": "Matteo Spinelli <> (http://cubiq.org)",
-    "keywords": [ "ender", "iscroll", "scrolling", "webkit", "iphone", "android" ],
-    "main": "./src/iscroll.js",
-    "ender": "./src/ender.js",
-    "repository": {
-      "type": "git",
-      "url": "https://github.com/cubiq/iscroll.git"
-    },
-    "filename": "iscroll",
-    "dirpath": "iscroll",
-    "gzipped": "6KB",
-    "raw": "33KB"
-  },
-  "zepto": {
-    "package": "https://raw.github.com/lifesinger/zepto/master/package.json",
-    "src": "https://raw.github.com/lifesinger/zepto/master/dist/zepto.js",
-    "name": "zepto",
-    "description": "Zepto is a minimalist JavaScript framework for modern browsers with a largely jQuery-compatible API.",
-    "url": "http://zeptojs.com",
-    "keywords": [ "dom", "webkit", "util" ],
-    "author": "Thomas Fuchs",
-    "version": "0.8.0",
-    "filename": "zepto",
-    "dirpath": "zepto",
-    "gzipped": "9KB",
-    "raw": "51KB"
-  },
-  "jasmine": {
-    "name": "jasmine",
-    "description": "Jasmine is a behavior-driven development framework for testing your JavaScript code. It does not depend on any other JavaScript frameworks. It does not require a DOM. And it has a clean, obvious syntax so that you can easily write tests.",
-    "author": "Pivotal Labs",
-    "url": "http://pivotal.github.com/jasmine/",
-    "keywords": "test",
-    "version": "1.1.0",
-    "filename": "jasmine",
-    "dirpath": "jasmine",
-    "extra": [ "jasmine-html.js", "jasmine.css" ],
-    "gzipped": "15KB"
+    "keywords": [ "markdown", "markup", "html" ],
+    "tags": [ "markdown", "markup", "html" ],
+    "filename": "marked",
+    "dirpath": "marked",
+    "gzipped": "3KB",
+    "raw": "16KB"
   },
   "moment": {
     "package": "https://github.com/timrwood/moment/raw/master/package.json",
@@ -331,39 +280,94 @@ define({
     "gzipped": "4KB",
     "raw": "31KB"
   },
-  "json": {
-    "name": "json",
-    "description": "JSON in JavaScript.",
-    "author": "Douglas Crockford",
-    "url": "http://www.JSON.org/",
-    "version": "1.0.2",
-    "src": "https://raw.github.com/douglascrockford/JSON-js/master/json2.js",
-    "filename": "json",
-    "dirpath": "json",
-    "gzipped": "1KB",
-    "raw": "17KB"
+  "mustache": {
+    "package": "https://raw.github.com/janl/mustache.js/master/package.json",
+    "version": "0.5.0",
+    "src": "https://raw.github.com/janl/mustache.js/master/mustache.js",
+    "name": "mustache",
+    "description": "Logic-less {{mustache}} templates with JavaScript",
+    "author": "mustache.js Authors <http://github.com/janl/mustache.js>",
+    "keywords": [ "mustache", "template", "templates", "ejs" ],
+    "main": "./mustache",
+    "filename": "mustache",
+    "dirpath": "mustache",
+    "gzipped": "2KB",
+    "raw": "14KB"
   },
-  "marked": {
-    "package": "https://raw.github.com/chjj/marked/master/package.json",
-    "src": "https://raw.github.com/chjj/marked/v0.2.4/lib/marked.js",
-    "version": "0.2.4",
-    "name": "marked",
-    "description": "A markdown parser built for speed",
-    "author": "Christopher Jeffrey",
-    "main": "./lib/marked.js",
-    "bin": "./bin/marked",
-    "man": "./man/marked.1",
-    "preferGlobal": false,
-    "repository": "git://github.com/chjj/marked.git",
-    "homepage": "https://github.com/chjj/marked",
-    "bugs": {
-      "url": "http://github.com/chjj/marked/issues"
+  "querystring": {
+    "package": "https://raw.github.com/lifesinger/dew/master/lib/querystring/package.json",
+    "name": "querystring",
+    "description": "Provides utilities for dealing with query strings.",
+    "url": "https://github.com/lifesinger/dew/querystring",
+    "keywords": [ "util" ],
+    "author": "Frank Wang <lifesinger@gmail.com>",
+    "version": "1.0.2",
+    "src": "https://raw.github.com/lifesinger/dew/master/dist/querystring/1.0.2/querystring-debug.js",
+    "min": "https://raw.github.com/lifesinger/dew/master/dist/querystring/1.0.2/querystring.js",
+    "filename": "querystring",
+    "dirpath": "querystring",
+    "gzipped": "1KB",
+    "raw": "4KB"
+  },
+  "seajs": {
+    "package": "https://raw.github.com/seajs/seajs/master/package.json",
+    "filename": "sea",
+    "root": "https://raw.github.com/seajs/seajs/master/build/",
+    "src": "sea-debug.js",
+    "min": "sea.js",
+    "extra": [ "plugin-base.js", "plugin-map.js", "plugin-text.js", "plugin-json.js", "plugin-coffee.js", "plugin-less.js" ],
+    "name": "seajs",
+    "version": "1.1.0",
+    "description": "A Module Loader for the Web",
+    "homepage": "https://seajs.org/",
+    "keywords": [ "loader", "module", "commonjs", "browser", "nodejs" ],
+    "author": "Frank Wang <lifesinger@gmail.com>",
+    "engines": {
+      "node": ">= 0.6.3"
     },
-    "keywords": [ "markdown", "markup", "html" ],
-    "tags": [ "markdown", "markup", "html" ],
-    "filename": "marked",
-    "dirpath": "marked",
-    "gzipped": "3KB",
-    "raw": "16KB"
+    "dependencies": [],
+    "repository": {
+      "type": "git",
+      "url": "git://github.com/seajs/seajs.git"
+    },
+    "main": "./lib/sea-node.js",
+    "preferGlobal": true,
+    "dirpath": "seajs",
+    "gzipped": "4KB",
+    "raw": "31KB"
+  },
+  "underscore": {
+    "package": "https://raw.github.com/documentcloud/underscore/master/package.json",
+    "src": "http://documentcloud.github.com/underscore/underscore.js",
+    "min": "http://documentcloud.github.com/underscore/underscore-min.js",
+    "name": "underscore",
+    "description": "JavaScript's functional programming helper library.",
+    "homepage": "http://documentcloud.github.com/underscore/",
+    "keywords": [ "util", "functional", "server", "client", "browser" ],
+    "author": "Jeremy Ashkenas <jeremy@documentcloud.org>",
+    "repository": {
+      "type": "git",
+      "url": "git://github.com/documentcloud/underscore.git"
+    },
+    "main": "underscore.js",
+    "version": "1.3.3",
+    "filename": "underscore",
+    "dirpath": "underscore",
+    "gzipped": "4KB",
+    "raw": "37KB"
+  },
+  "zepto": {
+    "package": "https://raw.github.com/lifesinger/zepto/master/package.json",
+    "src": "https://raw.github.com/lifesinger/zepto/master/dist/zepto.js",
+    "name": "zepto",
+    "description": "Zepto is a minimalist JavaScript framework for modern browsers with a largely jQuery-compatible API.",
+    "url": "http://zeptojs.com",
+    "keywords": [ "dom", "webkit", "util" ],
+    "author": "Thomas Fuchs",
+    "version": "0.8.0",
+    "filename": "zepto",
+    "dirpath": "zepto",
+    "gzipped": "9KB",
+    "raw": "51KB"
   }
 });

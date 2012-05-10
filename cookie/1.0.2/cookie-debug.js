@@ -8,7 +8,6 @@ define("#cookie/1.0.2/cookie-debug", [], function(require, exports) {
 
 
     var Cookie = exports;
-    Cookie.version = '1.0.2';
 
     var decode = decodeURIComponent;
     var encode = encodeURIComponent;
@@ -186,5 +185,5 @@ define("#cookie/1.0.2/cookie-debug", [], function(require, exports) {
         return s;
     }
 
-})();
+});
 
