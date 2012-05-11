@@ -124,7 +124,7 @@ define({
     "package": "https://raw.github.com/wycats/handlebars.js/master/package.json",
     "dependencies": [],
     "version": "1.0.0",
-    "src": "https://github.com/downloads/wycats/handlebars.js/handlebars.runtime-1.0.0.beta.6",
+    "src": "https://github.com/downloads/wycats/handlebars.js/handlebars-1.0.0.beta.6.js",
     "name": "handlebars",
     "description": "Extension of the Mustache logicless template language",
     "homepage": "http://www.handlebarsjs.com/",
@@ -143,8 +143,8 @@ define({
     },
     "filename": "handlebars",
     "dirpath": "handlebars",
-    "gzipped": "1KB",
-    "raw": "6KB"
+    "gzipped": "9KB",
+    "raw": "49KB"
   },
   "iscroll": {
     "package": "https://raw.github.com/cubiq/iscroll/master/package.json",
