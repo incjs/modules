@@ -7,7 +7,7 @@ define({
     "description": "Higher-order functions and common patterns for asynchronous code",
     "main": "./index",
     "author": "Caolan McMahon",
-    "version": "0.1.18",
+    "version": "0.1.22",
     "repository": {
       "type": "git",
       "url": "http://github.com/caolan/async.git"
@@ -58,10 +58,10 @@ define({
     "description": "Unfancy JavaScript",
     "keywords": [ "javascript", "language", "coffeescript", "compiler" ],
     "author": "Jeremy Ashkenas",
-    "version": "1.3.1",
+    "version": "1.3.3",
     "licenses": [ {
       "type": "MIT",
-      "url": "http://github.com/jashkenas/coffee-script/raw/master/LICENSE"
+      "url": "https://raw.github.com/jashkenas/coffee-script/master/LICENSE"
     } ],
     "engines": {
       "node": ">=0.4.0"
@@ -75,6 +75,7 @@ define({
       "cake": "./bin/cake"
     },
     "homepage": "http://coffeescript.org",
+    "bugs": "https://github.com/jashkenas/coffee-script/issues",
     "repository": {
       "type": "git",
       "url": "git://github.com/jashkenas/coffee-script.git"
@@ -84,7 +85,7 @@ define({
       "jison": ">=0.2.0"
     },
     "dirpath": "coffee",
-    "gzipped": "41KB"
+    "gzipped": "0KB"
   },
   "cookie": {
     "package": "https://raw.github.com/alipay/arale/master/lib/cookie/package.json",

@@ -1,7 +1,14 @@
 /**
- * @package https://raw.github.com/lifesinger/zepto/master/package.json
+ * @name zepto
+ * @description Zepto is a minimalist JavaScript framework for modern browsers with a largely jQuery-compatible API.
+ * @author Thomas Fuchs
+ * @url http://zeptojs.com/
+ * @keywords dom
+ * @keywords mobile
  *
- * @src https://raw.github.com/lifesinger/zepto/master/dist/zepto.js
+ * @version 1.0.0
+ * @src http://zeptojs.com/zepto.js
+ * @min http://zeptojs.com/zepto.min.js
  */
 
 define('#{{id}}', [], function(require) {
