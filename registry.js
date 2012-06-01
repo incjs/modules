@@ -434,17 +434,17 @@ define({
     "raw": "37KB"
   },
   "zepto": {
-    "package": "https://raw.github.com/lifesinger/zepto/master/package.json",
-    "src": "https://raw.github.com/lifesinger/zepto/master/dist/zepto.js",
     "name": "zepto",
     "description": "Zepto is a minimalist JavaScript framework for modern browsers with a largely jQuery-compatible API.",
-    "url": "http://zeptojs.com",
-    "keywords": [ "dom", "webkit", "util" ],
     "author": "Thomas Fuchs",
-    "version": "0.8.0",
+    "url": "http://zeptojs.com/",
+    "keywords": [ "dom", "mobile" ],
+    "version": "1.0.0",
+    "src": "http://zeptojs.com/zepto.js",
+    "min": "http://zeptojs.com/zepto.min.js",
     "filename": "zepto",
     "dirpath": "zepto",
     "gzipped": "9KB",
-    "raw": "51KB"
+    "raw": "47KB"
   }
 });
