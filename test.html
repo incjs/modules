@@ -132,6 +132,12 @@
       'zepto': function(meta, Zepto) {
         test.assert(global['Zepto'] === undefined, 'no global variable');
         test.assert(Zepto.Event, 'Zepto.Event is ok');
+      },
+
+      'raphael': function(meta, Raphael) {
+        test.assert(global['Raphael'] === undefined, 'no global variable');
+        test.assert(global['eve'] === undefined, 'no global variable');
+        test.assert(Raphael.version, 'Raphael.version is ok');
       }
     };
 
