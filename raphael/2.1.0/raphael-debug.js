@@ -1,4 +1,4 @@
-define('#raphael/2.1.0/raphael-debug', [], function(require) {
+define('#raphael/2.1.0/raphael-debug', [], function() {
   var define;
 
   // ┌────────────────────────────────────────────────────────────────────┐ \\
@@ -5818,10 +5818,10 @@ window.Raphael.vml && function (R) {
 }(window.Raphael);
 
   var global = this;
-  exports = global.Raphael;
+  var exports = global.Raphael;
 
-  delete global.eve;
-  delete global.Raphael;
+  global.eve = undefined;
+  global.Raphael = undefined;
 
   return exports;
 });

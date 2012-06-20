@@ -10,16 +10,16 @@
  * @min https://raw.github.com/DmitryBaranovskiy/raphael/master/raphael-min.js
  */
 
-define('#{{id}}', [], function(require) {
+define('#{{id}}', [], function() {
   var define;
 
   /*{{code}}*/
 
   var global = this;
-  exports = global.Raphael;
+  var exports = global.Raphael;
 
-  delete global.eve;
-  delete global.Raphael;
+  global.eve = undefined;
+  global.Raphael = undefined;
 
   return exports;
 });
