@@ -15,11 +15,5 @@ define('#{{id}}', [], function() {
 
   /*{{code}}*/
 
-  var global = this;
-  var exports = global.Raphael;
-
-  global.eve = undefined;
-  global.Raphael = undefined;
-
-  return exports;
+  return Raphael;
 });

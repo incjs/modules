@@ -5817,11 +5817,5 @@ window.Raphael.vml && function (R) {
     }
 }(window.Raphael);
 
-  var global = this;
-  var exports = global.Raphael;
-
-  global.eve = undefined;
-  global.Raphael = undefined;
-
-  return exports;
+  return Raphael;
 });
