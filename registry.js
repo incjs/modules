@@ -339,12 +339,12 @@ define({
   "seajs": {
     "package": "https://raw.github.com/seajs/seajs/master/package.json",
     "filename": "sea",
-    "root": "https://raw.github.com/seajs/seajs/master/build/",
+    "root": "https://raw.github.com/seajs/seajs/master/dist/",
     "src": "sea-debug.js",
     "min": "sea.js",
-    "extra": [ "plugin-base.js", "plugin-map.js", "plugin-text.js", "plugin-json.js", "plugin-coffee.js", "plugin-less.js" ],
+    "extra": [ "plugin-base.js", "plugin-debug.js", "plugin-combo.js", "plugin-text.js", "plugin-json.js", "plugin-coffee.js", "plugin-less.js" ],
     "name": "seajs",
-    "version": "1.1.0",
+    "version": "1.1.8",
     "description": "A Module Loader for the Web",
     "homepage": "https://seajs.org/",
     "keywords": [ "loader", "module", "commonjs", "browser", "nodejs" ],
@@ -361,7 +361,7 @@ define({
     "preferGlobal": true,
     "dirpath": "seajs",
     "gzipped": "4KB",
-    "raw": "31KB"
+    "raw": "30KB"
   },
   "store": {
     "package": "https://raw.github.com/marcuswestin/store.js/master/package.json",
