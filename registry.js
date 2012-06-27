@@ -463,7 +463,6 @@ define({
   },
   "base": {
     "package": "https://raw.github.com/alipay/arale/master/lib/base/package.json",
-    "root": "http://aralejs.org/dist/base/{{version}}/",
     "src": "http://aralejs.org/dist/base/0.9.16/base-debug.js",
     "min": "http://aralejs.org/dist/base/0.9.16/base.js",
     "extra": [ "http://aralejs.org/dist/base/0.9.16/aspect.js", "http://aralejs.org/dist/base/0.9.16/aspect-debug.js", "http://aralejs.org/dist/base/0.9.16/attribute.js", "http://aralejs.org/dist/base/0.9.16/attribute-debug.js" ],
@@ -476,7 +475,6 @@ define({
   },
   "class": {
     "package": "https://raw.github.com/alipay/arale/master/lib/class/package.json",
-    "root": "http://aralejs.org/dist/class/{{version}}/",
     "src": "http://aralejs.org/dist/class/0.9.2/class-debug.js",
     "min": "http://aralejs.org/dist/class/0.9.2/class.js",
     "name": "class",
@@ -491,7 +489,6 @@ define({
   },
   "events": {
     "package": "https://raw.github.com/alipay/arale/master/lib/events/package.json",
-    "root": "http://aralejs.org/dist/events/{{version}}/",
     "src": "http://aralejs.org/dist/events/0.9.1/events-debug.js",
     "min": "http://aralejs.org/dist/events/0.9.1/events.js",
     "name": "events",
@@ -506,7 +503,6 @@ define({
   },
   "widget": {
     "package": "https://raw.github.com/alipay/arale/master/lib/widget/package.json",
-    "root": "http://aralejs.org/dist/widget/{{version}}/",
     "src": "http://aralejs.org/dist/widget/0.9.16/widget-debug.js",
     "min": "http://aralejs.org/dist/widget/0.9.16/widget.js",
     "extra": [ "http://aralejs.org/dist/widget/0.9.16/ast-printer.js", "http://aralejs.org/dist/widget/0.9.16/ast-printer-debug.js", "http://aralejs.org/dist/widget/0.9.16/ast-printer-mobile.js", "http://aralejs.org/dist/widget/0.9.16/ast-printer-mobile-debug.js", "http://aralejs.org/dist/widget/0.9.16/auto-render.js", "http://aralejs.org/dist/widget/0.9.16/auto-render-debug.js", "http://aralejs.org/dist/widget/0.9.16/auto-render-mobile.js", "http://aralejs.org/dist/widget/0.9.16/auto-render-mobile-debug.js", "http://aralejs.org/dist/widget/0.9.16/daparser.js", "http://aralejs.org/dist/widget/0.9.16/daparser-debug.js", "http://aralejs.org/dist/widget/0.9.16/daparser-mobile.js", "http://aralejs.org/dist/widget/0.9.16/daparser-mobile-debug.js", "http://aralejs.org/dist/widget/0.9.16/templatable.js", "http://aralejs.org/dist/widget/0.9.16/templatable-debug.js", "http://aralejs.org/dist/widget/0.9.16/templatable-mobile.js", "http://aralejs.org/dist/widget/0.9.16/templatable-mobile-debug.js", "http://aralejs.org/dist/widget/0.9.16/widget-mobile.js", "http://aralejs.org/dist/widget/0.9.16/widget-mobile-debug.js" ],
