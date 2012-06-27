@@ -460,5 +460,67 @@ define({
     "dirpath": "raphael",
     "gzipped": "31KB",
     "raw": "216KB"
+  },
+  "base": {
+    "package": "https://raw.github.com/alipay/arale/master/lib/base/package.json",
+    "root": "http://aralejs.org/dist/base/{{version}}/",
+    "src": "http://aralejs.org/dist/base/0.9.16/base-debug.js",
+    "min": "http://aralejs.org/dist/base/0.9.16/base.js",
+    "extra": [ "http://aralejs.org/dist/base/0.9.16/aspect.js", "http://aralejs.org/dist/base/0.9.16/aspect-debug.js", "http://aralejs.org/dist/base/0.9.16/attribute.js", "http://aralejs.org/dist/base/0.9.16/attribute-debug.js" ],
+    "name": "base",
+    "version": "0.9.16",
+    "filename": "base",
+    "dirpath": "base",
+    "gzipped": "0KB",
+    "raw": "1KB"
+  },
+  "class": {
+    "package": "https://raw.github.com/alipay/arale/master/lib/class/package.json",
+    "root": "http://aralejs.org/dist/class/{{version}}/",
+    "src": "http://aralejs.org/dist/class/0.9.2/class-debug.js",
+    "min": "http://aralejs.org/dist/class/0.9.2/class.js",
+    "name": "class",
+    "version": "0.9.2",
+    "dist": {
+      "class.js": "default"
+    },
+    "filename": "class",
+    "dirpath": "class",
+    "gzipped": "1KB",
+    "raw": "5KB"
+  },
+  "events": {
+    "package": "https://raw.github.com/alipay/arale/master/lib/events/package.json",
+    "root": "http://aralejs.org/dist/events/{{version}}/",
+    "src": "http://aralejs.org/dist/events/0.9.1/events-debug.js",
+    "min": "http://aralejs.org/dist/events/0.9.1/events.js",
+    "name": "events",
+    "version": "0.9.1",
+    "dist": {
+      "events.js": "default"
+    },
+    "filename": "events",
+    "dirpath": "events",
+    "gzipped": "1KB",
+    "raw": "5KB"
+  },
+  "widget": {
+    "package": "https://raw.github.com/alipay/arale/master/lib/widget/package.json",
+    "root": "http://aralejs.org/dist/widget/{{version}}/",
+    "src": "http://aralejs.org/dist/widget/0.9.16/widget-debug.js",
+    "min": "http://aralejs.org/dist/widget/0.9.16/widget.js",
+    "extra": [ "http://aralejs.org/dist/widget/0.9.16/ast-printer.js", "http://aralejs.org/dist/widget/0.9.16/ast-printer-debug.js", "http://aralejs.org/dist/widget/0.9.16/ast-printer-mobile.js", "http://aralejs.org/dist/widget/0.9.16/ast-printer-mobile-debug.js", "http://aralejs.org/dist/widget/0.9.16/auto-render.js", "http://aralejs.org/dist/widget/0.9.16/auto-render-debug.js", "http://aralejs.org/dist/widget/0.9.16/auto-render-mobile.js", "http://aralejs.org/dist/widget/0.9.16/auto-render-mobile-debug.js", "http://aralejs.org/dist/widget/0.9.16/daparser.js", "http://aralejs.org/dist/widget/0.9.16/daparser-debug.js", "http://aralejs.org/dist/widget/0.9.16/daparser-mobile.js", "http://aralejs.org/dist/widget/0.9.16/daparser-mobile-debug.js", "http://aralejs.org/dist/widget/0.9.16/templatable.js", "http://aralejs.org/dist/widget/0.9.16/templatable-debug.js", "http://aralejs.org/dist/widget/0.9.16/templatable-mobile.js", "http://aralejs.org/dist/widget/0.9.16/templatable-mobile-debug.js", "http://aralejs.org/dist/widget/0.9.16/widget-mobile.js", "http://aralejs.org/dist/widget/0.9.16/widget-mobile-debug.js" ],
+    "name": "widget",
+    "version": "0.9.16",
+    "tests": [ "daparser", "widget", "templatable" ],
+    "filename": "widget",
+    "dirpath": "widget",
+    "gzipped": "2KB",
+    "raw": "14KB",
+    "dependencies": {
+      "class": ">=0.9.2",
+      "events": ">=0.9.1",
+      "base": ">=0.9.16"
+    }
   }
 });
