@@ -344,13 +344,13 @@ define({
     "min": "sea.js",
     "extra": [ "plugin-base.js", "plugin-debug.js", "plugin-combo.js", "plugin-text.js", "plugin-json.js", "plugin-coffee.js", "plugin-less.js" ],
     "name": "seajs",
-    "version": "1.1.8",
+    "version": "1.1.9",
     "description": "A Module Loader for the Web",
     "homepage": "https://seajs.org/",
     "keywords": [ "loader", "module", "commonjs", "browser", "nodejs" ],
     "author": "Frank Wang <lifesinger@gmail.com>",
     "engines": {
-      "node": ">= 0.6.3"
+      "node": ">= 0.8.0"
     },
     "dependencies": [],
     "repository": {
