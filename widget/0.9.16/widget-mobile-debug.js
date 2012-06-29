@@ -1,4 +1,4 @@
-define("#widget/0.9.16/widget-mobile-debug", ["#base/0.9.16/base-debug", "#class/0.9.2/class-debug", "#events/0.9.1/events-debug", "#base/0.9.16/aspect-debug", "#base/0.9.16/attribute-debug", "#zepto/0.8.0/zepto-debug", "#widget/0.9.16/daparser-debug", "#widget/0.9.16/auto-render-debug"], function(require, exports, module) {
+define("#widget/0.9.16/widget-mobile-debug", ["#base/0.9.16/base-debug", "#class/0.9.2/class-debug", "#events/0.9.1/events-debug", "#base/0.9.16/aspect-debug", "#base/0.9.16/attribute-debug", "#zepto/0.9.0/zepto-debug", "#widget/0.9.16/daparser-debug", "#widget/0.9.16/auto-render-debug"], function(require, exports, module) {
 
     // Widget
     // ---------
@@ -8,7 +8,7 @@ define("#widget/0.9.16/widget-mobile-debug", ["#base/0.9.16/base-debug", "#class
 
 
     var Base = require("#base/0.9.16/base-debug");
-    var $ = require("#zepto/0.8.0/zepto-debug");
+    var $ = require("#zepto/0.9.0/zepto-debug");
     var DAParser = require("#widget/0.9.16/daparser-debug");
     var AutoRender = require("#widget/0.9.16/auto-render-debug");
 
@@ -18,7 +18,7 @@ define("#widget/0.9.16/widget-mobile-debug", ["#base/0.9.16/base-debug", "#class
 
     var Widget = Base.extend({
 
-        // config 中的这些键值会直接添加到���例上，转换成 properties
+        // config 中的这些键值会直接添加到实例上，转换成 properties
         propsInAttrs: ['element', 'template', 'model', 'events'],
 
         // 与 widget 关联的 DOM 元素
@@ -66,7 +66,7 @@ define("#widget/0.9.16/widget-mobile-debug", ["#base/0.9.16/base-debug", "#class
             // 初始化 events
             this.delegateEvents();
 
-            // 子类自定义���初始化
+            // 子类自定义的初始化
             this.setup();
         },
 
@@ -110,7 +110,7 @@ define("#widget/0.9.16/widget-mobile-debug", ["#base/0.9.16/base-debug", "#class
             this.element = $(this.get('template'));
         },
 
-        // 解析 this.element 中的 data-* 配置，获得 this.dataset
+        // 解析 this.element 中的 data-* 配���，获得 this.dataset
         // 并自动将 data-action 配置转换成事件代理
         _parseDataset: function() {
             if (AutoRender.isDataApiOff(this.element)) return;
@@ -196,7 +196,7 @@ define("#widget/0.9.16/widget-mobile-debug", ["#base/0.9.16/base-debug", "#class
         },
 
         // 将 widget 渲染到页面上
-        // 渲染不仅仅包括插入到 DOM 树中，还包括样式渲染等
+        // 渲染不仅仅���括插入到 DOM 树中，还包括样式渲染等
         // 约定：子类覆盖时，需保持 `return this`
         render: function() {
 
@@ -385,7 +385,7 @@ define("#widget/0.9.16/widget-mobile-debug", ["#base/0.9.16/base-debug", "#class
         }
     }
 
-    // 对于 attrs 的 value 来说，以下值都认为是空���： null, undefined, '', [], {}
+    // 对于 attrs 的 value 来说，以下值都认为是空值： null, undefined, '', [], {}
     function isEmptyAttrValue(o) {
         return o == null || // null, undefined
                 (isString(o) || $.isArray(o)) && o.length === 0 || // '', []
