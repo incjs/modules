@@ -18,7 +18,7 @@ define("#widget/0.9.16/widget-debug", ["#base/0.9.16/base-debug", "#class/0.9.2/
 
     var Widget = Base.extend({
 
-        // config 中的这些键值会直接添加到实���上，转换成 properties
+        // config 中的这些键值会直接添加到实例上，转换成 properties
         propsInAttrs: ['element', 'template', 'model', 'events'],
 
         // 与 widget 关联的 DOM 元素
@@ -385,7 +385,7 @@ define("#widget/0.9.16/widget-debug", ["#base/0.9.16/base-debug", "#class/0.9.2/
         }
     }
 
-    // 对于 attrs 的 value 来说，以下值都认为是空值��� null, undefined, '', [], {}
+    // 对于 attrs 的 value 来说，以下值都认为是空值： null, undefined, '', [], {}
     function isEmptyAttrValue(o) {
         return o == null || // null, undefined
                 (isString(o) || $.isArray(o)) && o.length === 0 || // '', []
