@@ -3,8 +3,10 @@
  *
  * @name socketio
  * @filename socketio
- * @src https://raw.github.com/LearnBoost/socket.io-client/master/dist/socket.io.js
- * @min https://raw.github.com/LearnBoost/socket.io-client/master/dist/socket.io.min.js
+ * @root https://raw.github.com/LearnBoost/socket.io-client/master/dist/
+ * @src socket.io.js
+ * @min socket.io.min.js
+ * @extra WebSocketMain.swf,WebSocketMainInsecure.swf
  */
 
 define('#{{id}}', [], function(require, exports, module) {
