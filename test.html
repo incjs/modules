@@ -134,6 +134,11 @@
         test.assert(Zepto.Event, 'Zepto.Event is ok');
       },
 
+      'socketio': function(meta, io) {
+        test.assert(global['io'] === undefined, 'no global variable');
+        test.assert(io.version === meta.version, meta.version);
+      },
+
       'raphael': function(meta, Raphael) {
         // Raphael can not be wrapped to local.
         //test.assert(global['Raphael'] === undefined, 'no global variable');

@@ -520,5 +520,56 @@ define({
       "events": ">=0.9.1",
       "base": ">=0.9.16"
     }
+  },
+  "socketio": {
+    "package": "https://raw.github.com/LearnBoost/socket.io-client/master/package.json",
+    "name": "socketio",
+    "filename": "socketio",
+    "src": "https://raw.github.com/LearnBoost/socket.io-client/master/dist/socket.io.js",
+    "min": "https://raw.github.com/LearnBoost/socket.io-client/master/dist/socket.io.min.js",
+    "description": "Socket.IO client for the browser and node.js",
+    "version": "0.9.6",
+    "main": "./lib/io.js",
+    "browserify": "./dist/socket.io.js",
+    "homepage": "http://socket.io",
+    "keywords": [ "websocket", "socket", "realtime", "socket.io", "comet", "ajax" ],
+    "author": "Guillermo Rauch <guillermo@learnboost.com>",
+    "contributors": [ {
+      "name": "Guillermo Rauch",
+      "email": "rauchg@gmail.com"
+    }, {
+      "name": "Arnout Kazemier",
+      "email": "info@3rd-eden.com"
+    }, {
+      "name": "Vladimir Dronnikov",
+      "email": "dronnikov@gmail.com"
+    }, {
+      "name": "Einar Otto Stangvik",
+      "email": "einaros@gmail.com"
+    } ],
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/LearnBoost/socket.io-client.git"
+    },
+    "dependencies": {
+      "uglify-js": "1.2.5",
+      "ws": "0.4.x",
+      "xmlhttprequest": "1.2.2",
+      "active-x-obfuscator": "0.0.1"
+    },
+    "devDependencies": {
+      "expresso": "*",
+      "express": "2.5.x",
+      "jade": "*",
+      "stylus": "*",
+      "socket.io": "0.9.6",
+      "socket.io-client": "0.9.6"
+    },
+    "engines": {
+      "node": ">= 0.4.0"
+    },
+    "dirpath": "socketio",
+    "gzipped": "13KB",
+    "raw": "98KB"
   }
 });
