@@ -7,6 +7,7 @@
 define('#{{id}}', ['$'], function(require) {
 
   var jQuery = require('$');
+  var $ = jQuery;
 
   /*{{code}}*/
 
