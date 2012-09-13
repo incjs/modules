@@ -3,7 +3,7 @@
  * @src https://raw.github.com/jquery/jquery-color/{{version}}/jquery-color.js
  */
 
-define('#{{id}}', ['jquery'], function(require, exports, module) {
-  var jQuery = require('jquery');
+define('#{{id}}', ['$'], function(require, exports, module) {
+  var jQuery = require('$');
   /*{{code}}*/
 });
