@@ -1,6 +1,4 @@
 define('#keymaster/1.0.2/keymaster-debug', [], function(require, exports, module) {
-  var keymaster = {}, key = keymaster.key;
-  (function() {
     //     keymaster.js
 //     (c) 2011 Thomas Fuchs
 //     keymaster.js may be freely distributed under the MIT license.
@@ -186,6 +184,5 @@ define('#keymaster/1.0.2/keymaster-debug', [], function(require, exports, module
 
 })(this);
 
-  }).call(keymaster);
 });
 

@@ -4,9 +4,6 @@
  */
 
 define('#{{id}}', [], function(require, exports, module) {
-  var keymaster;
-  (function() {
     /*{{code}}*/
-  }).call(keymaster);
 });
 
