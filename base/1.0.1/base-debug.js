@@ -69,7 +69,6 @@ define("#base/1.0.1/aspect-debug", [], function(require, exports) {
 
 });
 
-
 define("#base/1.0.1/attribute-debug", [], function(require, exports) {
 
   // Attribute
@@ -528,7 +527,6 @@ define("#base/1.0.1/attribute-debug", [], function(require, exports) {
   }
 
 });
-
 
 define("#base/1.0.1/base-debug", ["./aspect-debug", "./attribute-debug", "#class/1.0.0/class-debug", "#events/1.0.0/events-debug"], function(require, exports, module) {
 

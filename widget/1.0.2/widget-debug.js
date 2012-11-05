@@ -92,7 +92,6 @@ define("#widget/1.0.2/daparser-debug", ["$-debug"], function(require, DAParser) 
 
 });
 
-
 define("#widget/1.0.2/auto-render-debug", ["$-debug"], function(require, exports) {
 
   var $ = require('$-debug')
@@ -164,7 +163,6 @@ define("#widget/1.0.2/auto-render-debug", ["$-debug"], function(require, exports
   }
 
 });
-
 
 define("#widget/1.0.2/widget-debug", ["./daparser-debug", "./auto-render-debug", "#base/1.0.1/base-debug", "#class/1.0.0/class-debug", "#events/1.0.0/events-debug", "$-debug"], function(require, exports, module) {
 

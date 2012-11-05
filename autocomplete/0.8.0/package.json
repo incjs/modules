@@ -1,0 +1,27 @@
+{
+    "name": "autocomplete",
+    "version": "0.8.0",
+    "description": "自动补全组件。",
+    "tag": "widget",
+    "homepage": "",
+    "author": "",
+    "repository": {
+        "type": "git",
+        "url": ""
+    },
+    "bugs": {
+        "url": ""
+    },
+    "license": "",
+    "dependencies": {
+        "$":"$",
+        "base":"1.0.1",
+        "handlebars":"1.0.0",
+        "templatable":"widget/1.0.2/templatable",
+        "overlay":"0.9.11"
+    },
+    "tests": ["autocomplete", "data-source", "filter"],
+    "output": {
+        "autocomplete.js": "."
+    }
+}

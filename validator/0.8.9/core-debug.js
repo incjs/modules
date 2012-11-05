@@ -165,7 +165,6 @@ define("#validator/0.8.9/async-debug", [], function(require, exports, module) {
 
 });
 
-
 define("#validator/0.8.9/utils-debug", ["./rule-debug", "./async-debug", "$-debug", "#widget/1.0.2/widget-debug", "#base/1.0.1/base-debug", "#class/1.0.0/class-debug", "#events/1.0.0/events-debug"], function(require, exports, module) {
     var $ = require('$-debug'),
         Rule = require('./rule-debug');
@@ -317,7 +316,6 @@ define("#validator/0.8.9/utils-debug", ["./rule-debug", "./async-debug", "$-debu
     };
 
 });
-
 
 define("#validator/0.8.9/rule-debug", ["./async-debug", "$-debug", "#widget/1.0.2/widget-debug", "#base/1.0.1/base-debug", "#class/1.0.0/class-debug", "#events/1.0.0/events-debug"], function(require, exports, module) {
     var rules = {},
@@ -555,7 +553,6 @@ define("#validator/0.8.9/rule-debug", ["./async-debug", "$-debug", "#widget/1.0.
 
 });
 
-
 define("#validator/0.8.9/item-debug", ["./utils-debug", "./rule-debug", "./async-debug", "$-debug", "#widget/1.0.2/widget-debug", "#base/1.0.1/base-debug", "#class/1.0.0/class-debug", "#events/1.0.0/events-debug"], function(require, exports, module) {
     var $ = require('$-debug'),
         utils = require('./utils-debug'),
@@ -695,7 +692,6 @@ define("#validator/0.8.9/item-debug", ["./utils-debug", "./rule-debug", "./async
 
     module.exports = Item;
 });
-
 
 define("#validator/0.8.9/core-debug", ["./async-debug", "./utils-debug", "./rule-debug", "./item-debug", "$-debug", "#widget/1.0.2/widget-debug", "#base/1.0.1/base-debug", "#class/1.0.0/class-debug", "#events/1.0.0/events-debug"], function(require, exports, module) {
 
