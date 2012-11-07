@@ -1,7 +1,7 @@
 (function(factory) {
 
   if (typeof define === 'function') {
-    define('#querystring/1.0.1/querystring', [], factory);
+    define('gallery/querystring/1.0.1/querystring', [], factory);
   }
   else if (typeof exports !== 'undefined') {
     factory(require, exports);
