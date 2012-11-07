@@ -1,4 +1,4 @@
-define('#mustache/0.5.0/mustache-debug', [], function() {
+define('gallery/mustache/0.5.0/mustache-debug', [], function() {
 
 /*!
  * mustache.js - Logic-less {{mustache}} templates with JavaScript

@@ -1,7 +1,7 @@
 (function(factory) {
 
   if (typeof define === 'function') {
-    define('#mustache/0.4.0/mustache-debug', [], factory);
+    define('gallery/mustache/0.4.0/mustache-debug', [], factory);
   }
   else if (typeof module !== 'undefined') {
     module.exports = factory();
