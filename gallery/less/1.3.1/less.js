@@ -1,4 +1,4 @@
-define('#less/1.3.1/less', [], function() {
+define('gallery/less/1.3.1/less', [], function() {
 
   //
 // LESS - Leaner CSS v1.3.1

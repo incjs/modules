@@ -1,7 +1,7 @@
 (function(factory) {
 
   if (typeof define === 'function') {
-    define('#less/1.2.2/less', [], factory);
+    define('gallery/less/1.2.2/less', [], factory);
   }
   else {
     factory();
