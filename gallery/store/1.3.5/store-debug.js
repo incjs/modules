@@ -1,4 +1,4 @@
-define('#store/1.3.5/store-debug', [], function(require, exports, module) {
+define('gallery/store/1.3.5/store-debug', [], function(require, exports, module) {
 
 /* Copyright (c) 2010-2012 Marcus Westin
  *
