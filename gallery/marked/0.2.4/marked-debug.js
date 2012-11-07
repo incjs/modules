@@ -1,4 +1,4 @@
-define('#marked/0.2.4/marked-debug', [], function(require, exports, module) {
+define('gallery/marked/0.2.4/marked-debug', [], function(require, exports, module) {
 /**
  * marked - A markdown parser (https://github.com/chjj/marked)
  * Copyright (c) 2011-2012, Christopher Jeffrey. (MIT Licensed)
