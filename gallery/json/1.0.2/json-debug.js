@@ -1,4 +1,4 @@
-define('#json/1.0.2/json-debug', [], function() {
+define('gallery/json/1.0.2/json-debug', [], function() {
 /*
     json2.js
     2011-10-19

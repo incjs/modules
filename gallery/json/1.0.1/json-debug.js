@@ -1,7 +1,7 @@
 (function(factory) {
 
   if (typeof define === 'function') {
-    define('#json/1.0.1/json-debug', [], factory);
+    define('gallery/json/1.0.1/json-debug', [], factory);
   }
   else if (typeof exports !== 'undefined') {
     factory(require, exports);
