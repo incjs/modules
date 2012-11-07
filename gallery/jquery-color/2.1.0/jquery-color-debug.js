@@ -1,4 +1,4 @@
-define('#jquery-color/2.1.0/jquery-color-debug', ['$'], function(require, exports, module) {
+define('gallery/jquery-color/2.1.0/jquery-color-debug', ['$'], function(require, exports, module) {
   var jQuery = require('$');
   /*!
  * jQuery Color Animations v@VERSION
