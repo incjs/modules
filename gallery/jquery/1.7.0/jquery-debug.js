@@ -1,7 +1,7 @@
 (function(factory) {
 
   if (typeof define === 'function') {
-    define('#jquery/1.7.0/jquery-debug', [], factory);
+    define('gallery/jquery/1.7.0/jquery-debug', [], factory);
   }
   else {
     factory();

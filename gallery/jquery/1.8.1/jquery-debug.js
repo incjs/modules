@@ -1,4 +1,4 @@
-define('#jquery/1.8.1/jquery-debug', [], function(require) {
+define('gallery/jquery/1.8.1/jquery-debug', [], function(require) {
 
   /*!
  * jQuery JavaScript Library v1.8.1
