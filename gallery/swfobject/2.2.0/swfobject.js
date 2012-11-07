@@ -1,4 +1,4 @@
-define('#swfobject/2.2.0/swfobject', [], function() {
+define('gallery/swfobject/2.2.0/swfobject', [], function() {
 /*	SWFObject v2.2 <http://code.google.com/p/swfobject/>
 	is released under the MIT License <http://www.opensource.org/licenses/mit-license.php> 
 */
