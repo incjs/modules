@@ -1,7 +1,7 @@
 (function(factory) {
 
   if (typeof define === 'function') {
-    define('#backbone/0.9.1/backbone', ['underscore', 'jquery'], factory);
+    define('gallery/backbone/0.9.1/backbone', ['underscore', 'jquery'], factory);
   }
   else if (typeof exports !== 'undefined') {
     factory(require, exports);
