@@ -1,4 +1,4 @@
-define("#cookie/1.0.2/cookie-debug", [], function(require, exports) {
+define("gallery/cookie/1.0.2/cookie-debug", [], function(require, exports) {
 
     // Cookie
     // -------------
