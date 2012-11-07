@@ -1,4 +1,4 @@
-define('#underscore/1.3.3/underscore-debug', [], function(require, exports, module) {
+define('gallery/underscore/1.3.3/underscore-debug', [], function(require, exports, module) {
 
 //     Underscore.js 1.3.3
 //     (c) 2009-2012 Jeremy Ashkenas, DocumentCloud Inc.

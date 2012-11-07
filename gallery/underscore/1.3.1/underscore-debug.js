@@ -1,7 +1,7 @@
 (function(factory) {
 
   if (typeof define === 'function') {
-    define('#underscore/1.3.1/underscore-debug', [], factory);
+    define('gallery/underscore/1.3.1/underscore-debug', [], factory);
   }
   else if (typeof exports !== 'undefined') {
     factory(require, exports, module);

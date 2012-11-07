@@ -1,4 +1,4 @@
-define('#underscore/1.4.2/underscore-debug', [], function(require, exports, module) {
+define('gallery/underscore/1.4.2/underscore-debug', [], function(require, exports, module) {
 
 //     Underscore.js 1.4.2
 //     http://underscorejs.org
