@@ -1,7 +1,7 @@
 (function(factory) {
 
   if (typeof define === 'function') {
-    define('#coffee/1.1.2/coffee-script', [], factory);
+    define('gallery/coffee/1.1.2/coffee-script', [], factory);
   }
   else {
     factory();

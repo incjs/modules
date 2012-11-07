@@ -1,4 +1,4 @@
-define('#coffee/1.3.3/coffee-script', [], function() {
+define('gallery/coffee/1.3.3/coffee-script', [], function() {
 
   /**
  * CoffeeScript Compiler v1.3.3
