@@ -1,4 +1,4 @@
-define('#jasmine/1.2.0/jasmine-html', [], function(require, exports, module) {
+define('gallery/jasmine/1.2.0/jasmine-html', ['./jasmine', './jasmine.css'], function(require, exports, module) {
   require('./jasmine');
 
   jasmine.HtmlReporterHelpers = {};

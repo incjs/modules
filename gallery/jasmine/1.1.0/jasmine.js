@@ -1,4 +1,4 @@
-define('#jasmine/1.1.0/jasmine', [], function(require, exports, module) {
+define('gallery/jasmine/1.1.0/jasmine', [], function(require, exports, module) {
 
   var isCommonJS = typeof window == "undefined";
 

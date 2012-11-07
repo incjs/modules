@@ -1,4 +1,4 @@
-define('#jasmine/1.1.0/jasmine-html', ['./jasmine', './jasmine.css'], function(require) {
+define('gallery/jasmine/1.1.0/jasmine-html', ['./jasmine', './jasmine.css'], function(require) {
 
 require('./jasmine');
 
