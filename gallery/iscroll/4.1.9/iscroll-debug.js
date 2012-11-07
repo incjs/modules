@@ -1,4 +1,4 @@
-define('#iscroll/4.1.9/iscroll-debug', [], function(require, exports, module) {
+define('gallery/iscroll/4.1.9/iscroll-debug', [], function(require, exports, module) {
 
   /*!
  * iScroll v4.1.9 ~ Copyright (c) 2011 Matteo Spinelli, http://cubiq.org
