@@ -1,4 +1,4 @@
-define('#handlebars/1.0.0/handlebars-debug', [], function() {
+define('gallery/handlebars/1.0.0/handlebars-debug', [], function() {
 
 // lib/handlebars/base.js
 var Handlebars = {};
