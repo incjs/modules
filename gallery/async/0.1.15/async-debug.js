@@ -1,7 +1,7 @@
 (function(factory) {
 
   if (typeof define === 'function') {
-    define('#async/0.1.15/async-debug', [], factory);
+    define('gallery/async/0.1.15/async-debug', [], factory);
   }
   else if (typeof exports !== 'undefined') {
     factory(require, exports, module);

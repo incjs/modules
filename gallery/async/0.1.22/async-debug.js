@@ -1,4 +1,4 @@
-define('#async/0.1.22/async-debug', [], function(require, exports, module) {
+define('gallery/async/0.1.22/async-debug', [], function(require, exports, module) {
 /*global setTimeout: false, console: false */
 (function () {
 
