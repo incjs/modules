@@ -1,4 +1,4 @@
-define('#raphael/2.1.0/raphael-debug', [], function() {
+define('gallery/raphael/2.1.0/raphael-debug', [], function() {
   var define;
 
   // ┌────────────────────────────────────────────────────────────────────┐ \\
