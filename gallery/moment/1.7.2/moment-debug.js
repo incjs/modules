@@ -1,4 +1,4 @@
-define('#moment/1.7.2/moment-debug', [], function(require, exports, module) {
+define('gallery/moment/1.7.2/moment-debug', [], function(require, exports, module) {
 
 var ender = 1;
 
