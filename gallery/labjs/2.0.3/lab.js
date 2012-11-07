@@ -1,4 +1,4 @@
-define('#labjs/2.0.3/lab', [], function(require) {
+define('gallery/labjs/2.0.3/lab', [], function(require) {
 
   /*! LAB.js (LABjs :: Loading And Blocking JavaScript)
     v2.0.3 (c) Kyle Simpson
