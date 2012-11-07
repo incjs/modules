@@ -1,4 +1,4 @@
-define('#jasmine-jquery/1.4.2/jasmine-jquery-debug', ['$'], function(require) {
+define('gallery/jasmine-jquery/1.4.2/jasmine-jquery-debug', ['$'], function(require) {
 
   var jQuery = require('$');
   var $ = jQuery;
