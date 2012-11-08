@@ -4,10 +4,10 @@
  * @author zTree
  * @url http://ztree.me/
  * @keywords tree
+ * @package https://raw.github.com/swain/zTree/master/package.json
  *
- * @src https://github.com/swain/zTree/blob/master/3.4/ztree-debug.js
- * @min https://github.com/swain/zTree/blob/master/3.4/ztree.js
- * @version 3.4
+ * @src https://raw.github.com/swain/zTree/master/3.4/ztree-debug.js
+ * @min https://raw.github.com/swain/zTree/master/3.4/ztree.js
  */
 
 define('#{{id}}', ['$'], function(require, exports, module) {
