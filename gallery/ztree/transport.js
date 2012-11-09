@@ -1,13 +1,13 @@
 /**
- * @name zTree
+ * @name ztree
  * @description A jQuery tree plugin.
- * @author zTree
+ * @author hunter.z
  * @url http://ztree.me/
  * @keywords tree
  * @package https://raw.github.com/swain/zTree/master/package.json
  *
- * @src https://raw.github.com/swain/zTree/master/3.4.0/ztree-debug.js 
- * @min https://raw.github.com/swain/zTree/master/3.4.0/ztree.js
+ * @src https://raw.github.com/swain/zTree/master/{{version}}/ztree-debug.js 
+ * @min https://raw.github.com/swain/zTree/master/{{version}}/ztree.js
  */
 
 define('#{{id}}', ['$'], function(require, exports, module) {
