@@ -1,6 +1,10 @@
 define('gallery/keymaster/1.0.2/keymaster-debug', [], function(require, exports, module) {
+    var global = {}, key = function(key, scope, method) {
+        global.key(key, scope, method);
+    };
+    (function() {
     //     keymaster.js
-//     (c) 2011 Thomas Fuchs
+//     (c) 2011-2012 Thomas Fuchs
 //     keymaster.js may be freely distributed under the MIT license.
 
 ;(function(global){
@@ -29,7 +33,8 @@ define('gallery/keymaster/1.0.2/keymaster-debug', [], function(require, exports,
       '`': 192, '-': 189, '=': 187,
       ';': 186, '\'': 222,
       '[': 219, ']': 221, '\\': 220
-    };
+    },
+    _downKeys = [];
 
   for(k=1;k<20;k++) _MODIFIERS['f'+k] = 111+k;
 
@@ -44,6 +49,10 @@ define('gallery/keymaster/1.0.2/keymaster-debug', [], function(require, exports,
   function dispatch(event, scope){
     var key, handler, k, i, modifiersMatch;
     key = event.keyCode;
+
+    if (index(_downKeys, key) == -1) {
+        _downKeys.push(key);
+    }
 
     // if a modifier key, set the key.<modifierkeyname> property to true and return
     if(key == 93 || key == 224) key = 91; // right command on webkit, command on Gecko
@@ -87,7 +96,14 @@ define('gallery/keymaster/1.0.2/keymaster-debug', [], function(require, exports,
 
   // unset modifier keys on keyup
   function clearModifier(event){
-    var key = event.keyCode, k;
+    var key = event.keyCode, k,
+        i = index(_downKeys, key);
+
+    // remove key from _downKeys
+    if (i >= 0) {
+        _downKeys.splice(i, 1);
+    }
+
     if(key == 93 || key == 224) key = 91;
     if(key in _mods) {
       _mods[key] = false;
@@ -132,6 +148,23 @@ define('gallery/keymaster/1.0.2/keymaster-debug', [], function(require, exports,
     }
   };
 
+  // Returns true if the key with code 'keyCode' is currently down
+  // Converts strings into key codes.
+  function isPressed(keyCode) {
+      if (typeof(keyCode)=='string') {
+          if (keyCode.length == 1) {
+              keyCode = (keyCode.toUpperCase()).charCodeAt(0);
+          } else {
+              return false;
+          }
+      }
+      return index(_downKeys, keyCode) != -1;
+  }
+
+  function getPressedKeyCodes() {
+      return _downKeys;
+  }
+
   function filter(event){
     var tagName = (event.target || event.srcElement).tagName;
     // ignore keypressed in any elements that support keyboard data input
@@ -173,16 +206,30 @@ define('gallery/keymaster/1.0.2/keymaster-debug', [], function(require, exports,
   // reset modifiers to false whenever the window is (re)focused.
   addEvent(window, 'focus', resetModifiers);
 
+  // store previously defined key
+  var previousKey = global.key;
+
+  // restore previously defined key and return reference to our key object
+  function noConflict() {
+    var k = global.key;
+    global.key = previousKey;
+    return k;
+  }
+
   // set window.key and window.key.set/get/deleteScope, and the default filter
   global.key = assignKey;
   global.key.setScope = setScope;
   global.key.getScope = getScope;
   global.key.deleteScope = deleteScope;
   global.key.filter = filter;
+  global.key.isPressed = isPressed;
+  global.key.getPressedKeyCodes = getPressedKeyCodes;
+  global.key.noConflict = noConflict;
 
   if(typeof module !== 'undefined') module.exports = key;
 
 })(this);
 
+    }).call(global);
 });
 
