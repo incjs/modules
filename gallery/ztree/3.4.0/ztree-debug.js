@@ -1,4 +1,4 @@
-define('gallery/zTree/3.4.0/ztree-debug', ['$'], function(require, exports, module) {
+define('gallery/ztree/3.4.0/ztree-debug', ['$'], function(require, exports, module) {
   var jQuery = require('$');
   
 /*
