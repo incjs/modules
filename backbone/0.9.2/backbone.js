@@ -1,4 +1,4 @@
-define('#backbone/0.9.2/backbone', ['underscore', '$'], function(require, exports) {
+define('gallery/backbone/0.9.2/backbone', ['underscore', '$'], function(require, exports) {
 
   var previousUnderscore = this._;
   var previousJQuery = this.jQuery;
