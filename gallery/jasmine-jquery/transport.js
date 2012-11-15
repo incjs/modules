@@ -4,9 +4,9 @@
  * @src https://raw.github.com/velesin/jasmine-jquery/master/lib/jasmine-jquery.js
  */
 
-define('#{{id}}', ['$'], function(require) {
+define('#{{id}}', ['${{debug}}'], function(require) {
 
-  var jQuery = require('$');
+  var jQuery = require('${{debug}}');
   var $ = jQuery;
 
   /*{{code}}*/

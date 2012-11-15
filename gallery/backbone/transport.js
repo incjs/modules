@@ -5,12 +5,12 @@
  * @min http://documentcloud.github.com/backbone/backbone-min.js
  */
 
-define('#{{id}}', ['underscore', '$'], function(require, exports) {
+define('#{{id}}', ['underscore{{debug}}', '${{debug}}'], function(require, exports) {
 
   var previousUnderscore = this._;
   var previousJQuery = this.jQuery;
-  this._ = require('underscore');
-  this.jQuery = require('$');
+  this._ = require('underscore{{debug}}');
+  this.jQuery = require('${{debug}}');
 
 /*{{code}}*/
 

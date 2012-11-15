@@ -1,6 +1,6 @@
-define('gallery/jasmine-jquery/1.4.2/jasmine-jquery-debug', ['$'], function(require) {
+define('gallery/jasmine-jquery/1.4.2/jasmine-jquery-debug', ['$-debug'], function(require) {
 
-  var jQuery = require('$');
+  var jQuery = require('$-debug');
   var $ = jQuery;
 
   var readFixtures = function() {
@@ -119,27 +119,27 @@ jasmine.Fixtures.prototype.clearCache = function() {
 }
 
 jasmine.Fixtures.prototype.cleanUp = function() {
-  jQuery('#' + this.containerId).remove()
+  $('#' + this.containerId).remove()
 }
 
 jasmine.Fixtures.prototype.sandbox = function(attributes) {
   var attributesToSet = attributes || {}
-  return jQuery('<div id="sandbox" />').attr(attributesToSet)
+  return $('<div id="sandbox" />').attr(attributesToSet)
 }
 
 jasmine.Fixtures.prototype.createContainer_ = function(html) {
   var container
-  if(html instanceof jQuery) {
-    container = jQuery('<div id="' + this.containerId + '" />')
+  if(html instanceof $) {
+    container = $('<div id="' + this.containerId + '" />')
     container.html(html)
   } else {
     container = '<div id="' + this.containerId + '">' + html + '</div>'
   }
-  jQuery('body').append(container)
+  $('body').append(container)
 }
 
 jasmine.Fixtures.prototype.addToContainer_ = function(html){
-  var container = jQuery('body').find('#'+this.containerId).append(html)
+  var container = $('body').find('#'+this.containerId).append(html)
   if(!container.length){
     this.createContainer_(html)
   }
@@ -154,7 +154,7 @@ jasmine.Fixtures.prototype.getFixtureHtml_ = function(url) {
 
 jasmine.Fixtures.prototype.loadFixtureIntoCache_ = function(relativeUrl) {
   var url = this.makeFixtureUrl_(relativeUrl)
-  var request = jQuery.ajax({
+  var request = $.ajax({
     type: "GET",
     url: url + "?" + new Date().getTime(),
     async: false
@@ -206,11 +206,12 @@ jasmine.StyleFixtures.prototype.cleanUp = function() {
 }
 
 jasmine.StyleFixtures.prototype.createStyle_ = function(html) {
-  var style = jQuery('<style></style>').text(html)
+  var styleText = $('<div></div>').html(html).text(),
+    style = $('<style>' + styleText + '</style>')
 
   this.fixturesNodes_.push(style)
 
-  jQuery('head').append(style)
+  $('head').append(style)
 }
 
 jasmine.StyleFixtures.prototype.clearCache = jasmine.Fixtures.prototype.clearCache
@@ -224,8 +225,6 @@ jasmine.StyleFixtures.prototype.loadFixtureIntoCache_ = jasmine.Fixtures.prototy
 jasmine.StyleFixtures.prototype.makeFixtureUrl_ = jasmine.Fixtures.prototype.makeFixtureUrl_
 
 jasmine.StyleFixtures.prototype.proxyCallTo_ = jasmine.Fixtures.prototype.proxyCallTo_
-
-/** jasmine json fixtures */
 
 jasmine.getJSONFixtures = function() {
   return jasmine.currentJSONFixtures_ = jasmine.currentJSONFixtures_ || new jasmine.JSONFixtures()
@@ -261,7 +260,7 @@ jasmine.JSONFixtures.prototype.getFixtureData_ = function(url) {
 jasmine.JSONFixtures.prototype.loadFixtureIntoCache_ = function(relativeUrl) {
   var self = this
   var url = this.fixturesPath.match('/$') ? this.fixturesPath + relativeUrl : this.fixturesPath + '/' + relativeUrl
-  jQuery.ajax({
+  $.ajax({
     async: false, // must be synchronous to guarantee that no tests are run before fixture is loaded
     cache: false,
     dataType: 'json',
@@ -282,13 +281,13 @@ jasmine.JSONFixtures.prototype.proxyCallTo_ = function(methodName, passedArgumen
 jasmine.JQuery = function() {}
 
 jasmine.JQuery.browserTagCaseIndependentHtml = function(html) {
-  return jQuery('<div/>').append(html).html()
+  return $('<div/>').append(html).html()
 }
 
 jasmine.JQuery.elementToString = function(element) {
   var domEl = $(element).get(0)
   if (domEl == undefined || domEl.cloneNode)
-    return jQuery('<div />').append($(element).clone()).html()
+    return $('<div />').append($(element).clone()).html()
   else
     return element.toString()
 }
@@ -306,7 +305,7 @@ jasmine.JQuery.matchersClass = {}
       var handler = function(e) {
         data.spiedEvents[jasmine.spiedEventsKey(selector, eventName)] = e
       }
-      jQuery(selector).bind(eventName, handler)
+      $(selector).bind(eventName, handler)
       data.handlers.push(handler)
       return {
         selector: selector,
@@ -394,7 +393,7 @@ jasmine.JQuery.matchersClass = {}
 
     toHaveText: function(text) {
       var trimmedText = $.trim(this.actual.text())
-      if (text && jQuery.isFunction(text.test)) {
+      if (text && $.isFunction(text.test)) {
         return text.test(trimmedText)
       } else {
         return trimmedText == text
@@ -470,7 +469,7 @@ jasmine.JQuery.matchersClass = {}
 
     jasmine.JQuery.matchersClass[methodName] = function() {
       if (this.actual
-        && (this.actual instanceof jQuery
+        && (this.actual instanceof $
           || jasmine.isDomNode(this.actual))) {
             this.actual = $(this.actual)
             var result = jQueryMatchers[methodName].apply(this, arguments)

@@ -1,9 +1,9 @@
-define('gallery/backbone/0.9.2/backbone-debug', ['underscore', '$'], function(require, exports) {
+define('gallery/backbone/0.9.2/backbone-debug', ['underscore-debug', '$-debug'], function(require, exports) {
 
   var previousUnderscore = this._;
   var previousJQuery = this.jQuery;
-  this._ = require('underscore');
-  this.jQuery = require('$');
+  this._ = require('underscore-debug');
+  this.jQuery = require('$-debug');
 
 //     Backbone.js 0.9.2
 
