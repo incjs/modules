@@ -1,1 +1,0 @@
-define(function(e,t,n){var r=e("./switchable"),i=r.extend({attrs:{triggerType:"click",multiple:!1}});n.exports=i});
