@@ -10,7 +10,7 @@
  * @min https://raw.github.com/swain/zTree/master/{{version}}/ztree.js
  */
 
-define('#{{id}}', ['$'], function(require, exports, module) {
-  var jQuery = require('$');
+define('#{{id}}', ['${{debug}}'], function(require, exports, module) {
+  var jQuery = require('${{debug}}');
   /*{{code}}*/
 });
